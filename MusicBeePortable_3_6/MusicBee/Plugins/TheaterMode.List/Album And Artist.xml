@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+<settings enableScaling="true" />
+<settings backgroundImage="Default Landscape.jpg" />
+<settings rotationPeriod="300" />
+<theaterMode>
+  <settings bdr="128,128,128" />
+</theaterMode>
+<screenSaver>
+  <settings idlePeriod="0" />
+  <settings monitor="1" otherMonitors="blackout" />
+</screenSaver>
+
+<element type="Block" x="1" y="1" width="389" heightDock="Panel" height="-2" bg="32,9,8" />
+<element type="ArtistPicture" x="390" y="1" widthDock="Panel" width="-391" heightDock="Panel" height="-2" aspectRatio="zoomKeep" fillColor="32,9,8" fade="0.0"></element>
+
+<element name="#NextInfo" type="Block" xAnchor="Panel.Right" x="-280" yAnchor="Panel.Bottom" y="-74" width="280" height="53" bg="253,79,24,22" onDoubleClick="OpenNowPlayingAssistant"></element>
+<element type="Line" xAnchor="Panel.Right" x="-280" yAnchor="Panel.Bottom" y="-75" width="280" height="1" bg="253,0,0,0"></element>
+<element type="Text" xAnchor="Panel.Right" x="-260" yAnchor="Panel.Bottom" y="-64" width="250" font="Arial" style="Regular" size="9" fg="230,230,230" onClick="OpenNowPlayingAssistant" >Up next...</element>
+<element type="Field" id="Tracks[1]" xAnchor="Panel.Right" x="-260" yAnchor="Panel.Bottom" y="-47" width="250" font="Arial" style="Regular" size="9" fg="250,250,250" >
+    <child id="Title" ></child>
+    <child fg="220,220,220" > by </child>
+    <child id="Artist"></child>
+</element>
+<element type="Line" xAnchor="Panel.Right" x="-280" yAnchor="Panel.Bottom" y="-21" width="280" height="1" bg="253,0,0,0"></element>
+<element name="#InfoBar" type="Block" x="1" yAnchor="Panel.Bottom" y="-75" widthDock="X:#NextInfo.Left" width="0" height="55" bg="254,0,0,0" onDoubleClick="OpenNowPlayingAssistant"></element>
+<element name="#Position" type="ProgressPosition" xAnchor="#InfoBar.Right" x="-260" yAnchor="Panel.Bottom" y="-66" width="245" align="right" font="Arial" style="Regluar" size="22" fg="255,140,0" ></element>
+<element type="SoundGraph" x="30"  yAnchor="Panel.Bottom" y="-70" widthDock="X:#Position.Left" width="0" height="45" fg="255,230,230,230" fg2="255,255,255,255" bg="50,250,250,250" ></element>
+
+<element type="Block" x="40" y="210" width="335" height="35" bg="230,5,5,5" />
+<element type="AlbumTracks" x="40" y="245" width="335" height="290" font="Arial" style="Regular" size="9.5" bg="180,5,5,5" fg="240,240,240" mouseOverFg="220,10,10" >
+    <child width="15" />
+    <child id="Speaker" width="23" />
+    <child id="DiscAndTrackNo" />
+    <child>.  </child>
+    <child id="TrackArtistAndTitle" width="220" />
+    <child id="Duration" />
+</element>
+<element type="Field" x="49" y="235" width="300" font="Arial" style="Bold" size="13" fg="240,240,240" >
+    <child id="Album" ></child>
+    <child fg="220,220,220" font="Arial" style="Regular" size="11" >  by </child>
+    <child id="AlbumArtist"></child>
+</element>
+<element name="#AlbumCover" type="AlbumCover" x="20" yAnchor="Panel.Top" y="20" width="200" height="200" min="200" max="200" brightness="1.0" bdr="40,235,235,235" ></element>
+<element type="PlayerBar" extras="ProgressBar" xAnchor="AlbumCover.Left" x="3" yAnchor="AlbumCover.Bottom" y="-53" widthDock="AlbumCover" width="-6" height="52" bdr="230,20,20,20" bg="230,20,20,20" fg="245,245,245" fg2="200,200,200" ></element>
+
+</root>

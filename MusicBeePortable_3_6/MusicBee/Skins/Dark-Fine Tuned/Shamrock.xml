@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root dependsOn="Onyx.xmlc">
+<variables>
+theme = "69,206,162"
+light_30 = "99,236,192"
+light_50 = "119,255,212"
+light_60 = "129,255,222"
+light_100 = "169,255,255"
+light_150 = "219,255,255"
+font_1 = "0,0,0"
+font_2 = "10,10,10"
+font_3 = "0,0,0"
+</variables>
+<element id="Menu.ParentItem.Highlight" bg="theme" fg="font_1" bdr="light_30" />
+<element id="Menu.ParentItem.Pressed" bg="theme" fg="font_1" bdr="light_30" />
+<element id="InlineMenu.ParentItem.Highlight" bg="theme" fg="font_1" bdr="light_30" />
+<element id="InlineMenu.ParentItem.Pressed" bg="theme" fg="font_1" bdr="light_30" />
+<element id="Menu.DropDown.Highlight" bg="theme" bdr="light_30"/>
+<element id="Menu.DropDown.HighlightText" fg="font_3" />
+<element id="Panel.Body.Highlight" bg="theme" fg="font_1"  bdr="theme" />
+<element id="Panel.ChildBody.Highlight" bg="theme" fg="font_1" />
+<element id="Content[TrackDetail].Body.Highlight" bg="theme" fg="font_1" />
+<element id="Content[Artwork].Body.Highlight" bg="theme" />
+<element id="Content[Artwork].Body.Lowlight" bg="theme" />
+<element id="Content[Artwork].Expanded.Highlight" bg="theme" fg="font_1" />
+<element id="FilterPanel.Highlight" bg="theme" fg="font_1"  />
+<element id="Player.Wavebar" fg="light_30" fg2="25,25,25" />
+<element id="Player.Wavebar.Inner" fg="theme" fg2="10,10,10" />
+<element id="Player.SpectrumVisualiser" bg="10,10,10" bg2="9,9,9" fg="theme" fg2="15,15,15" bdr="light_50" />
+<element id="PlayerFlat.ProgressBar" bg="40,40,40" fg="light_60" />
+<element id="PlayerFlat.Control.Highlight" fg="light_60" />
+<element id="PlayerFlat.ProgressButton" fg="theme"/>
+<element id="PlayerFlat.MetroButton.Highlight" bdr="light_60" />
+<element id="PlayerFlat.SpectrumLow" bg="theme" />
+<element id="PlayerFlat.SpectrumMedium" bg="light_30" />
+<element id="PlayerFlat.SpectrumHigh" bg="light_50" />
+<element id="PlayerFlat.Wavebar" fg="light_30" fg2="30,30,30" />
+<element id="PlayerFlat.Wavebar.Inner" fg="theme" fg2="20,20,20" />
+<element id="PlayerSidebar.ProgressBar" fg="light_60" bg="40,40,40" />
+<element id="PlayerSidebar.ProgressButton" fg="theme"/>
+<element id="PlayerSidebar.Control.Highlight" fg="light_60" />
+<element id="PlayerMini.ProgressBar" fg="light_60" bg="40,40,40" />
+<element id="PlayerMini.ProgressButton" fg="theme"/>
+<element id="PlayerMini.Control.Highlight" fg="light_60" />
+<element id="PlayerMini.Spectrum" fg="theme" />
+<element id="Compact.Player.Control.Highlight" fg="light_30" />
+<element id="Compact.Player.ProgressBar" bg="40,40,40" fg="light_60" />
+<element id="Compact.Player.Wavebar" fg="light_30" fg2="30,30,30" />
+<element id="Compact.Player.Wavebar.Inner" fg="theme" fg2="20,20,20" />
+<element id="Controls.VerticalMenu.Highlight" bg="theme" fg="font_1" />
+<element id="Controls.VerticalMenu.Lowlight" bg="theme" fg="font_2" />
+<element id="Controls.InputControl.Highlight" bg="theme" fg="font_1" />
+<element id="Controls.InputControl.Lowlight" bg="theme" fg="font_2" />
+<element id="Controls.Button.Highlight" bg="theme" fg="font_1" bdr="light_30" />
+<element id="Controls.DropdownButton.Highlight" bg="theme" fg="font_1" bdr="light_30" />
+<element id="Controls.Arrow.Highlight" fg="font_1" />
+<element id="Controls.TabHeader.Highlight" bg="theme" fg="font_1"/>
+<element id="Panel.NotLovedIcon.Highlight" fg="226,154,146" fg2="light_30" />
+<element id="Panel.StarRating.Highlight" fg="font_1" fg2="light_30" />
+<element id="Panel.TabSelector.Highlight" bg="theme" fg="font_1" />
+<element id="Controls.DropAreaIndicator" fg="light_30" />
+<element id="VolumeVisualiser" bg="10,10,10" fg="light_100" fg2="theme" />
+<element id="Menu.CommandButton.Selected" bg="theme" fg="font_1" bdr="light_30" />
+<element id="Panel.HeaderButtonOverride.Default" fg="light_60" />
+<element id="CaptionBar.HeaderControl.Default" fg="light_60" />
+</root>

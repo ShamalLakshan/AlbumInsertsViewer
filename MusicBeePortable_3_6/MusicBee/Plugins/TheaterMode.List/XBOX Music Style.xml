@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+<settings enableScaling="true" />
+<settings backgroundImage="" />
+<settings rotationPeriod="" />
+<screenSaver>
+  <settings idlePeriod="0" />
+  <settings monitor="1" otherMonitors="blackout" />
+</screenSaver>
+
+<!-- Artist Picture -->
+<element type="Gallery" x="1" y="1" widthDock="Panel" width="-2" heightDock="Panel" height="-2" aspectRatio="zoomKeep" interval="60" tags="artist"></element>
+<element name="DarkerBG" type="Block" x="0" y="0" widthDock="Panel" width="0" heightDock="Panel" height="0" bg="192,8,0,30"></element>
+
+<!-- Overlay 1 -->
+<autoHide name="#Overlay1" x="-1" y="-100" width="2" height="2" allowPinning="true" resizePictures="false" disableHotPoint="true" >
+<element type="Icon" image="Images\xb\xb-overlay1.png" gammaCorrected="false" x="-1" y="-1" widthDock="Panel" width="2" heightDock="Panel" height="2" ></element>
+</autoHide>
+
+<!-- Overlay 2 -->
+<autoHide name="#Overlay2" x="-1" y="-100" width="2" height="2" allowPinning="true" resizePictures="false" disableHotPoint="true" >
+<element type="Icon" image="Images\xb\xb-overlay2.png" gammaCorrected="false" x="-1" y="-1" widthDock="Panel" width="2" heightDock="Panel" height="2" ></element>
+</autoHide>
+
+<!-- Overlay 3 -->
+<autoHide name="#Overlay3" x="-1" y="-100" width="2" height="2" allowPinning="true" resizePictures="false" disableHotPoint="true" >
+<element type="Icon" image="Images\xb\xb-overlay3.png" gammaCorrected="false" x="-1" y="-1" widthDock="Panel" width="2" heightDock="Panel" height="2" ></element>
+</autoHide>
+
+<!-- Overlay 4 -->
+<autoHide name="#Overlay4" x="-1" y="-100" width="2" height="2" allowPinning="true" resizePictures="false" disableHotPoint="true" >
+<element type="Icon" image="Images\xb\xb-overlay4.png" gammaCorrected="false" x="-1" y="-1" widthDock="Panel" width="2" heightDock="Panel" height="2" ></element>
+</autoHide>
+
+<!-- Overlay 5 -->
+<autoHide name="#Overlay5" x="-1" y="-100" width="2" height="2" allowPinning="true" resizePictures="false" disableHotPoint="true" >
+<element type="Icon" image="Images\xb\xb-overlay.png" gammaCorrected="false" x="-1" y="-1" widthDock="Panel" width="2" heightDock="Panel" height="2" ></element>
+</autoHide>
+
+<!-- Overlay 6 -->
+<autoHide name="#Overlay6" x="-1" y="-100" width="2" height="2" allowPinning="true" resizePictures="false" disableHotPoint="true" >
+<element type="Icon" image="Images\xb\xb-overlay0.png" gammaCorrected="false" x="-1" y="-1" widthDock="Panel" width="2" heightDock="Panel" height="2" ></element>
+</autoHide>
+
+<!-- Overlays Menu -->
+<element type="Icon" image="Images\xb\xb-select.png" gammaCorrected="false" xAnchor="Panel.Right" x="-15" y="14" width="5" height="5" fade="0.2" onClick="OpenAutoHidePanel:#Overlay1"></element> 
+<element type="Icon" image="Images\xb\xb-select.png" gammaCorrected="false" xAnchor="Panel.Right" x="-15" y="26" width="5" height="5" fade="0.2" onClick="OpenAutoHidePanel:#Overlay2"></element> 
+<element type="Icon" image="Images\xb\xb-select.png" gammaCorrected="false" xAnchor="Panel.Right" x="-15" y="38" width="5" height="5" fade="0.2" onClick="OpenAutoHidePanel:#Overlay3"></element> 
+<element type="Icon" image="Images\xb\xb-select.png" gammaCorrected="false" xAnchor="Panel.Right" x="-15" y="50" width="5" height="5" fade="0.2" onClick="OpenAutoHidePanel:#Overlay4"></element> 
+<element type="Icon" image="Images\xb\xb-select.png" gammaCorrected="false" xAnchor="Panel.Right" x="-15" y="62" width="5" height="5" fade="0.2" onClick="OpenAutoHidePanel:#Overlay5"></element> 
+<element type="Icon" image="Images\xb\xb-select.png" gammaCorrected="false" xAnchor="Panel.Right" x="-15" y="74" width="5" height="5" fade="0.2" onClick="OpenAutoHidePanel:#Overlay6"></element> 
+
+<!-- Artist Info -->
+<autoHide name="#SidebarArtist" xAnchor="Panel.Left" x="36" y="80" width="346" heightDock="Panel" height="-430" fg="80,80,80" fg2="96,169,23" allowPinning="true" resizePictures="false" disableHotPoint="true" >
+  <element type="Icon" image="Images\xb\xb-panelBG.png" xAnchor="Panel.Left" x="44" y="80" width="340" heightDock="Panel" height="-430" fade="0.2"></element>
+  <element type="Field" id="Artist" xAnchor="Panel.Left" x="55" y="105" width="330" font="Segoe UI Light" style="Regular" size="20" fg="96,169,23" ></element>
+  <element type="ArtistInfo" xAnchor="Panel.Left" x="60" y="140" width="315" heightDock="Y:#SidebarArtist.Bottom" height="-35" font="Segoe UI" style="Regular" size="9" fg="245,245,245" fg2="255,140,0" ></element>
+</autoHide>
+
+<!-- Lyrics -->
+<autoHide name="#SidebarLyrics" xAnchor="Panel.Right" x="-388" y="80" width="350" heightDock="Panel" height="-368" fg="80,80,80" fg2="96,169,23" allowPinning="true" resizePictures="false" disableHotPoint="true" >
+  <element type="Icon" image="Images\xb\xb-panelBG.png" xAnchor="Panel.Right" x="-382" y="80" width="340" heightDock="Panel" height="-368" fade="0.2"></element>
+  <element type="Field" id="Title" xAnchor="Panel.Right" x="-376" y="105" width="335" font="Segoe UI Light" style="Regular" size="20" fg="96,169,23" ></element>
+  <element type="Lyrics" xAnchor="Panel.Right" x="-371" y="144" width="320" heightDock="Y:#SidebarLyrics.Bottom" height="-35" font="Segoe UI" style="Regular" size="9" fg="245,245,245" fg2="255,140,0" ></element>
+</autoHide>
+
+<!-- Playlist -->
+<autoHide name="#SidebarPlaylist" xAnchor="Panel.Right" x="-388" y="80" width="350" heightDock="Panel" height="-368" fg="80,80,80" fg2="96,169,23" allowPinning="true" resizePictures="false" disableHotPoint="true" >
+  <element type="Icon" image="Images\xb\xb-panelBG.png" xAnchor="Panel.Right" x="-382" y="80" width="340" heightDock="Panel" height="-368" fade="0.2"></element>
+  <element type="Text" xAnchor="Panel.Right" x="-376" y="105" width="335" font="Segoe UI Light" style="Regular" size="20" fg="96,169,23" >Playlist</element>
+  <element type="NowPlayingList" xAnchor="Panel.Right" x="-382" y="131" width="340" heightDock="Panel" height="-368" rowPadding="11" font="Segoe UI" style="Regular" size="9" fg="240,240,240" mouseOverFg="96,169,23" >
+      <child width="12" />
+      <child id="Speaker" width="23" />
+      <child id="#" width="26" format="#\." align="center" />
+      <child id="TrackArtistAndTitle" width="235" />
+      <child id="Duration" />
+  </element>
+</autoHide>
+
+<!-- Progress Bar -->
+<element type="ProgressBar" xAnchor="Panel.Left" yAnchor="Panel.Bottom" x="43" y="-138" widthDock="X:Panel.Right" width="-43" height="2" bg="7,255,255,255" fg="245,245,245" ></element>
+
+<!-- Player Controls -->
+<element type="PlayerBar" xAnchor="Panel.Right" x="70" yAnchor="Panel.Bottom" y="-75" width="0" height="0"></element>
+
+<element name="#LyricsStatus" type="Text" xAnchor="Panel.Right" x="-242" yAnchor="Panel.Bottom" y="-53" width="20" font="Wingdings" style="Regular" size="10" fg="55,50,70" fg2="245,245,245" mouseOverFg="96,169,23" onClick="OpenFloatingPanel(#SidebarLyrics)">&amp;</element>
+<element type="Text" xAnchor="Panel.Right" x="-217" yAnchor="Panel.Bottom" y="-66" width="50" font="Segoe UI" style="Regular" size="17" fg="245,245,245" mouseOverFg="96,169,23" onClick="OpenFloatingPanel(#SidebarPlaylist)">≡</element>
+<element type="Icon" image="Images\xb\xb-metrobuttons.png" xAnchor="Panel.Right" x="-184" yAnchor="Panel.Bottom" y="-63" width="92" height="32" fade="0.2"></element> 
+<element name="#prevbutton" type="Text" xAnchor="Panel.Right" x="-184" yAnchor="Panel.Bottom" y="-57" width="50" font="Webdings" style="Regular" size="11" fg="245,245,245" mouseOverFg="96,169,23" onClick="PlayPrevious">9</element>
+<element type="Text" xAnchor="Panel.Right" x="-156" yAnchor="Panel.Bottom" y="-62" width="50" font="Webdings" style="Regular" size="19" fg="245,245,245" mouseOverFg="96,169,23" onClick="PlayPause" visibleTrigger="Playing">;</element>
+<element type="Text" xAnchor="Panel.Right" x="-155" yAnchor="Panel.Bottom" y="-59" width="50" font="Webdings" style="Regular" size="18" fg="245,245,245" mouseOverFg="96,169,23" onClick="PlayPause" visibleTrigger="NotPlaying">4</element>
+<element type="Text" xAnchor="Panel.Right" x="-115" yAnchor="Panel.Bottom" y="-57" width="50" font="Webdings" style="Regular" size="11" fg="245,245,245" mouseOverFg="96,169,23" onClick="PlayNext">:</element>
+<element type="Text" xAnchor="Panel.Right" x="-84" yAnchor="Panel.Bottom" y="-57" width="50" font="Webdings" style="Regular" size="11" fg="245,245,245" mouseOverFg="96,169,23" onClick="OpenNowPlayingAssistant">2</element>
+<element type="Text" xAnchor="Panel.Right" x="-59" yAnchor="Panel.Bottom" y="-57" width="28" font="Webdings" style="Regular" size="9" fg="245,245,245" mouseOverFg="96,169,23" onClick="CloseWindow">r</element>
+ 
+<!-- Track Info -->
+<element type="AlbumCover" x="42" yAnchor="Panel.Bottom" y="-315" width="150" height="150" min="150" max="150" brightness="1.0" ></element>
+<element type="ProgressPosition" xAnchor="Panel.Right" x="-260" yAnchor="Panel.Bottom" y="-187" widthDock="X:Panel.Right" width="-36" align="right" font="Segoe UI Light" style="Regular" size="15" fg="245,245,245" ></element>
+<element name="BigTitle" type="Field" id="Title" x="35" yAnchor="Panel.Bottom" y="-125" widthDock="X:#prevbutton.Left" width="0" reserveWidth="120" font="Segoe UI Light" style="Regular" size="20" fg="245,245,245" ></element>
+<element type="Field" id="RatingLove" xAnchor="Panel.Right" x="-165" yAnchor="Panel.Bottom" y="-110" width="140" visible="MusicBeeSetting" fg="30,255,255,255" fg2="245,245,245" size="17" rightMargin="8" >
+  <child id="Rating" visible="MusicBeeSetting" fg="245,245,245" fg2="30,255,255,255" size="18" ></child>
+</element>
+<element type="Field" id="Artist" x="39" yAnchor="Panel.Bottom" y="-71" widthDock="X:#prevbutton.Left" width="-10" font="Segoe UI" style="Bold" size="12" fg="245,245,245" mouseOverFg="96,169,23" onClick="OpenFloatingPanel(#SidebarArtist)"></element>
+<element type="Field" id="Album" x="39" yAnchor="Panel.Bottom" y="-48" widthDock="X:#prevbutton.Left" width="-10" font="Segoe UI" style="Regular" size="11" fg="245,245,245" ></element>
+
+</root>
