@@ -1,0 +1,1423 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+<SupportedFiles>
+  <FileExtension Value=".mp3" TagFormats="3" Codec="1" />
+  <FileExtension Value=".mp2" TagFormats="3" Codec="1" />
+  <FileExtension Value=".mp1" TagFormats="3" Codec="1" />
+  <FileExtension Value=".mp3pro" TagFormats="3" Codec="0" />
+  <FileExtension Value=".m4a" TagFormats="8" Codec="2" />
+  <FileExtension Value=".m4b" TagFormats="8" Codec="2" />
+  <FileExtension Value=".m4p" TagFormats="8" Codec="2" />
+  <FileExtension Value=".aac" TagFormats="0" Codec="2" />
+  <FileExtension Value=".flac" TagFormats="4" Codec="3" />
+  <FileExtension Value=".spx" TagFormats="4" Codec="4" />
+  <FileExtension Value=".ogg" TagFormats="4" Codec="4" />
+  <FileExtension Value=".oga" TagFormats="4" Codec="4" />
+  <FileExtension Value=".opus" TagFormats="4" Codec="15" />
+  <FileExtension Value=".webm" TagFormats="0" Codec="0" />
+  <FileExtension Value=".mka" TagFormats="0" Codec="0" />
+  <FileExtension Value=".wv" TagFormats="2" Codec="5" />
+  <FileExtension Value=".tak" TagFormats="2" Codec="7" />
+  <FileExtension Value=".ofr" TagFormats="2" Codec="0" />
+  <FileExtension Value=".ofs" TagFormats="2" Codec="0" />
+  <FileExtension Value=".mpc" TagFormats="2" Codec="8" />
+  <FileExtension Value=".mp+" TagFormats="2" Codec="8" />
+  <FileExtension Value=".mpp" TagFormats="2" Codec="8" />
+  <FileExtension Value=".ape" TagFormats="2" Codec="0" />
+  <FileExtension Value=".tta" TagFormats="2" Codec="0" />
+  <FileExtension Value=".ac3" TagFormats="2" Codec="0" />
+  <FileExtension Value=".adx" TagFormats="0" Codec="0" />
+  <FileExtension Value=".wav" TagFormats="32" Codec="9" />
+  <FileExtension Value=".bwf" TagFormats="0" Codec="0" />
+  <FileExtension Value=".m2a" TagFormats="0" Codec="0" />
+  <FileExtension Value=".mpa" TagFormats="0" Codec="0" />
+  <FileExtension Value=".mla" TagFormats="0" Codec="0" />
+  <FileExtension Value=".aif" TagFormats="64" Codec="12" />
+  <FileExtension Value=".aiff" TagFormats="64" Codec="12" />
+  <FileExtension Value=".cda" TagFormats="0" Codec="0" />
+  <FileExtension Value=".wma" TagFormats="16" Codec="6" />
+  <FileExtension Value=".asx" TagFormats="0" Codec="10" />
+  <FileExtension Value=".dsd" TagFormats="3" Codec="17" />
+  <FileExtension Value=".dsf" TagFormats="3" Codec="17" />
+  <FileExtension Value=".dff" TagFormats="3" Codec="17" />
+  <FileExtension Value=".mid" TagFormats="0" Codec="0" />
+  <FileExtension Value=".kar" TagFormats="0" Codec="0" />
+  <FileExtension Value=".mo3" TagFormats="0" Codec="0" />
+  <FileExtension Value=".it" TagFormats="0" Codec="0" />
+  <FileExtension Value=".xm" TagFormats="0" Codec="0" />
+  <FileExtension Value=".s3m" TagFormats="0" Codec="0" />
+  <FileExtension Value=".mtm" TagFormats="0" Codec="0" />
+  <FileExtension Value=".mod" TagFormats="0" Codec="0" />
+  <FileExtension Value=".umx" TagFormats="0" Codec="0" />
+</SupportedFiles>
+<SupportedCodecs>
+<Codec Code="2" Name="AAC" DefaultFileExtension=".m4a">
+  <Encoder Name="NERO" Filename="neroaacenc.exe">
+    <Profile Code="1" Parameters="-q 0.35 -if - -of [outputfile]" />
+    <Profile Code="2" Parameters="-q 0.45 -if - -of [outputfile]" />
+    <Profile Code="3" Parameters="-q 0.55 -if - -of [outputfile]" />
+    <Profile Code="4" Parameters="-q 0.8 -if - -of [outputfile]" />
+  </Encoder>
+  <Gain Filename="aacGain.exe">
+     <GainCalculate Parameters="[inputfile]" />
+     <GainWrite TrackParameters="/r /t /p /c [inputfile]" AlbumParameters="/a /t /p /c [inputfile]" />
+     <GainRemove Parameters="/u /t /p [inputfile]" />
+  </Gain>
+</Codec>
+<Codec Code="11" Name="ALAC" DefaultFileExtension=".m4a">
+  <Encoder Name="ALAC" Filename="ffmpeg.exe">
+    <Profile Code="2" Parameters="-i - -acodec alac [outputfile]" />
+    <Profile Code="4" Parameters="-i - -acodec alac [outputfile]" />
+  </Encoder>
+</Codec>
+<Codec Code="3" Name="FLAC" DefaultFileExtension=".flac">
+  <Encoder Name="FLAC" Filename="flac.exe">
+    <Profile Code="2" Parameters="-s -8 -o [outputfile] -" />
+    <Profile Code="4" Parameters="-s -5 -o [outputfile] -" />
+  </Encoder>
+</Codec>
+<Codec Code="1" Name="MP3" DefaultFileExtension=".mp3">
+  <Encoder Name="Lame" Filename="LAME.exe">
+    <Profile Code="1" Parameters="--abr 96 -q 5 --noreplaygain - [outputfile]" />
+    <Profile Code="2" Parameters="--vbr-new -V 5 --noreplaygain - [outputfile]" />
+    <Profile Code="3" Parameters="--vbr-new -V 2 --noreplaygain - [outputfile]" />
+    <Profile Code="4" Parameters="--cbr -b 320 --noreplaygain - [outputfile]" />
+  </Encoder>
+  <Gain Filename="mp3Gain.exe">
+     <GainCalculate Parameters="[inputfile]" />
+     <GainWrite TrackParameters="/r /t /p /c [inputfile]" AlbumParameters="/a /t /p /c [inputfile]" />
+     <GainRemove Parameters="/u /t /p [inputfile]" />
+  </Gain>
+</Codec>
+<Codec Code="4" Name="Ogg Vorbis" DefaultFileExtension=".ogg"> 
+<Encoder Name="OGG" Filename="OggEnc2.exe"> 
+<Profile Code="1" Parameters="-q 0 - -o [outputfile]" /> 
+<Profile Code="2" Parameters="-q 3 - -o [outputfile]" /> 
+<Profile Code="3" Parameters="-q 5 - -o [outputfile]" /> 
+<Profile Code="4" Parameters="-q 7 - -o [outputfile]" /> 
+</Encoder> 
+</Codec>
+<Codec Code="15" Name="Opus" DefaultFileExtension=".opus"> 
+<Encoder Name="OPUS" Filename="OpusEnc.exe"> 
+<Profile Code="1" Parameters="--bitrate 64 --vbr --ignorelength - [outputfile]" /> 
+<Profile Code="2" Name="Portable" Parameters="--bitrate 96 --vbr --ignorelength - [outputfile]" /> 
+<Profile Code="3" Name="High Quality" Parameters="--bitrate 160 --vbr --ignorelength - [outputfile]" /> 
+<Profile Code="4" Name="Archiving" Parameters="--bitrate 256 --vbr --ignorelength - [outputfile]" /> 
+</Encoder> 
+</Codec>
+<Codec Code="8" Name="Musepack" DefaultFileExtension=".mpc"> 
+<Encoder Name="Musepack" Filename="mpcenc.exe"> 
+<Profile Code="1" Parameters="--quality 3.0 --silent - [outputfile]" /> 
+<Profile Code="2" Parameters="--quality 4.0 --silent - [outputfile]" /> 
+<Profile Code="3" Parameters="--quality 6.0 --silent - [outputfile]" /> 
+<Profile Code="4" Parameters="--quality 8.0 --silent - [outputfile]" /> 
+</Encoder> 
+</Codec>
+<Codec Code="7" Name="Tak" DefaultFileExtension=".tak">
+  <Encoder Name="Tak" Filename="takc.exe">
+    <Profile Code="2" Parameters="-e -p2 -ihs - [outputfile]" />
+    <Profile Code="4" Parameters="-e -p4 -ihs - [outputfile]" />
+  </Encoder>
+</Codec>
+<Codec Code="5" Name="WavPack" DefaultFileExtension=".wv">
+  <Encoder Name="WavPack" Filename="wavpack.exe">
+    <Profile Code="2" Parameters="-i -y - [outputfile]" />
+    <Profile Code="4" Parameters="-i -y -hh - [outputfile]" />
+  </Encoder>
+</Codec>
+<Codec Code="6" Name="WMA" DefaultFileExtension=".wma">
+  <Encoder Name="Native">
+    <Profile Code="1" CodecProfile="0" BitrateType="1" Bitrate="32000" SampleRate="44100" Channels="2" />
+    <Profile Code="2" CodecProfile="0" BitrateType="2" Bitrate="25" SampleRate="44100" Channels="2" />
+    <Profile Code="3" CodecProfile="0" BitrateType="2"  Bitrate="75" SampleRate="44100" Channels="2" />
+    <Profile Code="4" CodecProfile="0" BitrateType="2" Bitrate="90" SampleRate="44100" Channels="2" />
+  </Encoder>
+</Codec>
+<Codec Code="12" Name="Aiff" DefaultFileExtension=".aif"> 
+  <Encoder Name="Native">
+  </Encoder> 
+</Codec>
+<Codec Code="9" Name="Wave" DefaultFileExtension=".wav"> 
+  <Encoder Name="Native">
+  </Encoder> 
+  <Gain Filename="WavGain.exe"> 
+    <GainCalculate Parameters="-f -a [inputfile]" /> 
+    <GainWrite TrackParameters="-f [inputfile]" AlbumParameters="-f -a [inputfile]" /> 
+    <GainRemove Parameters="-c [inputfile]" /> 
+  </Gain> 
+</Codec>
+</SupportedCodecs>
+<Genres>
+  <Genre Name="Aboriginal" Category="World" />
+  <Genre Name="Afoxê" Category="World" />
+  <Genre Name="African Blues" Category="World" />
+  <Genre Name="African" Category="World" />
+  <Genre Name="Afro Pop Music" Category="World" />
+  <Genre Name="Afrobeat" Category="World" />
+  <Genre Name="Andalusian Classical" Category="World" />
+  <Genre Name="Apala" Category="World" />
+  <Genre Name="Arab Pop" Category="World" />
+  <Genre Name="Arabic Pop Music" Category="World" />
+  <Genre Name="Azonto" Category="World" />
+  <Genre Name="Baithak Gana" Category="World" />
+  <Genre Name="Balkan Pop" Category="World" />
+  <Genre Name="Bangladeshi Classical" Category="World" />
+  <Genre Name="Basque Music" Category="World" />
+  <Genre Name="Benga" Category="World" />
+  <Genre Name="Bengali Music" Category="World" />
+  <Genre Name="Bhangra" Category="World" />
+  <Genre Name="Bikutsi" Category="World" />
+  <Genre Name="Bongo Flava" Category="World" />
+  <Genre Name="Brazilian Rock" Category="World" />
+  <Genre Name="Calypso Jazz" Category="World" />
+  <Genre Name="Calypso Music" Category="World" />
+  <Genre Name="Calypso" Category="World" />
+  <Genre Name="Cambodian Classical" Category="World" />
+  <Genre Name="Cantopop" Category="World" />
+  <Genre Name="Canzone Napoletana" Category="World" />
+  <Genre Name="Carnatic" Category="World" />
+  <Genre Name="Catalan Music" Category="World" />
+  <Genre Name="Celtic Music" Category="World" />
+  <Genre Name="Celtic" Category="World" />
+  <Genre Name="Chacarera" Category="World" />
+  <Genre Name="Chalga" Category="World" />
+  <Genre Name="Chamamé" Category="World" />
+  <Genre Name="Changüí" Category="World" />
+  <Genre Name="Chanson" Category="World" />
+  <Genre Name="Chicano Rock" Category="World" />
+  <Genre Name="Chimurenga" Category="World" />
+  <Genre Name="Chinese Classical" Category="World" />
+  <Genre Name="Chinese Pop" Category="World" />
+  <Genre Name="Chinese Rock" Category="World" />
+  <Genre Name="Chutney Soca" Category="World" />
+  <Genre Name="Chutney" Category="World" />
+  <Genre Name="City Pop" Category="World" />
+  <Genre Name="Cobla" Category="World" />
+  <Genre Name="Copla" Category="World" />
+  <Genre Name="Coupé-Décalé" Category="World" />
+  <Genre Name="Cumbia Villera" Category="World" />
+  <Genre Name="Dangdut" Category="World" />
+  <Genre Name="Desert Blues" Category="World" />
+  <Genre Name="Enka" Category="World" />
+  <Genre Name="Éntekhno" Category="World" />
+  <Genre Name="Ethnic" Category="World" />
+  <Genre Name="Exotica" Category="World" />
+  <Genre Name="Fado" Category="World" />
+  <Genre Name="Favela Funk" Category="World" />
+  <Genre Name="Flamenco" Category="World" />
+  <Genre Name="Folklore" Category="World" />
+  <Genre Name="French Pop" Category="World" />
+  <Genre Name="Fuji" Category="World" />
+  <Genre Name="Funaná" Category="World" />
+  <Genre Name="Funk Carioca" Category="World" />
+  <Genre Name="Funkot" Category="World" />
+  <Genre Name="Gagaku" Category="World" />
+  <Genre Name="Gamelan" Category="World" />
+  <Genre Name="Ghazal" Category="World" />
+  <Genre Name="Grebo" Category="World" />
+  <Genre Name="Greek Entechno" Category="World" />
+  <Genre Name="Greek Laika" Category="World" />
+  <Genre Name="Griot" Category="World" />
+  <Genre Name="Group Sounds" Category="World" />
+  <Genre Name="Guarania" Category="World" />
+  <Genre Name="Hawaiian" Category="World" />
+  <Genre Name="Highlife" Category="World" />
+  <Genre Name="Hindustani Classical Music" Category="World" />
+  <Genre Name="Hindustani" Category="World" />
+  <Genre Name="Hong Kong And Cantonese Pop" Category="World" />
+  <Genre Name="Hong Kong English Pop" Category="World" />
+  <Genre Name="Indian Classical Music" Category="World" />
+  <Genre Name="Indian Classical" Category="World" />
+  <Genre Name="Indian Pop" Category="World" />
+  <Genre Name="Indigenous Music" Category="World" />
+  <Genre Name="Indonesian Pop" Category="World" />
+  <Genre Name="Iranian Pop" Category="World" />
+  <Genre Name="Irish Folk" Category="World" />
+  <Genre Name="Irish Traditional Music" Category="World" />
+  <Genre Name="Isicathamiya" Category="World" />
+  <Genre Name="Japanese Pop" Category="World" />
+  <Genre Name="Jit" Category="World" />
+  <Genre Name="Joik" Category="World" />
+  <Genre Name="Jota" Category="World" />
+  <Genre Name="J-Pop" Category="World" />
+  <Genre Name="J-Rock" Category="World" />
+  <Genre Name="Juju" Category="World" />
+  <Genre Name="Junkanoo" Category="World" />
+  <Genre Name="Kaseko" Category="World" />
+  <Genre Name="Kawaii Metal" Category="World" />
+  <Genre Name="Kayōkyoku" Category="World" />
+  <Genre Name="Keroncong" Category="World" />
+  <Genre Name="Kizomba" Category="World" />
+  <Genre Name="Klasik" Category="World" />
+  <Genre Name="Klezmer" Category="World" />
+  <Genre Name="Kompa" Category="World" />
+  <Genre Name="Korean Court Music" Category="World" />
+  <Genre Name="Korean Pop" Category="World" />
+  <Genre Name="K-Pop" Category="World" />
+  <Genre Name="Kuduro" Category="World" />
+  <Genre Name="Kwaito" Category="World" />
+  <Genre Name="Kwela" Category="World" />
+  <Genre Name="Laïko" Category="World" />
+  <Genre Name="Laïkó" Category="World" />
+  <Genre Name="Lao Music" Category="World" />
+  <Genre Name="Latin Pop" Category="World" />
+  <Genre Name="Latin Rap" Category="World" />
+  <Genre Name="Levenslied" Category="World" />
+  <Genre Name="Liscio" Category="World" />
+  <Genre Name="Luk Krung" Category="World" />
+  <Genre Name="Luk Thung" Category="World" />
+  <Genre Name="Makossa" Category="World" />
+  <Genre Name="Maloya" Category="World" />
+  <Genre Name="Mandarin Pop" Category="World" />
+  <Genre Name="Mandopop" Category="World" />
+  <Genre Name="Mangue Bit" Category="World" />
+  <Genre Name="Marrabenta" Category="World" />
+  <Genre Name="Maskanda" Category="World" />
+  <Genre Name="Mbalax" Category="World" />
+  <Genre Name="Mbaqanga" Category="World" />
+  <Genre Name="Mbube" Category="World" />
+  <Genre Name="Mento" Category="World" />
+  <Genre Name="Mexican Pop" Category="World" />
+  <Genre Name="Milonga" Category="World" />
+  <Genre Name="Mini-Jazz" Category="World" />
+  <Genre Name="Min'yo" Category="World" />
+  <Genre Name="Min'yō" Category="World" />
+  <Genre Name="Mizrahi Music" Category="World" />
+  <Genre Name="Mizrahi" Category="World" />
+  <Genre Name="Mor Lam Sing" Category="World" />
+  <Genre Name="Morna" Category="World" />
+  <Genre Name="Motswako" Category="World" />
+  <Genre Name="Mouth Music" Category="World" />
+  <Genre Name="Mugham" Category="World" />
+  <Genre Name="Museve" Category="World" />
+  <Genre Name="National Folk" Category="World" />
+  <Genre Name="Neapolitan Song" Category="World" />
+  <Genre Name="Nederlandstalig" Category="World" />
+  <Genre Name="Nederpop" Category="World" />
+  <Genre Name="Neder-Pop" Category="World" />
+  <Genre Name="Néo Kyma" Category="World" />
+  <Genre Name="Népzene" Category="World" />
+  <Genre Name="New Flamenco" Category="World" />
+  <Genre Name="Nordic" Category="World" />
+  <Genre Name="Nueva Cancion" Category="World" />
+  <Genre Name="Nueva Canción" Category="World" />
+  <Genre Name="Ottoman Classical Music" Category="World" />
+  <Genre Name="Ottoman Classical" Category="World" />
+  <Genre Name="Overtone Singing" Category="World" />
+  <Genre Name="Pacific" Category="World" />
+  <Genre Name="Palm-Wine" Category="World" />
+  <Genre Name="Pasodoble" Category="World" />
+  <Genre Name="Persian Classical" Category="World" />
+  <Genre Name="Philippine Classical" Category="World" />
+  <Genre Name="Phleng Phuea Chiwit" Category="World" />
+  <Genre Name="Pinoy Pop" Category="World" />
+  <Genre Name="Piobaireachd" Category="World" />
+  <Genre Name="Polka" Category="World" />
+  <Genre Name="Qawwali" Category="World" />
+  <Genre Name="Raga Rock" Category="World" />
+  <Genre Name="Raï" Category="World" />
+  <Genre Name="Rapso" Category="World" />
+  <Genre Name="Rautalanka" Category="World" />
+  <Genre Name="Rebetiko" Category="World" />
+  <Genre Name="Rock En Español" Category="World" />
+  <Genre Name="Romani" Category="World" />
+  <Genre Name="Rune Singing" Category="World" />
+  <Genre Name="Russian Pop" Category="World" />
+  <Genre Name="Ryūkōka" Category="World" />
+  <Genre Name="Sakara" Category="World" />
+  <Genre Name="Salegy" Category="World" />
+  <Genre Name="Samba Reggae" Category="World" />
+  <Genre Name="Samba-Funk" Category="World" />
+  <Genre Name="Samba-Reggae" Category="World" />
+  <Genre Name="Samba-Rock" Category="World" />
+  <Genre Name="Sámi Music" Category="World" />
+  <Genre Name="Schlager Music" Category="World" />
+  <Genre Name="Schlager" Category="World" />
+  <Genre Name="Sea Shanties" Category="World" />
+  <Genre Name="Séga" Category="World" />
+  <Genre Name="Sephardic Music" Category="World" />
+  <Genre Name="Sephardic" Category="World" />
+  <Genre Name="Shibuya-Kei" Category="World" />
+  <Genre Name="Soca" Category="World" />
+  <Genre Name="Son Cubano" Category="World" />
+  <Genre Name="Soukous" Category="World" />
+  <Genre Name="Steel Band" Category="World" />
+  <Genre Name="Swedish Ballad Tradition" Category="World" />
+  <Genre Name="Taarab" Category="World" />
+  <Genre Name="Tacsonamaidh Aileag" Category="World" />
+  <Genre Name="Taiwanese Pop" Category="World" />
+  <Genre Name="Thai Classical" Category="World" />
+  <Genre Name="Thai Pop" Category="World" />
+  <Genre Name="Traditional Song" Category="World" />
+  <Genre Name="Tropicália" Category="World" />
+  <Genre Name="Tropicalismo" Category="World" />
+  <Genre Name="Turkish Pop" Category="World" />
+  <Genre Name="Tuvan Throat Singing" Category="World" />
+  <Genre Name="Vis-Pop" Category="World" />
+  <Genre Name="Visual Kei" Category="World" />
+  <Genre Name="Volksmusik" Category="World" />
+  <Genre Name="Waiata" Category="World" />
+  <Genre Name="World Fusion" Category="World" />
+  <Genre Name="World Music" Category="World" />
+  <Genre Name="World" Category="World" />
+  <Genre Name="Worldbeat" Category="World" />
+  <Genre Name="Yemenite Jewish" Category="World" />
+  <Genre Name="Zamba" Category="World" />
+  <Genre Name="Zamrock" Category="World" />
+  <Genre Name="Zarzuela" Category="World" />
+  <Genre Name="Zemer Ivri" Category="World" />
+  <Genre Name="Zouk" Category="World" />
+  <Genre Name="2 Tone" Category="Reggae" />
+  <Genre Name="20th Century" Category="Classical" />
+  <Genre Name="A Capella" Category="Other" />
+  <Genre Name="A Cappella" Category="Other" />
+  <Genre Name="Abstract" Category="Other" />
+  <Genre Name="Acid Breaks" Category="Electronic" />
+  <Genre Name="Acid Electronic" Category="Electronic" />
+  <Genre Name="Acid House" Category="Electronic" />
+  <Genre Name="Acid Jazz" Category="Electronic" />
+  <Genre Name="Acid Punk" Category="Pop · Rock" />
+  <Genre Name="Acid Rock" Category="Pop · Rock" />
+  <Genre Name="Acid Techno" Category="Electronic" />
+  <Genre Name="Acid" Category="Electronic" />
+  <Genre Name="Acoustic Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Acoustic Music" Category="Other" />
+  <Genre Name="Acoustic Rock" Category="Pop · Rock" />
+  <Genre Name="Adult Contemporary Music" Category="Pop · Rock" />
+  <Genre Name="Adult Contemporary" Category="Pop · Rock" />
+  <Genre Name="Adult Oriented Rock" Category="Pop · Rock" />
+  <Genre Name="Afro-Cuban Jazz" Category="Jazz" />
+  <Genre Name="Afro-Cuban" Category="Latin" />
+  <Genre Name="Alternative Country" Category="Blues · Country · Folk" />
+  <Genre Name="Alternative Dance" Category="Electronic" />
+  <Genre Name="Alternative Folk" Category="Blues · Country · Folk" />
+  <Genre Name="Alternative Hip Hop" Category="Hip Hop" />
+  <Genre Name="Alternative Metal" Category="Pop · Rock" />
+  <Genre Name="Alternative Pop" Category="Pop · Rock" />
+  <Genre Name="Alternative Punk" Category="Pop · Rock" />
+  <Genre Name="Alternative Rock" Category="Pop · Rock" />
+  <Genre Name="Alternrock" Category="Pop · Rock" />
+  <Genre Name="Ambient Dub" Category="Electronic" />
+  <Genre Name="Ambient House" Category="Electronic" />
+  <Genre Name="Ambient Music" Category="Electronic" />
+  <Genre Name="Ambient Techno" Category="Electronic" />
+  <Genre Name="Ambient" Category="Electronic" />
+  <Genre Name="American Folk Music" Category="Blues · Country · Folk" />
+  <Genre Name="Americana" Category="Blues · Country · Folk" />
+  <Genre Name="Anarcho-Punk" Category="Pop · Rock" />
+  <Genre Name="Anime" Category="Other" />
+  <Genre Name="Anti-Folk" Category="Blues · Country · Folk" />
+  <Genre Name="AOR" Category="Pop · Rock" />
+  <Genre Name="Appalachian Music" Category="Blues · Country · Folk" />
+  <Genre Name="Arabesque" Category="Other" />
+  <Genre Name="Arena Rock" Category="Pop · Rock" />
+  <Genre Name="Aria" Category="Classical" />
+  <Genre Name="Art Music" Category="Classical" />
+  <Genre Name="Art Pop" Category="Pop · Rock" />
+  <Genre Name="Art Punk" Category="Pop · Rock" />
+  <Genre Name="Art Rock" Category="Pop · Rock" />
+  <Genre Name="Asian American Jazz" Category="Jazz" />
+  <Genre Name="Atmospheric Black Metal" Category="Pop · Rock" />
+  <Genre Name="Audiobook" Category="Other" />
+  <Genre Name="Austro-Pop" Category="Pop · Rock" />
+  <Genre Name="Avant-Garde Jazz" Category="Jazz" />
+  <Genre Name="Avant-Garde Metal" Category="Pop · Rock" />
+  <Genre Name="Avant-Garde Music" Category="Other" />
+  <Genre Name="Avant-Garde Pop" Category="Pop · Rock" />
+  <Genre Name="Avantgarde" Category="Other" />
+  <Genre Name="Avant-Garde" Category="Other" />
+  <Genre Name="Avant-Prog" Category="Pop · Rock" />
+  <Genre Name="Axé" Category="Latin" />
+  <Genre Name="Bachata" Category="Latin" />
+  <Genre Name="Background Music" Category="Other" />
+  <Genre Name="Baião" Category="Latin" />
+  <Genre Name="Bakersfield Sound" Category="Blues · Country · Folk" />
+  <Genre Name="Ballad" Category="Other" />
+  <Genre Name="Ballet" Category="Classical" />
+  <Genre Name="Ballroom" Category="Other" />
+  <Genre Name="Baltimore Club" Category="Electronic" />
+  <Genre Name="Barbershop" Category="Other" />
+  <Genre Name="Baroque Era" Category="Classical" />
+  <Genre Name="Baroque Pop" Category="Pop · Rock" />
+  <Genre Name="Baroque" Category="Classical" />
+  <Genre Name="Bass Music" Category="Electronic" />
+  <Genre Name="Bassline" Category="Electronic" />
+  <Genre Name="Batucada" Category="Latin" />
+  <Genre Name="Bayou Funk" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Beat Music" Category="Pop · Rock" />
+  <Genre Name="Beat" Category="Pop · Rock" />
+  <Genre Name="Beatbox" Category="Hip Hop" />
+  <Genre Name="Beatdown" Category="Pop · Rock" />
+  <Genre Name="Beautiful Music" Category="Other" />
+  <Genre Name="Bebop" Category="Jazz" />
+  <Genre Name="Beguine" Category="Latin" />
+  <Genre Name="Berlin School Of Electronic Music" Category="Electronic" />
+  <Genre Name="Berlin-School" Category="Electronic" />
+  <Genre Name="Big Band" Category="Jazz" />
+  <Genre Name="Big Beat" Category="Electronic" />
+  <Genre Name="Bitcore" Category="Electronic" />
+  <Genre Name="Black Metal" Category="Pop · Rock" />
+  <Genre Name="Blackened Death Metal" Category="Pop · Rock" />
+  <Genre Name="Blackgaze" Category="Pop · Rock" />
+  <Genre Name="Blue-Eyed Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Bluegrass Music" Category="Blues · Country · Folk" />
+  <Genre Name="Bluegrass" Category="Blues · Country · Folk" />
+  <Genre Name="Blues Rock" Category="Pop · Rock" />
+  <Genre Name="Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Blues-Rock" Category="Pop · Rock" />
+  <Genre Name="Bolero Son" Category="Latin" />
+  <Genre Name="Bolero" Category="Latin" />
+  <Genre Name="Bollywood" Category="Other" />
+  <Genre Name="Bomba" Category="Latin" />
+  <Genre Name="Boogaloo" Category="Latin" />
+  <Genre Name="Boogie Rock" Category="Pop · Rock" />
+  <Genre Name="Boogie Woogie" Category="Blues · Country · Folk" />
+  <Genre Name="Boogie" Category="Other" />
+  <Genre Name="Boogie-Woogie" Category="Blues · Country · Folk" />
+  <Genre Name="Boom Bap" Category="Hip Hop" />
+  <Genre Name="Booty Bass" Category="Hip Hop" />
+  <Genre Name="Bop" Category="Jazz" />
+  <Genre Name="Bossa Nova" Category="Latin" />
+  <Genre Name="Bounce" Category="Hip Hop" />
+  <Genre Name="Boy Band" Category="Pop · Rock" />
+  <Genre Name="Brass &amp; Military" Category="Other" />
+  <Genre Name="Brass Band" Category="Other" />
+  <Genre Name="Breakbeat Hardcore" Category="Electronic" />
+  <Genre Name="Breakbeat" Category="Electronic" />
+  <Genre Name="Breakcore" Category="Electronic" />
+  <Genre Name="Breaks" Category="Electronic" />
+  <Genre Name="Brit Pop" Category="Pop · Rock" />
+  <Genre Name="Britcore" Category="Hip Hop" />
+  <Genre Name="British Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Britpop" Category="Pop · Rock" />
+  <Genre Name="Broken Beat" Category="Other" />
+  <Genre Name="Brutal Death Metal" Category="Pop · Rock" />
+  <Genre Name="Bubblegum Pop" Category="Pop · Rock" />
+  <Genre Name="Bubblegum" Category="Pop · Rock" />
+  <Genre Name="Bubbling House" Category="Electronic" />
+  <Genre Name="Bubbling" Category="Electronic" />
+  <Genre Name="Cabaret" Category="Other" />
+  <Genre Name="Cajun" Category="Blues · Country · Folk" />
+  <Genre Name="Candombe" Category="Latin" />
+  <Genre Name="Cantata" Category="Classical" />
+  <Genre Name="Canterbury Scene" Category="Pop · Rock" />
+  <Genre Name="Cape Jazz" Category="Jazz" />
+  <Genre Name="Carimbó" Category="Latin" />
+  <Genre Name="Celtic Punk" Category="Pop · Rock" />
+  <Genre Name="Cha-Cha" Category="Other" />
+  <Genre Name="Cha-Cha-Chá" Category="Other" />
+  <Genre Name="Chamber Jazz" Category="Jazz" />
+  <Genre Name="Chamber Music" Category="Classical" />
+  <Genre Name="Chamber Pop" Category="Pop · Rock" />
+  <Genre Name="Champeta" Category="Latin" />
+  <Genre Name="Charanga" Category="Latin" />
+  <Genre Name="Chicago Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Chicano Rap" Category="Hip Hop" />
+  <Genre Name="Children’s" Category="Other" />
+  <Genre Name="Chill-Out Music" Category="Pop · Rock" />
+  <Genre Name="Chillout" Category="Other" />
+  <Genre Name="Chillwave" Category="Electronic" />
+  <Genre Name="Chiptune" Category="Electronic" />
+  <Genre Name="Choral" Category="Classical" />
+  <Genre Name="Choro" Category="Latin" />
+  <Genre Name="Christian Gangsta Rap" Category="Hip Hop" />
+  <Genre Name="Christian Metal" Category="Pop · Rock" />
+  <Genre Name="Christian Rap" Category="Hip Hop" />
+  <Genre Name="Christian Rock" Category="Pop · Rock" />
+  <Genre Name="Christmas Music" Category="Other" />
+  <Genre Name="Christmas" Category="Other" />
+  <Genre Name="Church Cantata" Category="Classical" />
+  <Genre Name="Classic Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Classic Country" Category="Blues · Country · Folk" />
+  <Genre Name="Classic Jazz" Category="Jazz" />
+  <Genre Name="Classic Rock" Category="Pop · Rock" />
+  <Genre Name="Classic Trance" Category="Electronic" />
+  <Genre Name="Classical Crossover" Category="Pop · Rock" />
+  <Genre Name="Classical Music" Category="Classical" />
+  <Genre Name="Classical" Category="Classical" />
+  <Genre Name="Close Harmony" Category="Other" />
+  <Genre Name="Cloud Rap" Category="Hip Hop" />
+  <Genre Name="Club Jazz" Category="Electronic" />
+  <Genre Name="Club" Category="Electronic" />
+  <Genre Name="Club-House" Category="Electronic" />
+  <Genre Name="Coldwave" Category="Pop · Rock" />
+  <Genre Name="College Rock" Category="Pop · Rock" />
+  <Genre Name="Comedy Rock" Category="Pop · Rock" />
+  <Genre Name="Comedy" Category="Other" />
+  <Genre Name="Compas" Category="Latin" />
+  <Genre Name="Concerto" Category="Classical" />
+  <Genre Name="Conjunto" Category="Latin" />
+  <Genre Name="Conscious Hip Hop" Category="Hip Hop" />
+  <Genre Name="Contemporary Christian Music" Category="Pop · Rock" />
+  <Genre Name="Contemporary Christian" Category="Pop · Rock" />
+  <Genre Name="Contemporary Classical Music" Category="Classical" />
+  <Genre Name="Contemporary Classical" Category="Classical" />
+  <Genre Name="Contemporary Country" Category="Blues · Country · Folk" />
+  <Genre Name="Contemporary Folk Music" Category="Blues · Country · Folk" />
+  <Genre Name="Contemporary Folk" Category="Blues · Country · Folk" />
+  <Genre Name="Contemporary Gospel" Category="Blues · Country · Folk" />
+  <Genre Name="Contemporary Jazz" Category="Jazz" />
+  <Genre Name="Contemporary R&amp;B" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Contemporary" Category="Other" />
+  <Genre Name="Contra" Category="Other" />
+  <Genre Name="Cool Jazz" Category="Jazz" />
+  <Genre Name="Corrido" Category="Latin" />
+  <Genre Name="Country Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Country Folk" Category="Blues · Country · Folk" />
+  <Genre Name="Country Music" Category="Blues · Country · Folk" />
+  <Genre Name="Country Pop" Category="Blues · Country · Folk" />
+  <Genre Name="Country Rap" Category="Pop · Rock" />
+  <Genre Name="Country Rock" Category="Pop · Rock" />
+  <Genre Name="Country" Category="Blues · Country · Folk" />
+  <Genre Name="Countrypolitan" Category="Blues · Country · Folk" />
+  <Genre Name="Cowpunk" Category="Pop · Rock" />
+  <Genre Name="Crossover Jazz" Category="Jazz" />
+  <Genre Name="Crossover Prog" Category="Pop · Rock" />
+  <Genre Name="Crossover Thrash Metal" Category="Pop · Rock" />
+  <Genre Name="Crossover" Category="Other" />
+  <Genre Name="Crunk" Category="Hip Hop" />
+  <Genre Name="Crust Punk" Category="Pop · Rock" />
+  <Genre Name="Crust" Category="Pop · Rock" />
+  <Genre Name="Cuatro" Category="Latin" />
+  <Genre Name="Cubano" Category="Latin" />
+  <Genre Name="Cumbia" Category="Latin" />
+  <Genre Name="Cyberpunk" Category="Pop · Rock" />
+  <Genre Name="Dance Music" Category="Other" />
+  <Genre Name="Dance Pop" Category="Pop · Rock" />
+  <Genre Name="Dance" Category="Other" />
+  <Genre Name="Dancehall, DJ-Ing" Category="Electronic" />
+  <Genre Name="Dancehall" Category="Reggae" />
+  <Genre Name="Dance-Pop" Category="Pop · Rock" />
+  <Genre Name="Dance-Punk" Category="Pop · Rock" />
+  <Genre Name="Dance-Rock" Category="Pop · Rock" />
+  <Genre Name="Danzon" Category="Latin" />
+  <Genre Name="Dark Ambient" Category="Electronic" />
+  <Genre Name="Dark Cabaret" Category="Pop · Rock" />
+  <Genre Name="Dark Electro" Category="Pop · Rock" />
+  <Genre Name="Dark Folk" Category="Blues · Country · Folk" />
+  <Genre Name="Dark Wave" Category="Pop · Rock" />
+  <Genre Name="Darkcore" Category="Electronic" />
+  <Genre Name="Darkwave" Category="Pop · Rock" />
+  <Genre Name="D-Beat" Category="Pop · Rock" />
+  <Genre Name="Death Metal" Category="Pop · Rock" />
+  <Genre Name="Deathcore" Category="Pop · Rock" />
+  <Genre Name="Death-Doom Metal" Category="Pop · Rock" />
+  <Genre Name="Deathgrind" Category="Pop · Rock" />
+  <Genre Name="Deathrock" Category="Pop · Rock" />
+  <Genre Name="Deconstructed Club" Category="Pop · Rock" />
+  <Genre Name="Deep Funk" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Deep House" Category="Electronic" />
+  <Genre Name="Deep Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Deep Techno" Category="Electronic" />
+  <Genre Name="Delta Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Depressive Black Metal" Category="Pop · Rock" />
+  <Genre Name="Descarga" Category="Latin" />
+  <Genre Name="Desert Rock" Category="Pop · Rock" />
+  <Genre Name="Detroit Techno" Category="Electronic" />
+  <Genre Name="Digital Hardcore" Category="Pop · Rock" />
+  <Genre Name="Dirty Rap" Category="Hip Hop" />
+  <Genre Name="Disco Polo" Category="Pop · Rock" />
+  <Genre Name="Disco" Category="Pop · Rock" />
+  <Genre Name="Dixieland" Category="Jazz" />
+  <Genre Name="Djent" Category="Pop · Rock" />
+  <Genre Name="Donk" Category="Electronic" />
+  <Genre Name="Doom Metal" Category="Pop · Rock" />
+  <Genre Name="Doomcore" Category="Electronic" />
+  <Genre Name="Doo-Wop" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Downtempo" Category="Electronic" />
+  <Genre Name="Dream Pop" Category="Pop · Rock" />
+  <Genre Name="Drill And Bass" Category="Electronic" />
+  <Genre Name="Drill 'n' Bass" Category="Electronic" />
+  <Genre Name="Drill" Category="Hip Hop" />
+  <Genre Name="Drone Metal" Category="Pop · Rock" />
+  <Genre Name="Drone Music" Category="Other" />
+  <Genre Name="Drone" Category="Other" />
+  <Genre Name="Drum And Bass" Category="Electronic" />
+  <Genre Name="Drum N Bass" Category="Electronic" />
+  <Genre Name="Dub Poetry" Category="Reggae" />
+  <Genre Name="Dub Techno" Category="Electronic" />
+  <Genre Name="Dub" Category="Reggae" />
+  <Genre Name="Dubstep" Category="Electronic" />
+  <Genre Name="Dubtronica" Category="Electronic" />
+  <Genre Name="Dungeon Synth" Category="Electronic" />
+  <Genre Name="Early Music" Category="Classical" />
+  <Genre Name="Early Romantic" Category="Classical" />
+  <Genre Name="Early" Category="Classical" />
+  <Genre Name="East Coast Blues" Category="Blues · Country · Folk" />
+  <Genre Name="East Coast Hip Hop" Category="Hip Hop" />
+  <Genre Name="East Coast Swing" Category="Other" />
+  <Genre Name="Easy Listening" Category="Other" />
+  <Genre Name="EBM" Category="Electronic" />
+  <Genre Name="EDM" Category="Electronic" />
+  <Genre Name="Education" Category="Other" />
+  <Genre Name="Educational" Category="Other" />
+  <Genre Name="Electric Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Electro House" Category="Electronic" />
+  <Genre Name="Electro Swing" Category="Electronic" />
+  <Genre Name="Electro" Category="Electronic" />
+  <Genre Name="Electroclash" Category="Electronic" />
+  <Genre Name="Electro-Funk" Category="Electronic" />
+  <Genre Name="Electro-Hop" Category="Electronic" />
+  <Genre Name="Electro-House" Category="Electronic" />
+  <Genre Name="Electro-Industrial" Category="Pop · Rock" />
+  <Genre Name="Electronic Dance Music" Category="Electronic" />
+  <Genre Name="Electronic Music" Category="Electronic" />
+  <Genre Name="Electronic Rock" Category="Pop · Rock" />
+  <Genre Name="Electronic" Category="Electronic" />
+  <Genre Name="Electronica" Category="Electronic" />
+  <Genre Name="Electronicore" Category="Pop · Rock" />
+  <Genre Name="Electropop" Category="Pop · Rock" />
+  <Genre Name="Electro-Pop" Category="Pop · Rock" />
+  <Genre Name="Electropunk" Category="Pop · Rock" />
+  <Genre Name="Emo" Category="Pop · Rock" />
+  <Genre Name="Emocore" Category="Pop · Rock" />
+  <Genre Name="Ethereal Wave" Category="Pop · Rock" />
+  <Genre Name="Ethereal" Category="Pop · Rock" />
+  <Genre Name="Ethno-Pop" Category="Pop · Rock" />
+  <Genre Name="Étude" Category="Classical" />
+  <Genre Name="Euro Disco" Category="Pop · Rock" />
+  <Genre Name="Euro House" Category="Electronic" />
+  <Genre Name="Euro Trance" Category="Electronic" />
+  <Genre Name="Eurobeat" Category="Pop · Rock" />
+  <Genre Name="Eurodance" Category="Electronic" />
+  <Genre Name="Euro-Dance" Category="Electronic" />
+  <Genre Name="Euro-Disco" Category="Pop · Rock" />
+  <Genre Name="Euro-House" Category="Electronic" />
+  <Genre Name="Europop" Category="Pop · Rock" />
+  <Genre Name="Euro-Techno" Category="Electronic" />
+  <Genre Name="Experimental Music" Category="Other" />
+  <Genre Name="Experimental Pop" Category="Pop · Rock" />
+  <Genre Name="Experimental Rock" Category="Pop · Rock" />
+  <Genre Name="Experimental" Category="Other" />
+  <Genre Name="Field Recording" Category="Other" />
+  <Genre Name="Fife And Drum Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Filk" Category="Other" />
+  <Genre Name="Film Score" Category="Other" />
+  <Genre Name="Flashcore" Category="Electronic" />
+  <Genre Name="Folk Jazz" Category="Blues · Country · Folk" />
+  <Genre Name="Folk Metal" Category="Pop · Rock" />
+  <Genre Name="Folk Music" Category="Blues · Country · Folk" />
+  <Genre Name="Folk Pop" Category="Pop · Rock" />
+  <Genre Name="Folk Punk" Category="Pop · Rock" />
+  <Genre Name="Folk Rock" Category="Pop · Rock" />
+  <Genre Name="Folk" Category="Blues · Country · Folk" />
+  <Genre Name="Folk-Pop" Category="Blues · Country · Folk" />
+  <Genre Name="Folktronica" Category="Electronic" />
+  <Genre Name="Forró" Category="Latin" />
+  <Genre Name="Foxtrot" Category="Other" />
+  <Genre Name="Freak Folk" Category="Blues · Country · Folk" />
+  <Genre Name="Free Funk" Category="Jazz" />
+  <Genre Name="Free Improvisation" Category="Other" />
+  <Genre Name="Free Jazz" Category="Jazz" />
+  <Genre Name="Freestyle" Category="Pop · Rock" />
+  <Genre Name="French House" Category="Electronic" />
+  <Genre Name="French Pop Music" Category="Pop · Rock" />
+  <Genre Name="French Rock" Category="Pop · Rock" />
+  <Genre Name="Funeral Doom Metal" Category="Pop · Rock" />
+  <Genre Name="Funk Metal" Category="Pop · Rock" />
+  <Genre Name="Funk Rock" Category="Pop · Rock" />
+  <Genre Name="Funk Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Funk" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Funky House" Category="Electronic" />
+  <Genre Name="Furniture Music" Category="Other" />
+  <Genre Name="Fusion" Category="Jazz" />
+  <Genre Name="Future Garage" Category="Electronic" />
+  <Genre Name="Future Jazz" Category="Electronic" />
+  <Genre Name="Futurepop" Category="Electronic" />
+  <Genre Name="Gabba" Category="Electronic" />
+  <Genre Name="Gabber" Category="Electronic" />
+  <Genre Name="Gaita" Category="Latin" />
+  <Genre Name="Gangsta Rap" Category="Hip Hop" />
+  <Genre Name="Gangsta" Category="Hip Hop" />
+  <Genre Name="Garage House" Category="Electronic" />
+  <Genre Name="Garage Punk" Category="Pop · Rock" />
+  <Genre Name="Garage Rock" Category="Pop · Rock" />
+  <Genre Name="Garage" Category="Electronic" />
+  <Genre Name="G-Funk" Category="Hip Hop" />
+  <Genre Name="Ghetto House" Category="Electronic" />
+  <Genre Name="Ghetto" Category="Hip Hop" />
+  <Genre Name="Ghettotech" Category="Electronic" />
+  <Genre Name="Girl Group" Category="Pop · Rock" />
+  <Genre Name="Glam Metal" Category="Pop · Rock" />
+  <Genre Name="Glam Rock" Category="Pop · Rock" />
+  <Genre Name="Glam" Category="Pop · Rock" />
+  <Genre Name="Glamrock" Category="Pop · Rock" />
+  <Genre Name="Glitch" Category="Electronic" />
+  <Genre Name="Goa Trance" Category="Electronic" />
+  <Genre Name="Goa" Category="Electronic" />
+  <Genre Name="Gogo" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Go-Go" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Goregrind" Category="Pop · Rock" />
+  <Genre Name="Gospel Music" Category="Blues · Country · Folk" />
+  <Genre Name="Gospel" Category="Blues · Country · Folk" />
+  <Genre Name="Goth Rock" Category="Pop · Rock" />
+  <Genre Name="Gothic Metal" Category="Pop · Rock" />
+  <Genre Name="Gothic Rock" Category="Pop · Rock" />
+  <Genre Name="Gothic" Category="Pop · Rock" />
+  <Genre Name="Gregorian Chant" Category="Other" />
+  <Genre Name="Grime" Category="Electronic" />
+  <Genre Name="Grindcore" Category="Pop · Rock" />
+  <Genre Name="Groove Metal" Category="Pop · Rock" />
+  <Genre Name="Grunge" Category="Pop · Rock" />
+  <Genre Name="Guaguancó" Category="Latin" />
+  <Genre Name="Guajira" Category="Latin" />
+  <Genre Name="Guaracha" Category="Latin" />
+  <Genre Name="Gypsy Jazz" Category="Jazz" />
+  <Genre Name="Hands Up" Category="Electronic" />
+  <Genre Name="Happy Hardcore" Category="Electronic" />
+  <Genre Name="Hard Beat" Category="Electronic" />
+  <Genre Name="Hard Bop" Category="Jazz" />
+  <Genre Name="Hard House" Category="Electronic" />
+  <Genre Name="Hard Rock" Category="Pop · Rock" />
+  <Genre Name="Hard Techno" Category="Electronic" />
+  <Genre Name="Hard Trance" Category="Electronic" />
+  <Genre Name="Hardbag" Category="Electronic" />
+  <Genre Name="Hardcore Hip Hop" Category="Hip Hop" />
+  <Genre Name="Hardcore Hip-Hop" Category="Hip Hop" />
+  <Genre Name="Hardcore Punk" Category="Pop · Rock" />
+  <Genre Name="Hardcore Techno" Category="Electronic" />
+  <Genre Name="Hardcore" Category="Electronic" />
+  <Genre Name="Hardstyle Trance" Category="Electronic" />
+  <Genre Name="Hardstyle" Category="Electronic" />
+  <Genre Name="Harmonica Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Harsh Noise Wall" Category="Pop · Rock" />
+  <Genre Name="Harsh Noise" Category="Pop · Rock" />
+  <Genre Name="Hauntology" Category="Electronic" />
+  <Genre Name="Heartland Rock" Category="Pop · Rock" />
+  <Genre Name="Heavy Metal" Category="Pop · Rock" />
+  <Genre Name="Heavy Psych" Category="Pop · Rock" />
+  <Genre Name="Heavy Rock" Category="Pop · Rock" />
+  <Genre Name="Hi Nrg" Category="Pop · Rock" />
+  <Genre Name="Hillbilly" Category="Blues · Country · Folk" />
+  <Genre Name="Hi-Nrg" Category="Pop · Rock" />
+  <Genre Name="Hip Hop Music" Category="Hip Hop" />
+  <Genre Name="Hip Hop Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Hip Hop" Category="Hip Hop" />
+  <Genre Name="Hip House" Category="Electronic" />
+  <Genre Name="Hip-Hop Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Hip-Hop" Category="Hip Hop" />
+  <Genre Name="Hip-House" Category="Electronic" />
+  <Genre Name="Hiplife" Category="Hip Hop" />
+  <Genre Name="Honky Tonk" Category="Blues · Country · Folk" />
+  <Genre Name="Horror Punk" Category="Pop · Rock" />
+  <Genre Name="Horror Rock" Category="Pop · Rock" />
+  <Genre Name="Horrorcore" Category="Hip Hop" />
+  <Genre Name="House Music" Category="Electronic" />
+  <Genre Name="House" Category="Electronic" />
+  <Genre Name="Humor" Category="Other" />
+  <Genre Name="Hyphy" Category="Hip Hop" />
+  <Genre Name="IDM" Category="Electronic" />
+  <Genre Name="Illbient" Category="Electronic" />
+  <Genre Name="Impressionist" Category="Classical" />
+  <Genre Name="Indie Folk" Category="Blues · Country · Folk" />
+  <Genre Name="Indie Pop" Category="Pop · Rock" />
+  <Genre Name="Indie Rock" Category="Pop · Rock" />
+  <Genre Name="Indie" Category="Pop · Rock" />
+  <Genre Name="Indietronica" Category="Electronic" />
+  <Genre Name="Indorock" Category="Pop · Rock" />
+  <Genre Name="Industrial Metal" Category="Pop · Rock" />
+  <Genre Name="Industrial Music" Category="Other" />
+  <Genre Name="Industrial Rock" Category="Pop · Rock" />
+  <Genre Name="Industrial Techno" Category="Electronic" />
+  <Genre Name="Industrial" Category="Other" />
+  <Genre Name="Instrumental Jazz" Category="Jazz" />
+  <Genre Name="Instrumental Pop" Category="Pop · Rock" />
+  <Genre Name="Instrumental Rock" Category="Pop · Rock" />
+  <Genre Name="Instrumental" Category="Other" />
+  <Genre Name="Intelligent Dance Music" Category="Electronic" />
+  <Genre Name="Interview" Category="Other" />
+  <Genre Name="Italo Dance" Category="Pop · Rock" />
+  <Genre Name="Italo Disco" Category="Pop · Rock" />
+  <Genre Name="Italo House" Category="Pop · Rock" />
+  <Genre Name="Italodance" Category="Pop · Rock" />
+  <Genre Name="Italo-Disco" Category="Pop · Rock" />
+  <Genre Name="Jam Band" Category="Pop · Rock" />
+  <Genre Name="Jangle Pop" Category="Pop · Rock" />
+  <Genre Name="Jazz Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Jazz Fusion" Category="Jazz" />
+  <Genre Name="Jazz Pop" Category="Pop · Rock" />
+  <Genre Name="Jazz Rap" Category="Hip Hop" />
+  <Genre Name="Jazz Rock" Category="Jazz" />
+  <Genre Name="Jazz Standard" Category="Jazz" />
+  <Genre Name="Jazz Waltz" Category="Jazz" />
+  <Genre Name="Jazz" Category="Jazz" />
+  <Genre Name="Jazzdance" Category="Other" />
+  <Genre Name="Jazz-Funk" Category="Jazz" />
+  <Genre Name="Jazz-Rock" Category="Jazz" />
+  <Genre Name="Jazzy Hip-Hop" Category="Hip Hop" />
+  <Genre Name="J-Core" Category="Electronic" />
+  <Genre Name="Jibaro" Category="Latin" />
+  <Genre Name="Jive" Category="Other" />
+  <Genre Name="Joropo" Category="Latin" />
+  <Genre Name="Juke" Category="Electronic" />
+  <Genre Name="Jump Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Jumpstyle" Category="Electronic" />
+  <Genre Name="Jungle" Category="Electronic" />
+  <Genre Name="Karaoke" Category="Other" />
+  <Genre Name="Krautrock" Category="Pop · Rock" />
+  <Genre Name="Lambada" Category="Latin" />
+  <Genre Name="Latin American Music" Category="Latin" />
+  <Genre Name="Latin Ballad" Category="Latin" />
+  <Genre Name="Latin Jazz" Category="Jazz" />
+  <Genre Name="Latin Music" Category="Latin" />
+  <Genre Name="Latin R&amp;B" Category="Latin" />
+  <Genre Name="Latin Rock" Category="Pop · Rock" />
+  <Genre Name="Latin Soul" Category="Latin" />
+  <Genre Name="Latin" Category="Latin" />
+  <Genre Name="Leftfield" Category="Other" />
+  <Genre Name="Lento Violento" Category="Pop · Rock" />
+  <Genre Name="Light Music" Category="Other" />
+  <Genre Name="Line Dance" Category="Blues · Country · Folk" />
+  <Genre Name="Liturgical Music" Category="Other" />
+  <Genre Name="Lo-Fi Music" Category="Other" />
+  <Genre Name="Lo-Fi" Category="Other" />
+  <Genre Name="Louisiana Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Louisiana Swamp Pop" Category="Blues · Country · Folk" />
+  <Genre Name="Lounge Music" Category="Other" />
+  <Genre Name="Lounge" Category="Other" />
+  <Genre Name="Lovers Rock" Category="Reggae" />
+  <Genre Name="Low Fidelity" Category="Other" />
+  <Genre Name="Lowercase" Category="Electronic" />
+  <Genre Name="Lullaby" Category="Other" />
+  <Genre Name="Madchester" Category="Pop · Rock" />
+  <Genre Name="Madrigal" Category="Classical" />
+  <Genre Name="Mainstream Jazz" Category="Jazz" />
+  <Genre Name="Mainstream Rock" Category="Pop · Rock" />
+  <Genre Name="Mainstream" Category="Other" />
+  <Genre Name="Makina" Category="Electronic" />
+  <Genre Name="Mambo" Category="Latin" />
+  <Genre Name="March" Category="Other" />
+  <Genre Name="Marcha Carnavalesca" Category="Latin" />
+  <Genre Name="Marches" Category="Other" />
+  <Genre Name="Mariachi" Category="Latin" />
+  <Genre Name="Marimba" Category="Latin" />
+  <Genre Name="Martial Industrial" Category="Pop · Rock" />
+  <Genre Name="Martial Music" Category="Other" />
+  <Genre Name="Mass" Category="Classical" />
+  <Genre Name="Math Rock" Category="Pop · Rock" />
+  <Genre Name="Mathcore" Category="Pop · Rock" />
+  <Genre Name="M-Base" Category="Other" />
+  <Genre Name="Medieval" Category="Classical" />
+  <Genre Name="Meditative" Category="Other" />
+  <Genre Name="Melodic Black Metal" Category="Pop · Rock" />
+  <Genre Name="Melodic Death Metal" Category="Pop · Rock" />
+  <Genre Name="Melodic Hardcore" Category="Pop · Rock" />
+  <Genre Name="Melodic Metalcore" Category="Pop · Rock" />
+  <Genre Name="Melodic Rock" Category="Pop · Rock" />
+  <Genre Name="Melodic Trance" Category="Electronic" />
+  <Genre Name="Memphis Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Merengue" Category="Latin" />
+  <Genre Name="Metal" Category="Pop · Rock" />
+  <Genre Name="Metalcore" Category="Pop · Rock" />
+  <Genre Name="Miami Bass" Category="Hip Hop" />
+  <Genre Name="Microhouse" Category="Electronic" />
+  <Genre Name="Middle Of The Road" Category="Other" />
+  <Genre Name="Midwest Hip Hop" Category="Hip Hop" />
+  <Genre Name="Midwest Hip-Hop" Category="Hip Hop" />
+  <Genre Name="Military" Category="Other" />
+  <Genre Name="Mincecore" Category="Pop · Rock" />
+  <Genre Name="Minimal Music" Category="Other" />
+  <Genre Name="Minimal Techno" Category="Electronic" />
+  <Genre Name="Minimal Wave" Category="Electronic" />
+  <Genre Name="Minimal" Category="Other" />
+  <Genre Name="Minimalism" Category="Other" />
+  <Genre Name="Minimalist" Category="Other" />
+  <Genre Name="Minneapolis Sound" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Mod" Category="Pop · Rock" />
+  <Genre Name="Modal Jazz" Category="Jazz" />
+  <Genre Name="Modern Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Modern Classical" Category="Classical" />
+  <Genre Name="Modern Country" Category="Blues · Country · Folk" />
+  <Genre Name="Modern Electric Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Modern Jazz" Category="Jazz" />
+  <Genre Name="Modern" Category="Classical" />
+  <Genre Name="Motet" Category="Classical" />
+  <Genre Name="Motown" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Movie Effects" Category="Other" />
+  <Genre Name="MPB" Category="Latin" />
+  <Genre Name="Musette" Category="Latin" />
+  <Genre Name="Music Hall" Category="Other" />
+  <Genre Name="Música Criolla" Category="Latin" />
+  <Genre Name="Musica Popular Brasileira" Category="Latin" />
+  <Genre Name="Música Popular Brasileira" Category="Latin" />
+  <Genre Name="Musical Improvisation" Category="Other" />
+  <Genre Name="Musical Theater" Category="Other" />
+  <Genre Name="Musical" Category="Other" />
+  <Genre Name="Musique Concrète" Category="Electronic" />
+  <Genre Name="Nashville Sound" Category="Blues · Country · Folk" />
+  <Genre Name="National Anthem" Category="Other" />
+  <Genre Name="Native American" Category="Blues · Country · Folk" />
+  <Genre Name="NDW" Category="Pop · Rock" />
+  <Genre Name="Neo Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Neo Trance" Category="Electronic" />
+  <Genre Name="Neo-Classical Metal" Category="Pop · Rock" />
+  <Genre Name="Neoclassical New-Age Music" Category="Other" />
+  <Genre Name="Neo-Classical" Category="Classical" />
+  <Genre Name="Neofolk" Category="Blues · Country · Folk" />
+  <Genre Name="Neo-Prog" Category="Pop · Rock" />
+  <Genre Name="Neo-Progressive Rock" Category="Pop · Rock" />
+  <Genre Name="Neo-Psychedelia" Category="Pop · Rock" />
+  <Genre Name="Neo-Rockabilly" Category="Pop · Rock" />
+  <Genre Name="Neo-Romantic" Category="Classical" />
+  <Genre Name="Neo-Traditional Country" Category="Blues · Country · Folk" />
+  <Genre Name="Neo-Traditionalist Country" Category="Blues · Country · Folk" />
+  <Genre Name="Nerdcore Techno" Category="Electronic" />
+  <Genre Name="Nerdcore" Category="Hip Hop" />
+  <Genre Name="Neue Deutsche Härte" Category="Pop · Rock" />
+  <Genre Name="Neue Deutsche Welle" Category="Pop · Rock" />
+  <Genre Name="New Age" Category="Other" />
+  <Genre Name="New Beat" Category="Electronic" />
+  <Genre Name="New Jack Swing" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="New Prog" Category="Pop · Rock" />
+  <Genre Name="New Romantic" Category="Pop · Rock" />
+  <Genre Name="New Romanticism" Category="Pop · Rock" />
+  <Genre Name="New Wave" Category="Pop · Rock" />
+  <Genre Name="New-Age Music" Category="Other" />
+  <Genre Name="Nightcore" Category="Electronic" />
+  <Genre Name="No Wave" Category="Pop · Rock" />
+  <Genre Name="Noise Music" Category="Pop · Rock" />
+  <Genre Name="Noise Pop" Category="Pop · Rock" />
+  <Genre Name="Noise Rock" Category="Pop · Rock" />
+  <Genre Name="Noise" Category="Pop · Rock" />
+  <Genre Name="Noisecore" Category="Pop · Rock" />
+  <Genre Name="Non-Music" Category="Other" />
+  <Genre Name="Norteño" Category="Latin" />
+  <Genre Name="Northern Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Novelty" Category="Other" />
+  <Genre Name="Nu Jazz" Category="Electronic" />
+  <Genre Name="Nu Metal" Category="Pop · Rock" />
+  <Genre Name="Nu-Disco" Category="Electronic" />
+  <Genre Name="Nueva Trova" Category="Latin" />
+  <Genre Name="Nuevo Tango" Category="Latin" />
+  <Genre Name="Nu-Funk" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Nursery Rhymes" Category="Other" />
+  <Genre Name="Occitan" Category="Latin" />
+  <Genre Name="Occult Rock" Category="Pop · Rock" />
+  <Genre Name="Oi" Category="Pop · Rock" />
+  <Genre Name="Old School Death Metal" Category="Pop · Rock" />
+  <Genre Name="Oldies" Category="Other" />
+  <Genre Name="Old-School Hip Hop" Category="Hip Hop" />
+  <Genre Name="Old-School Rap" Category="Hip Hop" />
+  <Genre Name="Old-Time" Category="Blues · Country · Folk" />
+  <Genre Name="Opera" Category="Classical" />
+  <Genre Name="Operatic Pop" Category="Pop · Rock" />
+  <Genre Name="Operetta" Category="Classical" />
+  <Genre Name="Oratorio" Category="Classical" />
+  <Genre Name="Orchestral Jazz" Category="Jazz" />
+  <Genre Name="Orchestral" Category="Classical" />
+  <Genre Name="Outlaw Country" Category="Blues · Country · Folk" />
+  <Genre Name="Outsider Music" Category="Other" />
+  <Genre Name="Overture" Category="Classical" />
+  <Genre Name="P.Funk" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Pachanga" Category="Latin" />
+  <Genre Name="Paisley Underground" Category="Pop · Rock" />
+  <Genre Name="Parlour Music" Category="Pop · Rock" />
+  <Genre Name="Parody" Category="Other" />
+  <Genre Name="Performance Art" Category="Other" />
+  <Genre Name="Period › 20th Century" Category="Classical" />
+  <Genre Name="Period › Baroque" Category="Classical" />
+  <Genre Name="Period › Classical" Category="Classical" />
+  <Genre Name="Period › Contemporary" Category="Classical" />
+  <Genre Name="Period › Early Romantic" Category="Classical" />
+  <Genre Name="Period › Late Romantic" Category="Classical" />
+  <Genre Name="Period › Renaissance" Category="Classical" />
+  <Genre Name="P-Funk" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Philadelphia Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Piano Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Piano Rock" Category="Pop · Rock" />
+  <Genre Name="Piedmont Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Pipe &amp; Drum" Category="Other" />
+  <Genre Name="Plena" Category="Latin" />
+  <Genre Name="Poetry" Category="Other" />
+  <Genre Name="Political Hip Hop" Category="Hip Hop" />
+  <Genre Name="Political Hip-Hop" Category="Hip Hop" />
+  <Genre Name="Political" Category="Other" />
+  <Genre Name="Pop Art" Category="Pop · Rock" />
+  <Genre Name="Pop Folk" Category="Blues · Country · Folk" />
+  <Genre Name="Pop Metal" Category="Pop · Rock" />
+  <Genre Name="Pop Music" Category="Pop · Rock" />
+  <Genre Name="Pop Punk" Category="Pop · Rock" />
+  <Genre Name="Pop Rap" Category="Hip Hop" />
+  <Genre Name="Pop Rock" Category="Pop · Rock" />
+  <Genre Name="Pop Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Pop" Category="Pop · Rock" />
+  <Genre Name="Pop-Music" Category="Pop · Rock" />
+  <Genre Name="Popular Music" Category="Pop · Rock" />
+  <Genre Name="Pornocore" Category="Hip Hop" />
+  <Genre Name="Pornogrind" Category="Pop · Rock" />
+  <Genre Name="Porro" Category="Latin" />
+  <Genre Name="Post-Bop" Category="Jazz" />
+  <Genre Name="Post-Britpop" Category="Pop · Rock" />
+  <Genre Name="Post-Classical" Category="Classical" />
+  <Genre Name="Post-Club" Category="Pop · Rock" />
+  <Genre Name="Post-Disco" Category="Pop · Rock" />
+  <Genre Name="Post-Grunge" Category="Pop · Rock" />
+  <Genre Name="Post-Hardcore" Category="Pop · Rock" />
+  <Genre Name="Post-Industrial Music" Category="Pop · Rock" />
+  <Genre Name="Post-Industrial" Category="Pop · Rock" />
+  <Genre Name="Post-Metal" Category="Pop · Rock" />
+  <Genre Name="Post-Modern" Category="Classical" />
+  <Genre Name="Post-Progressive" Category="Pop · Rock" />
+  <Genre Name="Post-Punk Revival" Category="Pop · Rock" />
+  <Genre Name="Post-Punk" Category="Pop · Rock" />
+  <Genre Name="Post-Rock" Category="Pop · Rock" />
+  <Genre Name="Power Ballad" Category="Other" />
+  <Genre Name="Power Electronics" Category="Pop · Rock" />
+  <Genre Name="Power Metal" Category="Pop · Rock" />
+  <Genre Name="Power Noise" Category="Pop · Rock" />
+  <Genre Name="Power Pop" Category="Pop · Rock" />
+  <Genre Name="Powerviolence" Category="Pop · Rock" />
+  <Genre Name="Production Music" Category="Other" />
+  <Genre Name="Prog Rock" Category="Pop · Rock" />
+  <Genre Name="Progressive Bluegrass" Category="Blues · Country · Folk" />
+  <Genre Name="Progressive Breaks" Category="Electronic" />
+  <Genre Name="Progressive Country" Category="Blues · Country · Folk" />
+  <Genre Name="Progressive Death Metal" Category="Pop · Rock" />
+  <Genre Name="Progressive Electronic" Category="Electronic" />
+  <Genre Name="Progressive Folk Music" Category="Blues · Country · Folk" />
+  <Genre Name="Progressive Folk" Category="Blues · Country · Folk" />
+  <Genre Name="Progressive House" Category="Electronic" />
+  <Genre Name="Progressive Metal" Category="Pop · Rock" />
+  <Genre Name="Progressive Music" Category="Other" />
+  <Genre Name="Progressive Pop" Category="Pop · Rock" />
+  <Genre Name="Progressive Rock" Category="Pop · Rock" />
+  <Genre Name="Progressive Trance" Category="Electronic" />
+  <Genre Name="Progressive" Category="Other" />
+  <Genre Name="Prog-Rock" Category="Pop · Rock" />
+  <Genre Name="Promotional" Category="Other" />
+  <Genre Name="Protest Song" Category="Other" />
+  <Genre Name="Proto-Prog" Category="Pop · Rock" />
+  <Genre Name="Protopunk" Category="Pop · Rock" />
+  <Genre Name="Proto-Punk" Category="Pop · Rock" />
+  <Genre Name="Psychedelia" Category="Pop · Rock" />
+  <Genre Name="Psychedelic Folk" Category="Blues · Country · Folk" />
+  <Genre Name="Psychedelic Funk" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Psychedelic Music" Category="Other" />
+  <Genre Name="Psychedelic Pop" Category="Pop · Rock" />
+  <Genre Name="Psychedelic Rock" Category="Pop · Rock" />
+  <Genre Name="Psychedelic Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Psychedelic Trance" Category="Electronic" />
+  <Genre Name="Psychedelic" Category="Other" />
+  <Genre Name="Psychobilly" Category="Pop · Rock" />
+  <Genre Name="Psytrance" Category="Electronic" />
+  <Genre Name="Psy-Trance" Category="Electronic" />
+  <Genre Name="Pub Rock" Category="Pop · Rock" />
+  <Genre Name="Public Broadcast" Category="Other" />
+  <Genre Name="Punk Blues" Category="Pop · Rock" />
+  <Genre Name="Punk Rock" Category="Pop · Rock" />
+  <Genre Name="Punk" Category="Pop · Rock" />
+  <Genre Name="Quechua" Category="Latin" />
+  <Genre Name="Queercore" Category="Pop · Rock" />
+  <Genre Name="Quickstep" Category="Other" />
+  <Genre Name="Quiet Storm" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="R&amp;B" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Radioplay" Category="Other" />
+  <Genre Name="Ragga Hiphop" Category="Hip Hop" />
+  <Genre Name="ragga Hip-Hop" Category="Hip Hop" />
+  <Genre Name="Ragga Jungle" Category="Electronic" />
+  <Genre Name="Ragga" Category="Reggae" />
+  <Genre Name="Ragtime" Category="Jazz" />
+  <Genre Name="Ranchera" Category="Latin" />
+  <Genre Name="Rap Metal" Category="Pop · Rock" />
+  <Genre Name="Rap Rock" Category="Pop · Rock" />
+  <Genre Name="Rap" Category="Hip Hop" />
+  <Genre Name="Rapcore" Category="Pop · Rock" />
+  <Genre Name="Rapping" Category="Hip Hop" />
+  <Genre Name="Rave" Category="Electronic" />
+  <Genre Name="Reggae Fusion" Category="Reggae" />
+  <Genre Name="Reggae Gospel" Category="Reggae" />
+  <Genre Name="Reggae Rock" Category="Pop · Rock" />
+  <Genre Name="Reggae" Category="Reggae" />
+  <Genre Name="Reggaefusion" Category="Reggae" />
+  <Genre Name="Reggae-Pop" Category="Reggae" />
+  <Genre Name="Reggaeton" Category="Latin" />
+  <Genre Name="Religious Music" Category="Other" />
+  <Genre Name="Religious" Category="Other" />
+  <Genre Name="Renaissance" Category="Classical" />
+  <Genre Name="Rhythm &amp; Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Rhythm And Blues" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Rhythmic Noise" Category="Pop · Rock" />
+  <Genre Name="Rhythmic Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Ritual Ambient" Category="Electronic" />
+  <Genre Name="Rock &amp; Roll" Category="Pop · Rock" />
+  <Genre Name="Rock And Roll" Category="Pop · Rock" />
+  <Genre Name="Rock Music" Category="Pop · Rock" />
+  <Genre Name="Rock Opera" Category="Pop · Rock" />
+  <Genre Name="Rock Pop" Category="Pop · Rock" />
+  <Genre Name="Rock" Category="Pop · Rock" />
+  <Genre Name="Rockabilly" Category="Pop · Rock" />
+  <Genre Name="Rocksteady" Category="Reggae" />
+  <Genre Name="Romantic Classical" Category="Classical" />
+  <Genre Name="Romantic Era" Category="Classical" />
+  <Genre Name="Romantic" Category="Classical" />
+  <Genre Name="Roots Reggae" Category="Reggae" />
+  <Genre Name="Roots Rock" Category="Pop · Rock" />
+  <Genre Name="Rumba" Category="Latin" />
+  <Genre Name="Sadcore" Category="Pop · Rock" />
+  <Genre Name="Salsa" Category="Latin" />
+  <Genre Name="Samba" Category="Latin" />
+  <Genre Name="Samba-Canção" Category="Latin" />
+  <Genre Name="Satire" Category="Other" />
+  <Genre Name="Scat" Category="Jazz" />
+  <Genre Name="Schranz" Category="Electronic" />
+  <Genre Name="Score" Category="Other" />
+  <Genre Name="Screamo" Category="Pop · Rock" />
+  <Genre Name="Screw" Category="Hip Hop" />
+  <Genre Name="Seresta" Category="Latin" />
+  <Genre Name="Serial" Category="Classical" />
+  <Genre Name="Shock Rock" Category="Pop · Rock" />
+  <Genre Name="Shoegaze" Category="Pop · Rock" />
+  <Genre Name="Shoegazing" Category="Pop · Rock" />
+  <Genre Name="Show Tune" Category="Other" />
+  <Genre Name="Singer-Songwriter" Category="Pop · Rock" />
+  <Genre Name="Ska Punk" Category="Pop · Rock" />
+  <Genre Name="Ska" Category="Reggae" />
+  <Genre Name="Skacore" Category="Pop · Rock" />
+  <Genre Name="Skiffle" Category="Blues · Country · Folk" />
+  <Genre Name="Skweee" Category="Electronic" />
+  <Genre Name="Slow Jam" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Slow Rock" Category="Pop · Rock" />
+  <Genre Name="Slow Waltz" Category="Other" />
+  <Genre Name="Slowcore" Category="Pop · Rock" />
+  <Genre Name="Sludge Metal" Category="Pop · Rock" />
+  <Genre Name="Smooth Jazz" Category="Jazz" />
+  <Genre Name="Smooth Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Soft Rock" Category="Pop · Rock" />
+  <Genre Name="Son Montuno" Category="Latin" />
+  <Genre Name="Son" Category="Latin" />
+  <Genre Name="Sonata" Category="Classical" />
+  <Genre Name="Sonero" Category="Latin" />
+  <Genre Name="Song-Cycle" Category="Classical" />
+  <Genre Name="Sophisti-Pop" Category="Pop · Rock" />
+  <Genre Name="Soul Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Soul Jazz" Category="Jazz" />
+  <Genre Name="Soul Music" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Sound Art" Category="Other" />
+  <Genre Name="Sound Collage" Category="Other" />
+  <Genre Name="Sound Poetry" Category="Other" />
+  <Genre Name="Soundtrack" Category="Other" />
+  <Genre Name="Southern Gothic" Category="Blues · Country · Folk" />
+  <Genre Name="Southern Hip Hop" Category="Hip Hop" />
+  <Genre Name="Southern Hip-Hop" Category="Hip Hop" />
+  <Genre Name="Southern Rock" Category="Pop · Rock" />
+  <Genre Name="Southern Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Space Age Pop" Category="Pop · Rock" />
+  <Genre Name="Space Disco" Category="Pop · Rock" />
+  <Genre Name="Space Music" Category="Other" />
+  <Genre Name="Space Rock" Category="Pop · Rock" />
+  <Genre Name="Space" Category="Other" />
+  <Genre Name="Space-Age" Category="Pop · Rock" />
+  <Genre Name="Special Effects" Category="Other" />
+  <Genre Name="Speech" Category="Other" />
+  <Genre Name="Speed Garage" Category="Electronic" />
+  <Genre Name="Speed Metal" Category="Pop · Rock" />
+  <Genre Name="Speedcore" Category="Electronic" />
+  <Genre Name="Spiritual" Category="Blues · Country · Folk" />
+  <Genre Name="Spoken Word" Category="Other" />
+  <Genre Name="Stage &amp; Screen" Category="Other" />
+  <Genre Name="Stage And Screen" Category="Other" />
+  <Genre Name="Steampunk" Category="Other" />
+  <Genre Name="Stoner Metal" Category="Pop · Rock" />
+  <Genre Name="Stoner Rock" Category="Pop · Rock" />
+  <Genre Name="Story" Category="Other" />
+  <Genre Name="Straight-Ahead Jazz" Category="Jazz" />
+  <Genre Name="Street Punk" Category="Pop · Rock" />
+  <Genre Name="Stride" Category="Jazz" />
+  <Genre Name="Suite" Category="Classical" />
+  <Genre Name="Sunshine Pop" Category="Pop · Rock" />
+  <Genre Name="Surf Music" Category="Pop · Rock" />
+  <Genre Name="Surf Pop" Category="Pop · Rock" />
+  <Genre Name="Surf Rock" Category="Pop · Rock" />
+  <Genre Name="Surf" Category="Pop · Rock" />
+  <Genre Name="Swamp Pop" Category="Pop · Rock" />
+  <Genre Name="Swamp Rock" Category="Pop · Rock" />
+  <Genre Name="Swing Music" Category="Jazz" />
+  <Genre Name="Swing" Category="Jazz" />
+  <Genre Name="Swingbeat" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Symphonic Black Metal" Category="Pop · Rock" />
+  <Genre Name="Symphonic Metal" Category="Pop · Rock" />
+  <Genre Name="Symphonic Music" Category="Classical" />
+  <Genre Name="Symphonic Poem" Category="Classical" />
+  <Genre Name="Symphonic Prog" Category="Pop · Rock" />
+  <Genre Name="Symphonic Rock" Category="Pop · Rock" />
+  <Genre Name="Symphony" Category="Classical" />
+  <Genre Name="Synthpop" Category="Pop · Rock" />
+  <Genre Name="Synth-Pop" Category="Pop · Rock" />
+  <Genre Name="Synthpunk" Category="Pop · Rock" />
+  <Genre Name="Synthwave" Category="Electronic" />
+  <Genre Name="Tango" Category="Latin" />
+  <Genre Name="Tech House" Category="Electronic" />
+  <Genre Name="Tech Trance" Category="Electronic" />
+  <Genre Name="Technical Death Metal" Category="Pop · Rock" />
+  <Genre Name="Techno" Category="Electronic" />
+  <Genre Name="Techno-Industrial" Category="Electronic" />
+  <Genre Name="Teen Pop" Category="Pop · Rock" />
+  <Genre Name="Tejano Music" Category="Latin" />
+  <Genre Name="Tejano" Category="Latin" />
+  <Genre Name="Terror" Category="Electronic" />
+  <Genre Name="Terrorcore" Category="Electronic" />
+  <Genre Name="Texas Blues" Category="Blues · Country · Folk" />
+  <Genre Name="Theme" Category="Other" />
+  <Genre Name="Therapy" Category="Other" />
+  <Genre Name="Third Stream" Category="Other" />
+  <Genre Name="Thrash Metal" Category="Pop · Rock" />
+  <Genre Name="Thrash" Category="Pop · Rock" />
+  <Genre Name="Thrashcore" Category="Pop · Rock" />
+  <Genre Name="Thug Rap" Category="Hip Hop" />
+  <Genre Name="Timba" Category="Latin" />
+  <Genre Name="Top 40" Category="Other" />
+  <Genre Name="Trad Jazz" Category="Jazz" />
+  <Genre Name="Traditional Bluegrass" Category="Blues · Country · Folk" />
+  <Genre Name="Traditional Country" Category="Blues · Country · Folk" />
+  <Genre Name="Traditional Folk" Category="Blues · Country · Folk" />
+  <Genre Name="Traditional Heavy Metal" Category="Pop · Rock" />
+  <Genre Name="Traditional Pop Music" Category="Pop · Rock" />
+  <Genre Name="Trance" Category="Electronic" />
+  <Genre Name="Trancecore" Category="Pop · Rock" />
+  <Genre Name="Trap [edm]" Category="Electronic" />
+  <Genre Name="Trap" Category="Hip Hop" />
+  <Genre Name="Tribal Ambient" Category="Electronic" />
+  <Genre Name="Tribal House" Category="Electronic" />
+  <Genre Name="Tribal" Category="Other" />
+  <Genre Name="Trip Hop" Category="Electronic" />
+  <Genre Name="Trip-Hop" Category="Electronic" />
+  <Genre Name="Tropical House" Category="Electronic" />
+  <Genre Name="Trova" Category="Latin" />
+  <Genre Name="Turntablism" Category="Hip Hop" />
+  <Genre Name="Twelve-Tone" Category="Other" />
+  <Genre Name="Twist" Category="Pop · Rock" />
+  <Genre Name="UK Drill" Category="Hip Hop" />
+  <Genre Name="UK Funky" Category="Electronic" />
+  <Genre Name="UK Garage" Category="Electronic" />
+  <Genre Name="UK Street Soul" Category="Funk · R&amp;B · Soul" />
+  <Genre Name="Unblack Metal" Category="Pop · Rock" />
+  <Genre Name="Underground Hip Hop" Category="Hip Hop" />
+  <Genre Name="Uplifting Trance" Category="Electronic" />
+  <Genre Name="Uplifting" Category="Electronic" />
+  <Genre Name="Urban Contemporary" Category="Hip Hop" />
+  <Genre Name="Urban" Category="Hip Hop" />
+  <Genre Name="Vallenato" Category="Latin" />
+  <Genre Name="Vaporwave" Category="Electronic" />
+  <Genre Name="Viennese Waltz" Category="Other" />
+  <Genre Name="Viking Metal" Category="Pop · Rock" />
+  <Genre Name="Vocal House" Category="Electronic" />
+  <Genre Name="Vocal Jazz" Category="Jazz" />
+  <Genre Name="Vocal Trance" Category="Electronic" />
+  <Genre Name="Vocal" Category="Other" />
+  <Genre Name="Waltz" Category="Other" />
+  <Genre Name="Wedding Cantata" Category="Other" />
+  <Genre Name="West Coast Hip Hop" Category="Hip Hop" />
+  <Genre Name="West Coast Jazz" Category="Jazz" />
+  <Genre Name="West Coast Swing" Category="Other" />
+  <Genre Name="Western Classical Music" Category="Classical" />
+  <Genre Name="Western Country" Category="Blues · Country · Folk" />
+  <Genre Name="Western Swing" Category="Blues · Country · Folk" />
+  <Genre Name="Witch House" Category="Electronic" />
+  <Genre Name="Wonky Pop" Category="Pop · Rock" />
+  <Genre Name="Yacht Rock" Category="Pop · Rock" />
+  <Genre Name="Yé-Yé" Category="Pop · Rock" />
+  <Genre Name="Zeuhl" Category="Pop · Rock" />
+  <Genre Name="Zydeco" Category="Blues · Country · Folk" />
+</Genres>
+<Moods>
+  <Mood Name="Angry"/>
+  <Mood Name="Bewildered"/>
+  <Mood Name="Bouncy"/>
+  <Mood Name="Calm"/>
+  <Mood Name="Cheerful"/>
+  <Mood Name="Chill"/>
+  <Mood Name="Cold"/>
+  <Mood Name="Complacent"/>
+  <Mood Name="Comatose"/>
+  <Mood Name="Crazy"/>
+  <Mood Name="Crushed"/>
+  <Mood Name="Cynical"/>
+  <Mood Name="Groovy"/>
+  <Mood Name="Depressed"/>
+  <Mood Name="Dreamy"/>
+  <Mood Name="Drunk"/>
+  <Mood Name="Eclectic"/>
+  <Mood Name="Emotional"/>
+  <Mood Name="Energetic"/>
+  <Mood Name="Envious"/>
+  <Mood Name="Happy"/>
+  <Mood Name="Mellow"/>
+  <Mood Name="Morose"/>
+  <Mood Name="Quirky"/>
+  <Mood Name="Rockin"/>
+  <Mood Name="Sad"/>
+  <Mood Name="Soothing"/>
+  <Mood Name="Spooky"/>
+  <Mood Name="Sunday Brunch"/>
+  <Mood Name="Tranquil"/>
+  <Mood Name="Trippy"/>
+  <Mood Name="Upbeat"/>
+  <Mood Name="Wild"/>
+  <Mood Name="Work"/>
+</Moods>
+<Occasions>
+  <Occasion Name="Background"/>
+  <Occasion Name="Birthday"/>
+  <Occasion Name="Breakup"/>
+  <Occasion Name="Chillout"/>
+  <Occasion Name="Christmas"/>
+  <Occasion Name="Dance"/>
+  <Occasion Name="Dinner"/>
+  <Occasion Name="Hanging Out"/>
+  <Occasion Name="Heartache"/>
+  <Occasion Name="Holiday"/>
+  <Occasion Name="Late Night"/>
+  <Occasion Name="New Year"/>
+  <Occasion Name="Party"/>
+  <Occasion Name="Rain"/>
+  <Occasion Name="Rave"/>
+  <Occasion Name="Road"/>
+  <Occasion Name="Protest"/>
+  <Occasion Name="Romantic"/>
+  <Occasion Name="Sleep"/>
+  <Occasion Name="Seasonal"/>
+  <Occasion Name="Valentine"/>
+  <Occasion Name="Wake Up"/>
+  <Occasion Name="Wedding"/>
+  <Occasion Name="Work"/>
+</Occasions>
+<CustomTags>
+<Tag id="Album Artist Sort-Order" id3v23="TSO2" id3v24="TSO2" wma="ALBUMARTISTSORT" vorbisComments="ALBUMARTISTSORT" mpeg="soaa" ape2="AlbumArtistSort" /> 
+<Tag id="Album Sort-Order" id3v23="TSOA" id3v24="TSOA" wma="ALBUMSORT" vorbisComments="ALBUMSORT" mpeg="soal" ape2="AlbumSort" /> 
+<Tag id="Artist Sort-Order" id3v23="TSOP" id3v24="TSOP" wma="ARTISTSORT" vorbisComments="ARTISTSORT" mpeg="soar" ape2="ArtistSort" /> 
+<Tag id="Composer Sort-Order" id3v23="TSOC" id3v24="TSOC" wma="COMPOSERSORT" vorbisComments="COMPOSERSORT" mpeg="soco" ape2="ComposerSort" /> 
+<Tag id="Copyright" id3v23="TCOP" id3v24="TCOP" wma="Copyright" vorbisComments="COPYRIGHT" mpeg="cprt" ape2="Copyright" /> 
+<Tag id="Encoding Time" id3v23="TXXX/ENCODINGTIME" id3v24="TDEN" wma="WM/EncodingTime" vorbisComments="ENCODINGTIME" mpeg="ENCODINGTIME" ape2="EncodingTime" /> 
+<Tag id="Encoder Settings" id3v23="TSSE" id3v24="TSSE" wma="WM/EncodingSettings" vorbisComments="ENCODER SETTINGS" mpeg="ENCODERSETTINGS" ape2="EncoderSettings" /> 
+<Tag id="File Owner" id3v23="TOWN" id3v24="TOWN" wma="FILEOWNER" vorbisComments="FILEOWNER" mpeg="FILEOWNER" ape2="FileOwner" /> 
+<Tag id="File Type" id3v23="TFLT" id3v24="TFLT" wma="FILETYPE" vorbisComments="FILETYPE" mpeg="FILETYPE" ape2="FileType" /> 
+<Tag id="Initial Key" id3v23="TKEY" id3v24="TKEY" wma="WM/InitialKey" vorbisComments="INITIALKEY" mpeg="INITIALKEY" ape2="InitialKey" /> 
+<Tag id="Involved People List" id3v23="IPLS" id3v24="TIPL" wma="INVOLVEDPEOPLE" vorbisComments="INVOLVEDPEOPLE" mpeg="INVOLVEDPEOPLE" ape2="INVOLVEDPEOPLE" />
+<Tag id="ISRC" id3v23="TSRC" id3v24="TSRC" wma="WM/ISRC" vorbisComments="ISRC" mpeg="ISRC" ape2="ISRC" /> 
+<Tag id="iTunes Compilation" id3v23="TCMP" id3v24="TCMP" wma="COMPILATION" vorbisComments="COMPILATION" mpeg="cpil" ape2="COMPILATION" /> 
+<Tag id="Language" id3v23="TLAN" id3v24="TLAN" wma="WM/Language" vorbisComments="LANGUAGE" mpeg="LANGUAGE" ape2="Language" /> 
+<Tag id="Location" id3v23="TXXX/LOCATION" id3v24="TXXX/LOCATION" wma="LOCATION" vorbisComments="LOCATION" mpeg="LOCATION" ape2="Location" /> 
+<Tag id="Media Type" id3v23="TMED" id3v24="TMED" wma="MEDIATYPE" vorbisComments="SOURCE MEDIUM" mpeg="MEDIATYPE" ape2="MediaType" /> 
+<Tag id="Mix Artist" id3v23="TPE4" id3v24="TPE4" wma="MIXARTIST" vorbisComments="MIXARTIST" mpeg="MIXARTIST" ape2="MIXARTIST" /> 
+<Tag id="Musician Credits List" id3v23="TXXX/MUSICIANCREDITS" id3v24="TMCL" wma="MUSICIANCREDITS" vorbisComments="MUSICIANCREDITS" mpeg="MUSICIANCREDITS" ape2="MUSICIANCREDITS" />
+<Tag id="Net Radio Owner" id3v23="TRSO" id3v24="TRSO" wma="NETRADIOOWNER" vorbisComments="NET RADIO OWNER" mpeg="NETRADIOOWNER" ape2="NetRadioOwner" /> 
+<Tag id="Net Radio Station" id3v23="TRSN" id3v24="TRSN" wma="NETRADIOSTATION" vorbisComments="NET RADIO STATION" mpeg="NETRADIOSTATION" ape2="NetRadioStation" /> 
+<Tag id="Original Album" id3v23="TOAL" id3v24="TOAL" wma="WM/OriginalAlbumTitle" vorbisComments="ORIGALBUM" mpeg="ORIGALBUM" ape2="OrigAlbum"/> 
+<Tag id="Original Artist" id3v23="TOPE" id3v24="TOPE" wma="WM/OriginalArtist" vorbisComments="ORIGARTIST" mpeg="ORIGARTIST" ape2="OrigArtist" /> 
+<Tag id="Original Lyricst" id3v23="TOLY" id3v24="TOLY" wma="WM/OriginalLyricist" vorbisComments="ORIGLYRICIST" mpeg="ORIGLYRICIST" ape2="OrigLyricist" /> 
+<Tag id="Original Year" id3v23="TORY" id3v24="TDOR" wma="WM/OriginalReleaseYear" vorbisComments="ORIGYEAR" mpeg="ORIGYEAR" ape2="OrigYear" /> 
+<Tag id="Original Filename" id3v23="TOFN" id3v24="TOFN" wma="WM/OriginalFilename" vorbisComments="ORIGFILENAME" mpeg="ORIGFILENAME" ape2="OrigFilename" />
+<Tag id="Release Time" id3v23="TXXX/TDRL" id3v24="TDRL" wma="WM/ReleaseTime" vorbisComments="RELEASETIME" mpeg="RELEASETIME" ape2="ReleaseTime" /> 
+<Tag id="Set Subtitle" id3v23="TXXX/TSST" id3v24="TSST" wma="SetSubTitle" vorbisComments="SETSUBTITLE" mpeg="SETSUBTITLE" ape2="SetSubtitle" /> 
+<Tag id="Subtitle" id3v23="TIT3" id3v24="TIT3" wma="WM/SubTitle" vorbisComments="SUBTITLE" mpeg="SUBTITLE" ape2="Subtitle" /> 
+<Tag id="Title Sort-Order" id3v23="TSOT" id3v24="TSOT" wma="TITLESORT" vorbisComments="TITLESORT" mpeg="sonm" ape2="TitleSort" /> 
+<Tag id="WWW Artist" id3v23="WOAR" id3v24="WOAR" wma="WM/AuthorURL" vorbisComments="WWWARTIST" mpeg="WWWARTIST" ape2="WWWArtist" /> 
+<Tag id="WWW Audio File" id3v23="WOAF" id3v24="WOAF" wma="WM/AudioFileURL" vorbisComments="WWWAUDIOFILE" mpeg="WWWAUDIOFILE" ape2="WWWAudioFile" /> 
+<Tag id="WWW Commercial Info" id3v23="WCOM" id3v24="WCOM" wma="WM/PromotionURL" vorbisComments="WWWCOMMERCIALINFO" mpeg="WWWCOMMERCIALINFO" ape2="WWWCommercialInfo" /> 
+<Tag id="WWW Copyright" id3v23="WCOP" id3v24="WCOP" wma="CopyrightURL" vorbisComments="WWWCOPYRIGHT" mpeg="WWWCOPYRIGHT" ape2="WWWCopyright" /> 
+<Tag id="WWW Publisher" id3v23="WPUB" id3v24="WPUB" wma="WWWPUBLISHER" vorbisComments="WWWPUBLISHER" mpeg="WWWPUBLISHER" ape2="WWWPublisher" /> 
+<Tag id="WWW Radio Page" id3v23="WORS" id3v24="WORS" wma="WWWRADIO" vorbisComments="WWWRADIO" mpeg="WWWRADIO" ape2="WWWRadio" />
+</CustomTags>
+<Instruments>accordina;accordion;acoustic bass guitar;acoustic guitar;aeolian harp;alto clarinet;alto flute;alto saxophone;alto violin;amadinda;ankle rattlers;anvil;atabaque;atarigane;autoharp;baglama;bagpipe;bajo sexto;balafon;balalaika;bandora;bandura;bandura;bandurria;banjitar;banjo;bansuri;barbat;baritone guitar;baritone horn;baritone saxophone;baroque trumpet;barrel drum;barrel organ;baryton;bass;bass clarinet;bass drum;bass flute;bass guitar;bass harmonica;bass oboe;bass pedals;bass recorder;bass saxophone;bass synthesizer;bass trombone;bass trumpet;basset clarinet;basset horn;bassoon;bazooka;bell tree;bells;bendir;berda;berimbau;bicycle bell;bin-sasara;birch lur;bisernica;biwa;boatswain's pipe;bodhrán;body percussion;bolon;bombarde;bones;bongos;bouzouki;bowed piano;bowed psaltery;bowed string instruments;brass;brač;bronze lur;bugarija;bugle;buisine;buk;bullroarer;button accordion;buzuq;cajón;calabash;calliope;carillon;castanets;cavaquinho;caxixi;celesta;cello;chalumeau;chamber organ;chamberlin;chande;chanzy;chap;chime bar;chimes;clarinet;classical guitar;classical kemençe;claves;clavichord;claviola;clavioline;concert flute;concert harp;concertina;conch;congas;continuum;contrabass clarinet;contrabass flute;contrabass saxophone;contrabassoon;cornamuse;cornet;cornett;cowbell;craviola;crotales;crumhorn;cymbals;cymbalum;daire;daluo;darbuka;daruan;davul;diddley bow;didgeridoo;dilruba;double bass;double reed;doyra;dramyin;drum machine;drums;drumset;dulce melos;dulcian;dulzaina;dunun;dutar;duxianqin;effects;ektara;electric bass guitar;electric cello;electric fretless guitar;electric grand piano;electric guitar;electric harp;electric lap steel guitar;electric piano;electric sitar;electric viola;electric violin;electronic drum set;electronic instruments;electronic organ;fiddle;fife;finger cymbals;finger snaps;fipple flute;flugelhorn;flumpet;flute;folk harp;fortepiano;frame drum;free reed;french horn;glockenspiel;goblet drum;gongs;gralla;gramorimba;grand piano;guitalele;guitar;guitar synthesizer;handbells;handclaps;harmonica;harmonium;harp;harp guitar;harpsichord;heckelphone;helicon;horn;hurdy gurdy;idiophone;igil;keyboard;keyboard bass;keytar;lamellophone;langeleik;laouto;laser harp;low whistle;lute;lyre;madal;maddale;mandocello;mandola;mandolin;mandolute;maracas;marimba;marimba lumina;mark tree;marxophone;marímbula;mbira;mellophone;mellotron;melodica;mouth organ;musical bow;natural horn;nohkan;nose flute;nose whistle;ocarina;ocean drum;octave mandolin;omnichord;pedal piano;pedal steel guitar;percussion;phách;piano;piano accordion;piano spinet;piccolo;piccolo oboe;piccolo trumpet;pipa;pipe and tabor;pipe organ;piri;pocket trumpet;poi awhiowhio;post horn;practice chanter;prepared piano;primero;psaltery;pí thiu;rainstick;rammana;ratchet;rattle;recorder;reed organ;reeds;rehu;repinique;resonator guitar;rhythm sticks;riq;sabar;sackbut;samba whistle;samica;sampler;sanshin;santoor;santur;sanxian;saxophone;saz;segunda;serpent;setar;shakers;siku;slide whistle;slit drum;snare drum;song loan;sopilka;sopranino recorder;sopranino saxophone;soprano clarinet;soprano flute;soprano saxophone;soprano violin;sousaphone;spinet;spinettone;spoons;steel guitar;steel-string guitar;steelpan;strings;synclavier;synthesizer;syrinx;tabla;tabor;tack piano;tamborim;tambourine;tambura;tanpura;taragot;tenor banjo;tenor guitar;tenor recorder;tenor saxophone;tenor trombone;tenor violin;thavil;theatre organ;theorbo;theremin;thon;three-hole pipe;ti bwa;timbales;timpani;tin whistle;tinya;tiple;tololoche;tom-tom;tonkori;transverse flute;trautonium;treble flute;treble violin;tres;triangle;tromba marina;trombone;tromboon;trumpet;tuba;tubax;tubon;tubular bells;tumbi;tuned percussion;turntables;tzoura;udu;uilleann pipes;ukeke;ukulele;valve trombone;valved brass instruments;venu;vessel drum;vessel flute;vibraphone;vibraslap;vichitra veena;vielle;Vienna horn;vihuela;viola;viola caipira;viola d'amore;viola da gamba;viola organista;violin;violino piccolo;violins;violoncello piccolo;violone;violotta;virginal;vocoder;voice synthesizer;washboard;washtub bass;wavedrum;whip;whistle;willow flute;wind chime;wind instruments;wood block;woodwind;xylophone;zarb;zurna</Instruments>
+</Configuration>

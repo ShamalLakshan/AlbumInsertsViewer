@@ -1,0 +1,2379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<ENV_OrigSetPath>E:\Setups\MusicBeePortable_3_6\MusicBee\AppData\</ENV_OrigSetPath>
+<ENV_LibPath>\Setups\MusicBeePortable_3_6\MusicBee\Library\</ENV_LibPath>
+<ENV_PromptLib>false</ENV_PromptLib>
+<ENV_KnownLib>
+</ENV_KnownLib>
+<SystemCacheExpiryDateTime>0</SystemCacheExpiryDateTime>
+<ENV_TempFolder />
+<CustomSortTagUpgradeMapping>;</CustomSortTagUpgradeMapping>
+<SystemStartupDock>0</SystemStartupDock>
+<SystemReAssociateFileTypesOnStartup>false</SystemReAssociateFileTypesOnStartup>
+<SystemCheckForUpdates>true</SystemCheckForUpdates>
+<SystemLastCheckedVersion>3.6.9202.37404</SystemLastCheckedVersion>
+<ENV_MusicianCreditsWarning>3</ENV_MusicianCreditsWarning>
+<ENV_SubGenre>0</ENV_SubGenre>
+<ENV_PodcastCount>0</ENV_PodcastCount>
+<SystemAssociatedFileTypes>
+</SystemAssociatedFileTypes>
+<SystemInvalidCharMapping>
+ <char>32</char>
+ <char>32</char>
+ <char>32</char>
+ <char>32</char>
+ <char>32</char>
+ <char>32</char>
+ <char>32</char>
+ <char>32</char>
+ <char>32</char>
+ <char>32</char>
+</SystemInvalidCharMapping>
+<SystemEncodingThreadCount>2</SystemEncodingThreadCount>
+<SystemEncodingPriority>2</SystemEncodingPriority>
+<ENV_InstallPlugins>false</ENV_InstallPlugins>
+<SystemPlugin>
+ <State>
+  <Id>\Setups\MusicBeePortable_3_6\MusicBee\Plugins\mb_TheaterModePlugin.dll</Id>
+  <Name>Theater Mode</Name>
+  <Description>Display a customisable theater mode view</Description>
+  <Enabled>true</Enabled>
+ </State>
+ <State>
+  <Id>\Setups\MusicBeePortable_3_6\MusicBee\Plugins\mb_TestCSharpDll.dll</Id>
+  <Name>Viewer</Name>
+  <Description>View some stuff</Description>
+  <Enabled>true</Enabled>
+ </State>
+</SystemPlugin>
+<NavigatorArtworkScale>0.5</NavigatorArtworkScale>
+<SystemArtworkSmallSize>188</SystemArtworkSmallSize>
+<ENV_CardScale>0.6</ENV_CardScale>
+<NavigatorInitialFileOpenPath />
+<SystemClipboardTrackInfoLine1>
+ <NamingRule>
+  <Field>32</Field>
+  <Text> - </Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</SystemClipboardTrackInfoLine1>
+<ENV_EqWriteable>false</ENV_EqWriteable>
+<ENV_VerifyFileMove>false</ENV_VerifyFileMove>
+<ENV_LastSendToPlaylist />
+<ENV_ExportPlaylistsOnRestart>false</ENV_ExportPlaylistsOnRestart>
+<Tool_PicViewerEnabled>false</Tool_PicViewerEnabled>
+<NetworkUseProxy>false</NetworkUseProxy>
+<NetworkUsername />
+<NetworkPassword />
+<WebMaxSimultaneousDownloads>3</WebMaxSimultaneousDownloads>
+<WebDownloadsMusicFilenameRules>
+ <NamingRule>
+  <Field>32</Field>
+  <Text> - </Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</WebDownloadsMusicFilenameRules>
+<WebFreeDbServer2>gnudb.gnudb.org</WebFreeDbServer2>
+<NavigatorDefaultDownloadCategory>2</NavigatorDefaultDownloadCategory>
+<NavigatorLastDownloadMoveToDirectory>C:\Users\Sanemi\Music\</NavigatorLastDownloadMoveToDirectory>
+<SystemLockMode>10</SystemLockMode>
+<SystemLockOnRestart>false</SystemLockOnRestart>
+<SystemShutdownMode>0</SystemShutdownMode>
+<SystemShutdownTrigger>0</SystemShutdownTrigger>
+<SystemShutdownPeriod>0</SystemShutdownPeriod>
+<SystemShutdownFadeStart>0</SystemShutdownFadeStart>
+<GUI_Skin>MusicBee3.xmlc</GUI_Skin>
+<GUI_Borders>false</GUI_Borders>
+<GUI_UseLightDark>false</GUI_UseLightDark>
+<GUI_Skin_0>MusicBee3.xmlc</GUI_Skin_0>
+<GUI_StartTime_0>0</GUI_StartTime_0>
+<GUI_CustomBackgroundEnabled_0>false</GUI_CustomBackgroundEnabled_0>
+<GUI_StartTime_1>420</GUI_StartTime_1>
+<GUI_CustomBackgroundEnabled_1>false</GUI_CustomBackgroundEnabled_1>
+<GUI_StartTime_2>1140</GUI_StartTime_2>
+<GUI_CustomBackgroundEnabled_2>false</GUI_CustomBackgroundEnabled_2>
+<SystemLanguage>English</SystemLanguage>
+<SystemShowSplashScreen>true</SystemShowSplashScreen>
+<SystemStartMinimised>false</SystemStartMinimised>
+<SystemMinimiseTo>0</SystemMinimiseTo>
+<SystemAlwaysShowTrayIcon>true</SystemAlwaysShowTrayIcon>
+<SystemTrayDoubleClickAction>GeneralShowMainPanel</SystemTrayDoubleClickAction>
+<SystemTraySingleClickAction>GeneralShowTrackInfo</SystemTraySingleClickAction>
+<GUI_MouseSpeedAdjust>0</GUI_MouseSpeedAdjust>
+<NavigatorDisableInPlaceEditing>false</NavigatorDisableInPlaceEditing>
+<GUI_RetagOnDrop>false</GUI_RetagOnDrop>
+<GUI_LyricsFloating>false</GUI_LyricsFloating>
+<GUI_LockArtistPicRotation>false</GUI_LockArtistPicRotation>
+<SystemLockCoverArt>false</SystemLockCoverArt>
+<FormAutoMinimise>false</FormAutoMinimise>
+<FormNowPlayingTitleBarEnabled>true</FormNowPlayingTitleBarEnabled>
+<GUI_ShowOvrAsTab>false</GUI_ShowOvrAsTab>
+<SystemAutoFitColumns>true</SystemAutoFitColumns>
+<GUI_RowPadding>1</GUI_RowPadding>
+<GUI_NarrowScrB>false</GUI_NarrowScrB>
+<GUI_LockLayout>false</GUI_LockLayout>
+<GUI_ArtistPicCircle>false</GUI_ArtistPicCircle>
+<GUI_SyncPlaySelect>false</GUI_SyncPlaySelect>
+<FormPlayerShowRemaining>false</FormPlayerShowRemaining>
+<GUI_DisableRowAutoSelect>false</GUI_DisableRowAutoSelect>
+<GUI_DisableGradientColors>false</GUI_DisableGradientColors>
+<HotKeys>
+ <KeyCommandPair>
+  <Key>113</Key>
+  <Command>EditClickedColumn</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>116</Key>
+  <Command>GeneralReload</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131156</Key>
+  <Command>FileNewTab</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131159</Key>
+  <Command>FileCloseTab</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>45</Key>
+  <Command>FileScanNewMedia</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131137</Key>
+  <Command>EditSelectAll</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131160</Key>
+  <Command>EditCut</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131139</Key>
+  <Command>EditCopy</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131158</Key>
+  <Command>EditPaste</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>65549</Key>
+  <Command>EditProperties</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131142</Key>
+  <Command>EditCustomSearch</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131151</Key>
+  <Command>EditPreferences</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262253</Key>
+  <Command>RatingSelectedFilesTickDown</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262251</Key>
+  <Command>RatingSelectedFilesTickUp</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262192</Key>
+  <Command>RatingSelectedFiles0</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262193</Key>
+  <Command>RatingSelectedFiles1</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262194</Key>
+  <Command>RatingSelectedFiles2</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262195</Key>
+  <Command>RatingSelectedFiles3</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262196</Key>
+  <Command>RatingSelectedFiles4</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262197</Key>
+  <Command>RatingSelectedFiles5</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262333</Key>
+  <Command>RatingSelectedFilesNone</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393325</Key>
+  <Command>RatingNowPlayingTickDown</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393323</Key>
+  <Command>RatingNowPlayingTickUp</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393264</Key>
+  <Command>RatingNowPlaying0</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393265</Key>
+  <Command>RatingNowPlaying1</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393266</Key>
+  <Command>RatingNowPlaying2</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393267</Key>
+  <Command>RatingNowPlaying3</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393268</Key>
+  <Command>RatingNowPlaying4</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393269</Key>
+  <Command>RatingNowPlaying5</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393405</Key>
+  <Command>RatingNowPlayingNone</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131140</Key>
+  <Command>NowPlayingBookmark</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>176</Key>
+  <Command>MultiMediaNext</Command>
+  <IsGlobal>true</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>179</Key>
+  <Command>MultiMediaPlayPause</Command>
+  <IsGlobal>true</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>177</Key>
+  <Command>MultiMediaPrevious</Command>
+  <IsGlobal>true</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>178</Key>
+  <Command>MultiMediaStop</Command>
+  <IsGlobal>true</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262157</Key>
+  <Command>PlaybackPlayNow</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131150</Key>
+  <Command>PlaybackNextTrack</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393302</Key>
+  <Command>PlaybackVolumeMute</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393254</Key>
+  <Command>PlaybackVolumeUp</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>393256</Key>
+  <Command>PlaybackVolumeDown</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131085</Key>
+  <Command>PlaybackPlayLast</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>196621</Key>
+  <Command>PlaybackPlayNext</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131152</Key>
+  <Command>PlaybackPlayPause</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131138</Key>
+  <Command>PlaybackPreviousTrack</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131155</Key>
+  <Command>PlaybackStop</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131154</Key>
+  <Command>ToolsAutoOrganise</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262226</Key>
+  <Command>ToolsRipCd</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>196692</Key>
+  <Command>ToolsAutoTagAlbum</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>131148</Key>
+  <Command>ToolsAutoTagAll</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>196694</Key>
+  <Command>ToolsAnalyseVolume</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262218</Key>
+  <Command>ViewJumpList</Command>
+  <IsGlobal>true</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262213</Key>
+  <Command>ViewFilesToEdit</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>262214</Key>
+  <Command>ViewNowPlayingTrackFinder</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+ <KeyCommandPair>
+  <Key>122</Key>
+  <Command>ViewVisualiserToggleFullScreen</Command>
+  <IsGlobal>false</IsGlobal>
+ </KeyCommandPair>
+</HotKeys>
+<HotkeysMouseX1>PlaybackPreviousTrack</HotkeysMouseX1>
+<HotkeysMouseX2>PlaybackNextTrack</HotkeysMouseX2>
+<ConfirmationPermanentDelete>true</ConfirmationPermanentDelete>
+<ConfirmationPromptDeleteFromPlaylist>true</ConfirmationPromptDeleteFromPlaylist>
+<ConfirmationDisablePermDeleteFromPlaylist>false</ConfirmationDisablePermDeleteFromPlaylist>
+<ConfirmationPromptNoPasteTags>false</ConfirmationPromptNoPasteTags>
+<ConfirmationCheckDuplicatesInPlaylist>true</ConfirmationCheckDuplicatesInPlaylist>
+<ConfirmationCheckDuplicatesInPlayingTracks>true</ConfirmationCheckDuplicatesInPlayingTracks>
+<ConfirmationPromptForPictureSaveOptions>true</ConfirmationPromptForPictureSaveOptions>
+<ConfirmationDefaultFileDeleteOption>0</ConfirmationDefaultFileDeleteOption>
+<DefaultPlaylistFileDelete>0</DefaultPlaylistFileDelete>
+<ConfirmationPromptMoveFiles>true</ConfirmationPromptMoveFiles>
+<ConfirmationPromptWarnMisssingTags>true</ConfirmationPromptWarnMisssingTags>
+<ConfirmationPromptRemoveDeadLinks2>true</ConfirmationPromptRemoveDeadLinks2>
+<ConfirmationPromptShutdown>false</ConfirmationPromptShutdown>
+<NavigatorSearchSpecific>false</NavigatorSearchSpecific>
+<NavigatorSearchUrl>false</NavigatorSearchUrl>
+<NavigatorSearchShowAlbum>false</NavigatorSearchShowAlbum>
+<NavigatorSearchShowArtworkAlbum>true</NavigatorSearchShowArtworkAlbum>
+<CustSearchAutoClose>true</CustSearchAutoClose>
+<SearchFilterResults>true</SearchFilterResults>
+<ArtistSortMapping />
+<AlbumSortMapping />
+<TagIgnoreArtistPrefixes>true</TagIgnoreArtistPrefixes>
+<TagSortingIgnoreArtistPrefixList>
+ <string>The </string>
+</TagSortingIgnoreArtistPrefixList>
+<DisableSortAsTags>true</DisableSortAsTags>
+<HR_MaxDisplayCount>1</HR_MaxDisplayCount>
+<LC_HeaderBar>1,0,0|2,0,0|3,0,0</LC_HeaderBar>
+<LC_TopPanel />
+<LC_BottomPanel>23,0,0|22,0,0</LC_BottomPanel>
+<LC_Floating />
+<LC_Compact>16,0,0|17,0,0|10,1,0|18,0,0|20,0,0</LC_Compact>
+<LC_NPMainPanel>13,0,0</LC_NPMainPanel>
+<LC_NPSidebar>18,0,0|10,0,0|19,1,0</LC_NPSidebar>
+<NavigatorPanelLayout>0</NavigatorPanelLayout>
+<NavigatorPanelAudioBooksLayout>0</NavigatorPanelAudioBooksLayout>
+<NavigatorPanelVideoLayout>0</NavigatorPanelVideoLayout>
+<NavigatorPanelInboxLayout>0</NavigatorPanelInboxLayout>
+<NavigatorPanelPlaylistsLayout>0</NavigatorPanelPlaylistsLayout>
+<NavigatorPanelFoldersLayout>0</NavigatorPanelFoldersLayout>
+<NavigatorPanelSearchResultsLayout>0</NavigatorPanelSearchResultsLayout>
+<NavigatorMusicLibraryFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>30</Code>
+  <Width>110</Width>
+ </MediaField>
+ <MediaField>
+  <Code>88</Code>
+  <Width>40</Width>
+ </MediaField>
+ <MediaField>
+  <Code>59</Code>
+  <Width>130</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorMusicLibraryFields>
+<NavigatorMusicLibrarySortColumns>
+ <ColumnSortOrder>
+  <ColumnIndex>1</ColumnIndex>
+  <SortOrder>Ascending</SortOrder>
+ </ColumnSortOrder>
+</NavigatorMusicLibrarySortColumns>
+<NavigatorMusicLibrarySortOverride>0</NavigatorMusicLibrarySortOverride>
+<NavigatorMusicLibraryGrouping>0</NavigatorMusicLibraryGrouping>
+<NavigatorMusicLibraryConsolidateAlbums>false</NavigatorMusicLibraryConsolidateAlbums>
+<NavigatorMusicLibraryByAlbumFields>
+ <MediaField>
+  <Code>40</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>53</Code>
+  <Width>40</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorMusicLibraryByAlbumFields>
+<NavigatorMusicLibraryByAlbumSortOverride>0</NavigatorMusicLibraryByAlbumSortOverride>
+<NavigatorBookmarkFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>30</Code>
+  <Width>110</Width>
+ </MediaField>
+ <MediaField>
+  <Code>44</Code>
+  <Width>150</Width>
+ </MediaField>
+ <MediaField>
+  <Code>70</Code>
+  <Width>50</Width>
+ </MediaField>
+ <MediaField>
+  <Code>71</Code>
+  <Width>50</Width>
+ </MediaField>
+</NavigatorBookmarkFields>
+<NavigatorBookmarkSortColumns>
+ <ColumnSortOrder>
+  <ColumnIndex>1</ColumnIndex>
+  <SortOrder>Ascending</SortOrder>
+ </ColumnSortOrder>
+ <ColumnSortOrder>
+  <ColumnIndex>2</ColumnIndex>
+  <SortOrder>Ascending</SortOrder>
+ </ColumnSortOrder>
+ <ColumnSortOrder>
+  <ColumnIndex>3</ColumnIndex>
+  <SortOrder>Ascending</SortOrder>
+ </ColumnSortOrder>
+</NavigatorBookmarkSortColumns>
+<NavigatorSubscriptionsFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>56</Code>
+  <Width>60</Width>
+ </MediaField>
+ <MediaField>
+  <Code>57</Code>
+  <Width>200</Width>
+ </MediaField>
+ <MediaField>
+  <Code>192</Code>
+  <Width>60</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorSubscriptionsFields>
+<NavigatorAudioBooksFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>30</Code>
+  <Width>110</Width>
+ </MediaField>
+ <MediaField>
+  <Code>59</Code>
+  <Width>130</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>192</Code>
+  <Width>60</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorAudioBooksFields>
+<NavigatorAudioBooksSortColumns>
+ <ColumnSortOrder>
+  <ColumnIndex>1</ColumnIndex>
+  <SortOrder>Ascending</SortOrder>
+ </ColumnSortOrder>
+</NavigatorAudioBooksSortColumns>
+<NavigatorAudioBooksSortOverride>0</NavigatorAudioBooksSortOverride>
+<NavigatorAudioBooksGrouping>0</NavigatorAudioBooksGrouping>
+<NavigatorAudioBooksConsolidateAlbums>false</NavigatorAudioBooksConsolidateAlbums>
+<NavigatorAudioBooksByAlbumFields>
+ <MediaField>
+  <Code>40</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>53</Code>
+  <Width>40</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>192</Code>
+  <Width>60</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorAudioBooksByAlbumFields>
+<NavigatorAudioBooksByAlbumSortOverride>0</NavigatorAudioBooksByAlbumSortOverride>
+<NavigatorRadioFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>67</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>44</Code>
+  <Width>150</Width>
+ </MediaField>
+ <MediaField>
+  <Code>59</Code>
+  <Width>130</Width>
+ </MediaField>
+ <MediaField>
+  <Code>5</Code>
+  <Width>45</Width>
+ </MediaField>
+ <MediaField>
+  <Code>10</Code>
+  <Width>65</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+</NavigatorRadioFields>
+<NavigatorRadioSortColumns>
+ <ColumnSortOrder>
+  <ColumnIndex>2</ColumnIndex>
+  <SortOrder>Ascending</SortOrder>
+ </ColumnSortOrder>
+</NavigatorRadioSortColumns>
+<NavigatorVideoFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>30</Code>
+  <Width>110</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>59</Code>
+  <Width>130</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorVideoFields>
+<NavigatorVideoSortColumns>
+ <ColumnSortOrder>
+  <ColumnIndex>1</ColumnIndex>
+  <SortOrder>Ascending</SortOrder>
+ </ColumnSortOrder>
+</NavigatorVideoSortColumns>
+<NavigatorVideoSortOverride>0</NavigatorVideoSortOverride>
+<NavigatorVideoGrouping>0</NavigatorVideoGrouping>
+<NavigatorVideoConsolidateAlbums>false</NavigatorVideoConsolidateAlbums>
+<NavigatorVideoByAlbumFields>
+ <MediaField>
+  <Code>40</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>59</Code>
+  <Width>130</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorVideoByAlbumFields>
+<NavigatorVideoByAlbumSortOverride>0</NavigatorVideoByAlbumSortOverride>
+<NavigatorInboxFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>3</Code>
+  <Width>150</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>30</Code>
+  <Width>110</Width>
+ </MediaField>
+ <MediaField>
+  <Code>59</Code>
+  <Width>130</Width>
+ </MediaField>
+ <MediaField>
+  <Code>12</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorInboxFields>
+<NavigatorInboxSortColumns>
+ <ColumnSortOrder>
+  <ColumnIndex>7</ColumnIndex>
+  <SortOrder>Descending</SortOrder>
+ </ColumnSortOrder>
+</NavigatorInboxSortColumns>
+<NavigatorInboxSortOverride>0</NavigatorInboxSortOverride>
+<NavigatorInboxGrouping>0</NavigatorInboxGrouping>
+<NavigatorInboxConsolidateAlbums>false</NavigatorInboxConsolidateAlbums>
+<NavigatorInboxByAlbumFields>
+ <MediaField>
+  <Code>40</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>53</Code>
+  <Width>40</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>12</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorInboxByAlbumFields>
+<NavigatorInboxByAlbumSortOverride>0</NavigatorInboxByAlbumSortOverride>
+<NavigatorHistoryFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>13</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>14</Code>
+  <Width>45</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>67</Code>
+  <Width>16</Width>
+ </MediaField>
+</NavigatorHistoryFields>
+<NavigatorHistorySortColumns>
+ <ColumnSortOrder>
+  <ColumnIndex>1</ColumnIndex>
+  <SortOrder>Descending</SortOrder>
+ </ColumnSortOrder>
+</NavigatorHistorySortColumns>
+<NavigatorHistorySortOverride>0</NavigatorHistorySortOverride>
+<NavigatorHistoryGrouping>0</NavigatorHistoryGrouping>
+<NavigatorHistoryConsolidateAlbums>false</NavigatorHistoryConsolidateAlbums>
+<NavigatorHistoryByAlbumSortOverride>0</NavigatorHistoryByAlbumSortOverride>
+<NavigatorSearchRFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>30</Code>
+  <Width>110</Width>
+ </MediaField>
+ <MediaField>
+  <Code>88</Code>
+  <Width>40</Width>
+ </MediaField>
+ <MediaField>
+  <Code>59</Code>
+  <Width>130</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorSearchRFields>
+<NavigatorSearchRSortColumns>
+ <ColumnSortOrder>
+  <ColumnIndex>1</ColumnIndex>
+  <SortOrder>Ascending</SortOrder>
+ </ColumnSortOrder>
+</NavigatorSearchRSortColumns>
+<NavigatorSearchRSortOverride>0</NavigatorSearchRSortOverride>
+<NavigatorSearchRGrouping>0</NavigatorSearchRGrouping>
+<NavigatorSearchRConsolidateAlbums>false</NavigatorSearchRConsolidateAlbums>
+<NavigatorSearchRByAlbumFields>
+ <MediaField>
+  <Code>40</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>53</Code>
+  <Width>40</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorSearchRByAlbumFields>
+<NavigatorSearchRByAlbumSortOverride>0</NavigatorSearchRByAlbumSortOverride>
+<NavigatorPlaylistFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>78</Code>
+  <Width>25</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>30</Code>
+  <Width>110</Width>
+ </MediaField>
+ <MediaField>
+  <Code>59</Code>
+  <Width>130</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorPlaylistFields>
+<NavigatorPlaylistSortColumns>
+ <ColumnSortOrder>
+  <ColumnIndex>1</ColumnIndex>
+  <SortOrder>Ascending</SortOrder>
+ </ColumnSortOrder>
+</NavigatorPlaylistSortColumns>
+<NavigatorPlaylistSortOverride>0</NavigatorPlaylistSortOverride>
+<NavigatorPlaylistGrouping>0</NavigatorPlaylistGrouping>
+<NavigatorPlaylistConsolidateAlbums>false</NavigatorPlaylistConsolidateAlbums>
+<NavigatorPlaylistByAlbumFields>
+ <MediaField>
+  <Code>40</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>78</Code>
+  <Width>25</Width>
+ </MediaField>
+ <MediaField>
+  <Code>53</Code>
+  <Width>40</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorPlaylistByAlbumFields>
+<NavigatorPlaylistByAlbumSortOverride>0</NavigatorPlaylistByAlbumSortOverride>
+<NavigatorFolderFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>3</Code>
+  <Width>150</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>30</Code>
+  <Width>110</Width>
+ </MediaField>
+ <MediaField>
+  <Code>59</Code>
+  <Width>130</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorFolderFields>
+<NavigatorFolderSortColumns>
+ <ColumnSortOrder>
+  <ColumnIndex>1</ColumnIndex>
+  <SortOrder>Ascending</SortOrder>
+ </ColumnSortOrder>
+</NavigatorFolderSortColumns>
+<NavigatorFolderSortOverride>0</NavigatorFolderSortOverride>
+<NavigatorFolderGrouping>0</NavigatorFolderGrouping>
+<NavigatorFolderConsolidateAlbums>false</NavigatorFolderConsolidateAlbums>
+<NavigatorFolderByAlbumFields>
+ <MediaField>
+  <Code>40</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>53</Code>
+  <Width>40</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>3</Code>
+  <Width>150</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</NavigatorFolderByAlbumFields>
+<NavigatorFolderByAlbumSortOverride>0</NavigatorFolderByAlbumSortOverride>
+<TrackDetailHeaderContrast>0</TrackDetailHeaderContrast>
+<AlbumLayoutGroupingD>true</AlbumLayoutGroupingD>
+<AlbumLayoutGroupingP>false</AlbumLayoutGroupingP>
+<NavigatorAlbumHeader>0</NavigatorAlbumHeader>
+<AlbumLayoutHeaderContrast>0</AlbumLayoutHeaderContrast>
+<NavigatorAlbumHeader1>52</NavigatorAlbumHeader1>
+<AlbumLayoutHeaderContrast1>0</AlbumLayoutHeaderContrast1>
+<NavigatorAlbumListField0>31</NavigatorAlbumListField0>
+<NavigatorAlbumListField1>30</NavigatorAlbumListField1>
+<NavigatorAlbumListField2>88</NavigatorAlbumListField2>
+<NavigatorAlbumListField3>59</NavigatorAlbumListField3>
+<NavigatorAlbumListField4>0</NavigatorAlbumListField4>
+<NavigatorAlbumListField5>0</NavigatorAlbumListField5>
+<NavigatorAlbumListField6>0</NavigatorAlbumListField6>
+<AlbumTextOnRight>true</AlbumTextOnRight>
+<AlbumCompressTracks>false</AlbumCompressTracks>
+<AlbumCompressTracksP>false</AlbumCompressTracksP>
+<AlbumLayoutMinTracks>0</AlbumLayoutMinTracks>
+<AlbumLayoutDontSeparateDiscs>false</AlbumLayoutDontSeparateDiscs>
+<AlbumLayoutPadSubHeader>false</AlbumLayoutPadSubHeader>
+<AlbumTrackLayout>1</AlbumTrackLayout>
+<AlbumHDefault>true</AlbumHDefault>
+<AlbumHPlaylist>false</AlbumHPlaylist>
+<AlbumH1>true</AlbumH1>
+<AlbumH1Field>30</AlbumH1Field>
+<AlbumH1Contrast>0</AlbumH1Contrast>
+<AlbumH2>true</AlbumH2>
+<AlbumH2Contrast>0</AlbumH2Contrast>
+<AlbumH2F0>35</AlbumH2F0>
+<AlbumH2F1>59</AlbumH2F1>
+<AlbumH2F2>0</AlbumH2F2>
+<AlbumH2F3>0</AlbumH2F3>
+<AlbumSingleColumn>false</AlbumSingleColumn>
+<AlbumFLove>true</AlbumFLove>
+<AlbumFRating>false</AlbumFRating>
+<AlbumFHighlight>true</AlbumFHighlight>
+<JukeboxField0>65</JukeboxField0>
+<JukeboxContrast0>0</JukeboxContrast0>
+<JukeboxField1>32</JukeboxField1>
+<JukeboxContrast1>50</JukeboxContrast1>
+<JukeboxField2>35</JukeboxField2>
+<JukeboxContrast2>50</JukeboxContrast2>
+<JukeboxGroupBy>0</JukeboxGroupBy>
+<NavigatorArtworkGroupBy>0</NavigatorArtworkGroupBy>
+<NavigatorArtworkVideoGroupBy>0</NavigatorArtworkVideoGroupBy>
+<CoversGroupBy>0</CoversGroupBy>
+<CoversGroupFirstChar>false</CoversGroupFirstChar>
+<CoversGroupByCompressed>false</CoversGroupByCompressed>
+<CoversSubGroupBy>0</CoversSubGroupBy>
+<AP_DefaultArtistGrp>1</AP_DefaultArtistGrp>
+<ArtistGroupFirstChar>false</ArtistGroupFirstChar>
+<NavigatorArtworkLayoutSorting>1</NavigatorArtworkLayoutSorting>
+<NavigatorArtworkLayoutVideoSorting>13</NavigatorArtworkLayoutVideoSorting>
+<NavigatorArtworkLayoutField1>30</NavigatorArtworkLayoutField1>
+<NavigatorArtworkLayoutField2>31</NavigatorArtworkLayoutField2>
+<NavigatorArtworkLayoutContrast2>40</NavigatorArtworkLayoutContrast2>
+<NavigatorArtworkLayoutField3>0</NavigatorArtworkLayoutField3>
+<NavigatorArtworkLayoutField4>0</NavigatorArtworkLayoutField4>
+<NavigatorArtworkLayoutField5>0</NavigatorArtworkLayoutField5>
+<CoversHighlighting>false</CoversHighlighting>
+<NavigatorArtworkMergeFields>false</NavigatorArtworkMergeFields>
+<CoversAlwaysShowAlbums>false</CoversAlwaysShowAlbums>
+<CoversHideAlbumCount>false</CoversHideAlbumCount>
+<CoversFitPicturesToPanel>false</CoversFitPicturesToPanel>
+<AP_TextAlign>32</AP_TextAlign>
+<CoversTextTransparentBg>false</CoversTextTransparentBg>
+<CoversOverlayTextOnPicture>false</CoversOverlayTextOnPicture>
+<CoversDoubleClickPlayAlbum>true</CoversDoubleClickPlayAlbum>
+<AP_ShowTracksLocation>1</AP_ShowTracksLocation>
+<AP_DisableArtwork>false</AP_DisableArtwork>
+<AP_ShowAllArtwork>false</AP_ShowAllArtwork>
+<AP_AlbumCoverOnRight>false</AP_AlbumCoverOnRight>
+<NavigatorArtworkArtistAlbumSort>0</NavigatorArtworkArtistAlbumSort>
+<NavigatorArtworkAutoColour>true</NavigatorArtworkAutoColour>
+<AP_Header1>0</AP_Header1>
+<AP_Header2>0</AP_Header2>
+<AP_ExpandedTitle>65</AP_ExpandedTitle>
+<NavigatorArtworkGroupSubHeader>0</NavigatorArtworkGroupSubHeader>
+<NavigatorArtworkShowTracksLove>false</NavigatorArtworkShowTracksLove>
+<NavigatorArtworkShowTracksRating>false</NavigatorArtworkShowTracksRating>
+<AP_MaxColumns>2147483647</AP_MaxColumns>
+<NavigatorArtworkShowTrackDetail>true</NavigatorArtworkShowTrackDetail>
+<AP_SideBarLayout>0</AP_SideBarLayout>
+<AP_SideBarArtistsLayout>1</AP_SideBarArtistsLayout>
+<AP_ArtSideBarGrouping>0</AP_ArtSideBarGrouping>
+<AP_ArtSideBarArtistsGrouping>0</AP_ArtSideBarArtistsGrouping>
+<FormPlayerControlDock>2</FormPlayerControlDock>
+<LC_MainPlayerBelowSB>false</LC_MainPlayerBelowSB>
+<LC_StatusBar>true</LC_StatusBar>
+<LayoutMenuDock>2</LayoutMenuDock>
+<TabsInCaption>false</TabsInCaption>
+<MF_TabsCentred>true</MF_TabsCentred>
+<MF_ButtonsDock>0</MF_ButtonsDock>
+<HotkeyColourIcons>false</HotkeyColourIcons>
+<MF_CaptionSearchTextWidth>0</MF_CaptionSearchTextWidth>
+<NavigatorSearchTextWidth>110</NavigatorSearchTextWidth>
+<MF_HideHeaderBar>false</MF_HideHeaderBar>
+<FormWindowState>Normal</FormWindowState>
+<FormLocation>
+ <X>106</X>
+ <Y>33</Y>
+</FormLocation>
+<FormSize>
+ <Width>1600</Width>
+ <Height>940</Height>
+</FormSize>
+<FormTagEditorDock>5</FormTagEditorDock>
+<NavigatorInitialTabs>
+ <NavigationLocation>
+  <FolderCategory>1</FolderCategory>
+  <Url />
+  <ThumbBrowserField>31</ThumbBrowserField>
+  <HideLeftPanel>1</HideLeftPanel>
+  <Layout>1</Layout>
+  <CustView>false</CustView>
+  <GroupBy>0</GroupBy>
+  <TopIndex>0</TopIndex>
+  <SelectedIndex>-1</SelectedIndex>
+ </NavigationLocation>
+ <NavigationLocation>
+  <FolderCategory>7</FolderCategory>
+  <Url />
+  <ThumbBrowserField>0</ThumbBrowserField>
+  <HideLeftPanel>1</HideLeftPanel>
+  <Layout>0</Layout>
+  <CustView>false</CustView>
+  <GroupBy>0</GroupBy>
+  <TopIndex>0</TopIndex>
+  <SelectedIndex>-1</SelectedIndex>
+ </NavigationLocation>
+ <NavigationLocation>
+  <FolderCategory>11</FolderCategory>
+  <Url />
+  <ThumbBrowserField>0</ThumbBrowserField>
+  <HideLeftPanel>1</HideLeftPanel>
+  <Layout>0</Layout>
+  <CustView>false</CustView>
+  <GroupBy>0</GroupBy>
+  <TopIndex>0</TopIndex>
+  <SelectedIndex>-1</SelectedIndex>
+ </NavigationLocation>
+ <NavigationLocation>
+  <FolderCategory>24</FolderCategory>
+  <Url />
+  <ThumbBrowserField>0</ThumbBrowserField>
+  <HideLeftPanel>1</HideLeftPanel>
+  <Layout>0</Layout>
+  <CustView>false</CustView>
+  <GroupBy>0</GroupBy>
+  <TopIndex>0</TopIndex>
+  <SelectedIndex>-1</SelectedIndex>
+ </NavigationLocation>
+ <NavigationLocation>
+  <FolderCategory>25</FolderCategory>
+  <Url />
+  <ThumbBrowserField>0</ThumbBrowserField>
+  <HideLeftPanel>1</HideLeftPanel>
+  <Layout>0</Layout>
+  <CustView>false</CustView>
+  <GroupBy>0</GroupBy>
+  <TopIndex>0</TopIndex>
+  <SelectedIndex>-1</SelectedIndex>
+ </NavigationLocation>
+ <NavigationLocation>
+  <FolderCategory>5</FolderCategory>
+  <Url />
+  <ThumbBrowserField>0</ThumbBrowserField>
+  <HideLeftPanel>1</HideLeftPanel>
+  <Layout>0</Layout>
+  <CustView>false</CustView>
+  <GroupBy>0</GroupBy>
+  <TopIndex>0</TopIndex>
+  <SelectedIndex>-1</SelectedIndex>
+ </NavigationLocation>
+</NavigatorInitialTabs>
+<NavigatorInitialTabIndex>0</NavigatorInitialTabIndex>
+<NavigatorWidth>180</NavigatorWidth>
+<NavigatorThumbBrowserWidth>285</NavigatorThumbBrowserWidth>
+<NavigatorRightPanel>285</NavigatorRightPanel>
+<FormNowPlayingSidebarWidth>285</FormNowPlayingSidebarWidth>
+<NavigatorQuickBrowseVisible>false</NavigatorQuickBrowseVisible>
+<NavigatorShowJumpList>2</NavigatorShowJumpList>
+<LC_LeftSidebar>5,0,0</LC_LeftSidebar>
+<LC_LeftMainPanel>6,0,0</LC_LeftMainPanel>
+<LC_MainPanel>11,0,0|13,0,0</LC_MainPanel>
+<LC_RightMainPanel />
+<LC_RightSidebar>17,0,0|18,0,0|10,1,0</LC_RightSidebar>
+<Nav_PanelHeight>300</Nav_PanelHeight>
+<NavigatorShowLibraryFilters>false</NavigatorShowLibraryFilters>
+<NavigatorShowBookmarks>false</NavigatorShowBookmarks>
+<NavigatorShowPodcasts>true</NavigatorShowPodcasts>
+<NavigatorShowAudioBooks>true</NavigatorShowAudioBooks>
+<NavigatorShowRadioStations>true</NavigatorShowRadioStations>
+<NavigatorShowVideo>false</NavigatorShowVideo>
+<NavigatorShowInbox>true</NavigatorShowInbox>
+<NavigatorShowHistory>true</NavigatorShowHistory>
+<NavigatorShowNowPlaying>true</NavigatorShowNowPlaying>
+<NavigatorShowMusicExplorer>true</NavigatorShowMusicExplorer>
+<NavigatorShowPlaylistsTab>true</NavigatorShowPlaylistsTab>
+<Nav_ShowAutoDj>true</Nav_ShowAutoDj>
+<Nav_ShowPlaylistManager>true</Nav_ShowPlaylistManager>
+<NavigatorShowWebTab>true</NavigatorShowWebTab>
+<NavigatorShowComputerTab>true</NavigatorShowComputerTab>
+<NavigatorShowSubFolderFiles>false</NavigatorShowSubFolderFiles>
+<NavigatorShowFilteredFolders>false</NavigatorShowFilteredFolders>
+<NavigatorGroupPlaylistsByName>false</NavigatorGroupPlaylistsByName>
+<PM_ManualPlaylistOrder>false</PM_ManualPlaylistOrder>
+<NavigatorAllowFolderTreeMove>false</NavigatorAllowFolderTreeMove>
+<NavigatorPlaylistExpanded>false</NavigatorPlaylistExpanded>
+<NavigatorWebExpanded>false</NavigatorWebExpanded>
+<NavigatorFolderExpanded>true</NavigatorFolderExpanded>
+<ThumbPanelHeight>300</ThumbPanelHeight>
+<ThumbPanelWidth>220</ThumbPanelWidth>
+<ThumbPictureSize>2</ThumbPictureSize>
+<ThumbHideAlbumStats>false</ThumbHideAlbumStats>
+<ThumbHideInPlaylists>false</ThumbHideInPlaylists>
+<ThumbAlwaysShowAlbumCover>true</ThumbAlwaysShowAlbumCover>
+<LE_PanelHeight>300</LE_PanelHeight>
+<FormLibraryExplorerCategory>31</FormLibraryExplorerCategory>
+<FormLibraryExplorerCategories>
+ <int>31</int>
+ <int>59</int>
+ <int>64</int>
+ <int>66</int>
+</FormLibraryExplorerCategories>
+<FormLibraryExplorerSorting>1</FormLibraryExplorerSorting>
+<FormLibraryExplorerSortOverrides>
+ <int>1</int>
+ <int>1</int>
+ <int>1</int>
+ <int>1</int>
+</FormLibraryExplorerSortOverrides>
+<FormLibraryExplorerCountType>0</FormLibraryExplorerCountType>
+<FormLibraryExplorerSTF>false</FormLibraryExplorerSTF>
+<THE_PanelHeight>0</THE_PanelHeight>
+<THE_TemplateName>Genres</THE_TemplateName>
+<THE_ShowCount>false</THE_ShowCount>
+<THE_ExpandedNodes>
+</THE_ExpandedNodes>
+<THE_ShowFinder>false</THE_ShowFinder>
+<FM_PanelHeight>0</FM_PanelHeight>
+<FormNowPlayingFollow>false</FormNowPlayingFollow>
+<MP_PictureSize>2</MP_PictureSize>
+<ACP_Source>0</ACP_Source>
+<FormNowPlayingSidebarArtwork2Height>0</FormNowPlayingSidebarArtwork2Height>
+<AP_Height>0</AP_Height>
+<AP_MainPanelHeight>285</AP_MainPanelHeight>
+<ABP_PersonType>32</ABP_PersonType>
+<ABP_Source>0</ABP_Source>
+<ABP_Height>0</ABP_Height>
+<LYP_Source>0</LYP_Source>
+<LYP_Height>0</LYP_Height>
+<LYP_AlwaysCentered>false</LYP_AlwaysCentered>
+<SoundGraphHeight>34</SoundGraphHeight>
+<SoundGraphCount>1</SoundGraphCount>
+<FormNowPlayingSidebarArtworkHeight>395</FormNowPlayingSidebarArtworkHeight>
+<TIP_FloatHeight>0</TIP_FloatHeight>
+<TIP_NowPlayHeight>0</TIP_NowPlayHeight>
+<TIP_Source>0</TIP_Source>
+<FormNowPlayingArtwork>TextAboveImage</FormNowPlayingArtwork>
+<FormNowPlayingArtworkSize>0</FormNowPlayingArtworkSize>
+<FormNowPlayingTrackInfoLine0a>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</FormNowPlayingTrackInfoLine0a>
+<FormNowPlayingTrackInfoMax0>1</FormNowPlayingTrackInfoMax0>
+<FormNowPlayingTrackInfoLine0b>
+ <NamingRule>
+  <Field>32</Field>
+  <Text />
+ </NamingRule>
+</FormNowPlayingTrackInfoLine0b>
+<FormNowPlayingTrackInfoMax1>1</FormNowPlayingTrackInfoMax1>
+<FormNowPlayingTrackInfoLine1>
+ <NamingRule>
+  <Field>30</Field>
+  <Text />
+ </NamingRule>
+</FormNowPlayingTrackInfoLine1>
+<FormNowPlayingTrackInfoMax2>1</FormNowPlayingTrackInfoMax2>
+<FormNowPlayingTrackInfoLine2>
+ <NamingRule>
+  <Field>88</Field>
+  <Text />
+ </NamingRule>
+</FormNowPlayingTrackInfoLine2>
+<FormNowPlayingTrackInfoMax3>1</FormNowPlayingTrackInfoMax3>
+<FormNowPlayingTrackInfoMax4>1</FormNowPlayingTrackInfoMax4>
+<FormNowPlayingTrackInfoMax5>1</FormNowPlayingTrackInfoMax5>
+<FormNowPlayingTrackInfoMax6>1</FormNowPlayingTrackInfoMax6>
+<FormNowPlayingTrackRating>false</FormNowPlayingTrackRating>
+<FormNowPlayingTrackLove>false</FormNowPlayingTrackLove>
+<FormNowPlayingPDF>false</FormNowPlayingPDF>
+<FormNowPlayingTrackUrl>false</FormNowPlayingTrackUrl>
+<FormNowPlayingTrackInfoExtended>true</FormNowPlayingTrackInfoExtended>
+<LinkToFilter>false</LinkToFilter>
+<FormNowPlayingSidebarArtworkHeight2>395</FormNowPlayingSidebarArtworkHeight2>
+<TIP_FloatHeight2>0</TIP_FloatHeight2>
+<TIP_NowPlayHeight2>0</TIP_NowPlayHeight2>
+<TIP_Source2>0</TIP_Source2>
+<FormNowPlayingArtwork2>Overlay</FormNowPlayingArtwork2>
+<FormNowPlayingArtworkSize2>0</FormNowPlayingArtworkSize2>
+<FormNowPlaying2TrackInfoMax0>1</FormNowPlaying2TrackInfoMax0>
+<FormNowPlaying2TrackInfoMax1>1</FormNowPlaying2TrackInfoMax1>
+<FormNowPlaying2TrackInfoMax2>1</FormNowPlaying2TrackInfoMax2>
+<FormNowPlaying2TrackInfoMax3>1</FormNowPlaying2TrackInfoMax3>
+<FormNowPlaying2TrackInfoMax4>1</FormNowPlaying2TrackInfoMax4>
+<FormNowPlaying2TrackInfoMax5>1</FormNowPlaying2TrackInfoMax5>
+<FormNowPlaying2TrackInfoMax6>1</FormNowPlaying2TrackInfoMax6>
+<FormNowPlaying2TrackRating>false</FormNowPlaying2TrackRating>
+<FormNowPlaying2TrackLove>false</FormNowPlaying2TrackLove>
+<FormNowPlaying2PDF>false</FormNowPlaying2PDF>
+<FormNowPlaying2TrackUrl>false</FormNowPlaying2TrackUrl>
+<FormNowPlaying2TrackInfoExtended>false</FormNowPlaying2TrackInfoExtended>
+<LinkToFilter2>false</LinkToFilter2>
+<NavigatorArtworkTracksHeight>0</NavigatorArtworkTracksHeight>
+<NavigatorArtworkTracksWidth>0</NavigatorArtworkTracksWidth>
+<AP_DrillDown>1</AP_DrillDown>
+<AP_ArtDrillDown>1</AP_ArtDrillDown>
+<AP_ArtDrillDownGrouping>0</AP_ArtDrillDownGrouping>
+<FormNowPlayingShowTrackFinder>false</FormNowPlayingShowTrackFinder>
+<FormNowPlayingPanelLayout>3</FormNowPlayingPanelLayout>
+<PT_ShowUpcoming>false</PT_ShowUpcoming>
+<FormNowPlayingHighlight>false</FormNowPlayingHighlight>
+<FormNowPlayingSidebarFileListHeight>121</FormNowPlayingSidebarFileListHeight>
+<PT_ThumbSize>2</PT_ThumbSize>
+<NowPlayingThumbFields0>65</NowPlayingThumbFields0>
+<NowPlayingThumbContrast0>100</NowPlayingThumbContrast0>
+<PT_ThumbFieldsR0>16</PT_ThumbFieldsR0>
+<PT_ThumbContrastR0>100</PT_ThumbContrastR0>
+<NowPlayingThumbFields1>32</NowPlayingThumbFields1>
+<NowPlayingThumbContrast1>40</NowPlayingThumbContrast1>
+<PT_ThumbFieldsR1>0</PT_ThumbFieldsR1>
+<PT_ThumbContrastR1>0</PT_ThumbContrastR1>
+<NowPlayingThumbFields2>0</NowPlayingThumbFields2>
+<NowPlayingThumbContrast2>0</NowPlayingThumbContrast2>
+<PT_ThumbFieldsR2>0</PT_ThumbFieldsR2>
+<PT_ThumbContrastR2>0</PT_ThumbContrastR2>
+<FormNowPlayingSidebarFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>78</Code>
+  <Width>25</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+</FormNowPlayingSidebarFields>
+<FormNowPlayingSidebarFieldsAlbTr>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>78</Code>
+  <Width>25</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+</FormNowPlayingSidebarFieldsAlbTr>
+<FormNowPlayingBottomPanelHeight>150</FormNowPlayingBottomPanelHeight>
+<FormNowPlayingBottomPanelFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>78</Code>
+  <Width>25</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>30</Code>
+  <Width>110</Width>
+ </MediaField>
+ <MediaField>
+  <Code>53</Code>
+  <Width>40</Width>
+ </MediaField>
+ <MediaField>
+  <Code>59</Code>
+  <Width>130</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</FormNowPlayingBottomPanelFields>
+<FormNowPlayingBottomPanelAlbTr>
+ <MediaField>
+  <Code>40</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>53</Code>
+  <Width>40</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>75</Code>
+  <Width>75</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</FormNowPlayingBottomPanelAlbTr>
+<FormNowPlayingWindowFields>
+ <MediaField>
+  <Code>20</Code>
+  <Width>16</Width>
+ </MediaField>
+ <MediaField>
+  <Code>78</Code>
+  <Width>25</Width>
+ </MediaField>
+ <MediaField>
+  <Code>65</Code>
+  <Width>160</Width>
+ </MediaField>
+ <MediaField>
+  <Code>32</Code>
+  <Width>120</Width>
+ </MediaField>
+ <MediaField>
+  <Code>16</Code>
+  <Width>45</Width>
+ </MediaField>
+</FormNowPlayingWindowFields>
+<PlayerSidebarPlayerHidePB>false</PlayerSidebarPlayerHidePB>
+<SBP_HideText>false</SBP_HideText>
+<SBP_ShowPlayDur>false</SBP_ShowPlayDur>
+<PlayerSidebarPlayerShowAll2>false</PlayerSidebarPlayerShowAll2>
+<NPB_Height>175</NPB_Height>
+<NPB_DefaultTab>0</NPB_DefaultTab>
+<NPB_AutoColor>true</NPB_AutoColor>
+<TrackAndArtistShowLyricsBottom>true</TrackAndArtistShowLyricsBottom>
+<NPB_ShowArtist>false</NPB_ShowArtist>
+<NavigatorQuickBrowseOrientation>0</NavigatorQuickBrowseOrientation>
+<NavigatorQuickBrowseHeight>0</NavigatorQuickBrowseHeight>
+<NavigatorQuickBrowseWidth>0</NavigatorQuickBrowseWidth>
+<CB_PanelWidthSbS>0</CB_PanelWidthSbS>
+<NavigatorQuickBrowseShowCount>false</NavigatorQuickBrowseShowCount>
+<NavigatorQuickBrowseVisibleNotPlaylists>false</NavigatorQuickBrowseVisibleNotPlaylists>
+<NavigatorTrackBrowserPrimaryFilter>59</NavigatorTrackBrowserPrimaryFilter>
+<NavigatorTrackBrowserPrimary2Filter>32</NavigatorTrackBrowserPrimary2Filter>
+<NavigatorTrackBrowserSecondaryFilter>30</NavigatorTrackBrowserSecondaryFilter>
+<NavigatorTrackBrowserTertiaryFilter>0</NavigatorTrackBrowserTertiaryFilter>
+<NavigatorTrackBrowser4Filter>0</NavigatorTrackBrowser4Filter>
+<NavigatorTrackBrowser5Filter>0</NavigatorTrackBrowser5Filter>
+<NavigatorTrackBrowser6Filter>0</NavigatorTrackBrowser6Filter>
+<NavigatorTrackBrowser7Filter>0</NavigatorTrackBrowser7Filter>
+<NavigatorAzOrientation>0</NavigatorAzOrientation>
+<NavigatorAzMultiLetter>false</NavigatorAzMultiLetter>
+<SpectrumHeight>34</SpectrumHeight>
+<SpectrumType>1</SpectrumType>
+<VIS_Height>0</VIS_Height>
+<NavigatorVisualiserId>E:\Setups\MusicBeePortable_3_6\MusicBee\BBPlugin\Interference.dll</NavigatorVisualiserId>
+<LayoutVisualiserStartup>0</LayoutVisualiserStartup>
+<LayoutVisualiserFullScreenDock>4</LayoutVisualiserFullScreenDock>
+<VV_Type>0</VV_Type>
+<TAG_PanelCollapsed>false</TAG_PanelCollapsed>
+<TAG_Source>1</TAG_Source>
+<TAG_LastPanel>0</TAG_LastPanel>
+<TAG_LastIndex>0</TAG_LastIndex>
+<RadioFoldersPanelWidth>0</RadioFoldersPanelWidth>
+<RadioManualSort>false</RadioManualSort>
+<RadioThumbsLayout>false</RadioThumbsLayout>
+<StationDirectoryHeight>280</StationDirectoryHeight>
+<HideRadioDirectory>false</HideRadioDirectory>
+<PresetsFilePath />
+<PP_FoldersHeight>0</PP_FoldersHeight>
+<SubscriptionsHideArtwork>false</SubscriptionsHideArtwork>
+<SubscriptionsBrowserWidth>285</SubscriptionsBrowserWidth>
+<PodcastInfoHeight>100</PodcastInfoHeight>
+<PP_ShowUnplayed>false</PP_ShowUnplayed>
+<PP_ShowLoved>false</PP_ShowLoved>
+<MEX_HideArtistStats>false</MEX_HideArtistStats>
+<MEX_FilterPanelWidth>0</MEX_FilterPanelWidth>
+<MEX_FilterPanelHide>false</MEX_FilterPanelHide>
+<MEX_FilterField>31</MEX_FilterField>
+<MEX_FilterThumbShow>true</MEX_FilterThumbShow>
+<MEX_FilterSort>0</MEX_FilterSort>
+<MEX_FilterGroupBy>0</MEX_FilterGroupBy>
+<MEX_FilterGroupByFirstLetter>false</MEX_FilterGroupByFirstLetter>
+<MEX_TopTracksPanelWidth>0</MEX_TopTracksPanelWidth>
+<MEX_TopTacksHide>false</MEX_TopTacksHide>
+<MEX_TopTracksTitleField>65</MEX_TopTracksTitleField>
+<MEX_TopTracksSortBy>14</MEX_TopTracksSortBy>
+<MEX_Links>
+ <int>59</int>
+ <int>105</int>
+</MEX_Links>
+<MEX_AlbumPanelField0>30</MEX_AlbumPanelField0>
+<MEX_AlbumPanelContrast0>100</MEX_AlbumPanelContrast0>
+<MEX_AlbumPanelField1>35</MEX_AlbumPanelField1>
+<MEX_AlbumPanelContrast1>40</MEX_AlbumPanelContrast1>
+<MEX_AlbumPanelField2>0</MEX_AlbumPanelField2>
+<MEX_AlbumPanelContrast2>0</MEX_AlbumPanelContrast2>
+<MEX_AlbumPanelField3>0</MEX_AlbumPanelField3>
+<MEX_AlbumPanelContrast3>0</MEX_AlbumPanelContrast3>
+<MEX_AlbSort>1</MEX_AlbSort>
+<MEX_AlbGroupBy>0</MEX_AlbGroupBy>
+<MEX_AlbGroupByCompressed>false</MEX_AlbGroupByCompressed>
+<FormCompactCustomLayoutPos>
+ <X>0</X>
+ <Y>0</Y>
+</FormCompactCustomLayoutPos>
+<FormCompactCustomLayoutSize>
+ <Width>0</Width>
+ <Height>0</Height>
+</FormCompactCustomLayoutSize>
+<CompactSplitterAdjustment>0</CompactSplitterAdjustment>
+<CompactOpacity>0</CompactOpacity>
+<CP_Maximise>false</CP_Maximise>
+<WindowAlwaysOnTop>false</WindowAlwaysOnTop>
+<CompactMinimiseTo>0</CompactMinimiseTo>
+<CompactShowArtistInBar>false</CompactShowArtistInBar>
+<CP_PlayerAutoColor>true</CP_PlayerAutoColor>
+<CompactPlayerTrackRating>false</CompactPlayerTrackRating>
+<CompactPlayerLoveRating>false</CompactPlayerLoveRating>
+<CompactProgressBarType>1</CompactProgressBarType>
+<CP_BackFeature>1</CP_BackFeature>
+<CP_Visualiser>true</CP_Visualiser>
+<CP_CoverSize>2</CP_CoverSize>
+<CP_ListTyp>3</CP_ListTyp>
+<CP_LeftMain>0</CP_LeftMain>
+<CP_Main>0</CP_Main>
+<CP_RightSbar>0</CP_RightSbar>
+<CompactShowNowPlaying>true</CompactShowNowPlaying>
+<CompactShowLyrics>true</CompactShowLyrics>
+<CompactShowArtistBio>false</CompactShowArtistBio>
+<CP_ControlsOverly>true</CP_ControlsOverly>
+<CP3_TrackInfoLine0a>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</CP3_TrackInfoLine0a>
+<CP3_LineFont0>
+ <FontFamily>Segoe UI</FontFamily>
+ <Size>10.5</Size>
+ <Style>Regular</Style>
+</CP3_LineFont0>
+<CP3_Contrast0>70</CP3_Contrast0>
+<CP3_TrackInfoMax0>1</CP3_TrackInfoMax0>
+<CP3_TrackInfoLine0b>
+ <NamingRule>
+  <Field>32</Field>
+  <Text />
+ </NamingRule>
+</CP3_TrackInfoLine0b>
+<CP3_LineFont1>
+ <FontFamily>Segoe UI</FontFamily>
+ <Size>8.25</Size>
+ <Style>Bold</Style>
+</CP3_LineFont1>
+<CP3_Contrast1>100</CP3_Contrast1>
+<CP3_TrackInfoMax1>1</CP3_TrackInfoMax1>
+<CP3_TrackInfoLine1>
+ <NamingRule>
+  <Field>107</Field>
+  <Text />
+ </NamingRule>
+</CP3_TrackInfoLine1>
+<CP3_LineFont2>
+ <FontFamily>Segoe UI</FontFamily>
+ <Size>8.25</Size>
+ <Style>Regular</Style>
+</CP3_LineFont2>
+<CP3_Contrast2>70</CP3_Contrast2>
+<CP3_TrackInfoMax2>1</CP3_TrackInfoMax2>
+<CP3_TrackInfoMax3>1</CP3_TrackInfoMax3>
+<CP3_TrackInfoMax4>1</CP3_TrackInfoMax4>
+<CP3_TrackInfoMax5>1</CP3_TrackInfoMax5>
+<CP3_TrackInfoMax6>1</CP3_TrackInfoMax6>
+<CP3_TrackRating>false</CP3_TrackRating>
+<CP3_TrackLove>false</CP3_TrackLove>
+<CP3_PDF>false</CP3_PDF>
+<CP3_TrackUrl>false</CP3_TrackUrl>
+<CP3_TrackInfoExtended>false</CP3_TrackInfoExtended>
+<CP_ShowTrackText>false</CP_ShowTrackText>
+<CP_LyricsHeight>0</CP_LyricsHeight>
+<CP_ArtistBioHeight>0</CP_ArtistBioHeight>
+<CP_PlayTracksHeight>0</CP_PlayTracksHeight>
+<CP_TracksInfoPanelHeight>0</CP_TracksInfoPanelHeight>
+<CP_ShowUpcomingTracks>false</CP_ShowUpcomingTracks>
+<PlayerMiniPlayerDock>0</PlayerMiniPlayerDock>
+<PlayerMiniPlayerTopMost>false</PlayerMiniPlayerTopMost>
+<MP_Opacity>0</MP_Opacity>
+<PlayerMiniPlayerMod>true</PlayerMiniPlayerMod>
+<Mini_WideWhenDocked>false</Mini_WideWhenDocked>
+<MiniPlayerFields0>65</MiniPlayerFields0>
+<MiniPlayerContrast0>100</MiniPlayerContrast0>
+<MiniPlayerFields1>32</MiniPlayerFields1>
+<MiniPlayerContrast1>40</MiniPlayerContrast1>
+<MiniPlayerFields2>0</MiniPlayerFields2>
+<MiniPlayerContrast2>0</MiniPlayerContrast2>
+<MiniPlayerFields3>0</MiniPlayerFields3>
+<MiniPlayerContrast3>0</MiniPlayerContrast3>
+<MP_LargeArtwork>true</MP_LargeArtwork>
+<PlayerMiniPlayerShowRatings>false</PlayerMiniPlayerShowRatings>
+<PlayerMiniPlayerShowLastFmLove>false</PlayerMiniPlayerShowLastFmLove>
+<PlayerMiniPlayerShowSpectrum>true</PlayerMiniPlayerShowSpectrum>
+<PlayerMiniPlayerHideTaskbar>false</PlayerMiniPlayerHideTaskbar>
+<MP_PlaylistType>0</MP_PlaylistType>
+<MP_ShowUpcomingTracks>false</MP_ShowUpcomingTracks>
+<ThumbPlayerShowStopButton>true</ThumbPlayerShowStopButton>
+<ThumbPlayerShowRatingButtons>false</ThumbPlayerShowRatingButtons>
+<ThumbPlayerShowLastFmLoveButton>false</ThumbPlayerShowLastFmLoveButton>
+<ThumbPlayerShowVolumeButtons>false</ThumbPlayerShowVolumeButtons>
+<ThumbPlayerShowMuteButton>false</ThumbPlayerShowMuteButton>
+<ThumbPlayerShowShuffleButton>false</ThumbPlayerShowShuffleButton>
+<ThumbPlayerShowArtworkOnly>false</ThumbPlayerShowArtworkOnly>
+<GUI_DisableTaskbarPreview>false</GUI_DisableTaskbarPreview>
+<MP_AutoColor>true</MP_AutoColor>
+<MP_ProgBarType>1</MP_ProgBarType>
+<FormNowPlayingTextScroll>true</FormNowPlayingTextScroll>
+<MP_MultiLine>false</MP_MultiLine>
+<MP_Line1>
+ <NamingRule>
+  <Field>39</Field>
+  <Text />
+ </NamingRule>
+</MP_Line1>
+<MP_Line2>
+ <NamingRule>
+  <Field>30</Field>
+  <Text />
+ </NamingRule>
+</MP_Line2>
+<FormPlayerEnlargeProgressBar>false</FormPlayerEnlargeProgressBar>
+<MP_MetroButtons>false</MP_MetroButtons>
+<MP_ShowAlbum>false</MP_ShowAlbum>
+<MP_ShowStopButton>false</MP_ShowStopButton>
+<MP_ShowLFM>true</MP_ShowLFM>
+<FormNowPlayingHideRating>false</FormNowPlayingHideRating>
+<FormNowPlayingShowLoveRating>false</FormNowPlayingShowLoveRating>
+<FormPlayerShowFft>true</FormPlayerShowFft>
+<NP_DefaultTab>1</NP_DefaultTab>
+<NP_AutoColor>true</NP_AutoColor>
+<NP_BackFeature>1</NP_BackFeature>
+<NP_PictureType>9</NP_PictureType>
+<NP_CoverSize>2</NP_CoverSize>
+<NP_ShowVisualisr>true</NP_ShowVisualisr>
+<NP_ShowWaveBar>false</NP_ShowWaveBar>
+<NP_ListTyp>3</NP_ListTyp>
+<NP_PlayListTyp>0</NP_PlayListTyp>
+<NP_ShowTrakDet>true</NP_ShowTrakDet>
+<NP_LeftMain>19</NP_LeftMain>
+<NP_Main>0</NP_Main>
+<NP_RightMain>0</NP_RightMain>
+<NP_RightSbar>17</NP_RightSbar>
+<NP_RightPanOverly>false</NP_RightPanOverly>
+<NP_SBPlayerDock>0</NP_SBPlayerDock>
+<NP3_TrackInfoLine0a>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</NP3_TrackInfoLine0a>
+<NP3_LineFont0>
+ <FontFamily>Segoe UI</FontFamily>
+ <Size>10.5</Size>
+ <Style>Regular</Style>
+</NP3_LineFont0>
+<NP3_Contrast0>70</NP3_Contrast0>
+<NP3_TrackInfoMax0>1</NP3_TrackInfoMax0>
+<NP3_TrackInfoLine0b>
+ <NamingRule>
+  <Field>32</Field>
+  <Text />
+ </NamingRule>
+</NP3_TrackInfoLine0b>
+<NP3_LineFont1>
+ <FontFamily>Segoe UI</FontFamily>
+ <Size>8.25</Size>
+ <Style>Bold</Style>
+</NP3_LineFont1>
+<NP3_Contrast1>100</NP3_Contrast1>
+<NP3_TrackInfoMax1>1</NP3_TrackInfoMax1>
+<NP3_TrackInfoLine1>
+ <NamingRule>
+  <Field>107</Field>
+  <Text />
+ </NamingRule>
+</NP3_TrackInfoLine1>
+<NP3_LineFont2>
+ <FontFamily>Segoe UI</FontFamily>
+ <Size>8.25</Size>
+ <Style>Regular</Style>
+</NP3_LineFont2>
+<NP3_Contrast2>70</NP3_Contrast2>
+<NP3_TrackInfoMax2>1</NP3_TrackInfoMax2>
+<NP3_TrackInfoMax3>1</NP3_TrackInfoMax3>
+<NP3_TrackInfoMax4>1</NP3_TrackInfoMax4>
+<NP3_TrackInfoMax5>1</NP3_TrackInfoMax5>
+<NP3_TrackInfoMax6>1</NP3_TrackInfoMax6>
+<NP3_TrackRating>false</NP3_TrackRating>
+<NP3_TrackLove>false</NP3_TrackLove>
+<NP3_PDF>false</NP3_PDF>
+<NP3_TrackUrl>false</NP3_TrackUrl>
+<NP3_TrackInfoExtended>false</NP3_TrackInfoExtended>
+<NP_RightSBWidth>0</NP_RightSBWidth>
+<NP_HideRightSB>false</NP_HideRightSB>
+<NP_HideStatusBar>true</NP_HideStatusBar>
+<NP_HideMainPlayer>false</NP_HideMainPlayer>
+<NP_PlayingTrHeight>150</NP_PlayingTrHeight>
+<NP_ShowUpcomingTracks>false</NP_ShowUpcomingTracks>
+<NP_LargeAlbumUpgraded>true</NP_LargeAlbumUpgraded>
+<CompactRotateArtistPictures>true</CompactRotateArtistPictures>
+<PM_PanelHeight>0</PM_PanelHeight>
+<PM_HeaderHidden>false</PM_HeaderHidden>
+<PM_ShowHeader>true</PM_ShowHeader>
+<PM_AutoColor>true</PM_AutoColor>
+<PM_ShowTrackFinder>false</PM_ShowTrackFinder>
+<NowPlayingContentTab>1</NowPlayingContentTab>
+<NPA_Grouping>3</NPA_Grouping>
+<NPA_ArtistSubType>256</NPA_ArtistSubType>
+<NPA_GenreSubType>3</NPA_GenreSubType>
+<NowPlayingAssistantKeepOpen>false</NowPlayingAssistantKeepOpen>
+<FormNotificationLocation>
+ <X>1616</X>
+ <Y>950</Y>
+</FormNotificationLocation>
+<NotifyLayoutSize>
+ <Width>0</Width>
+ <Height>0</Height>
+</NotifyLayoutSize>
+<PlayerPopupOpacity>1</PlayerPopupOpacity>
+<NotifyShowPosition>false</NotifyShowPosition>
+<NotifyLayoutLine1>65</NotifyLayoutLine1>
+<NotifyLayoutLine2>32</NotifyLayoutLine2>
+<NotifyLayoutLine3>107</NotifyLayoutLine3>
+<NotifyLayoutLine4>0</NotifyLayoutLine4>
+<NotifyLayoutShowFileProperties>false</NotifyLayoutShowFileProperties>
+<NotifyShowTrackRating>false</NotifyShowTrackRating>
+<NotifyShowLastFmLove>false</NotifyShowLastFmLove>
+<ShowPanelFlipButtons>false</ShowPanelFlipButtons>
+<SB_ShowStats>true</SB_ShowStats>
+<NavigatorSummaryInfoRounded>false</NavigatorSummaryInfoRounded>
+<ShowPlayTimeRemaining>false</ShowPlayTimeRemaining>
+<NavigatorLastCopyToDirectory>C:\Users\Sanemi\Music\</NavigatorLastCopyToDirectory>
+<OrganisationScanOnStartup>false</OrganisationScanOnStartup>
+<OrganisationAddNewImportedFilesToInbox>false</OrganisationAddNewImportedFilesToInbox>
+<OrganisationUseDefaultFolderRules>true</OrganisationUseDefaultFolderRules>
+<OrganisationUseDefaultFilenameRules>true</OrganisationUseDefaultFilenameRules>
+<OrganisationDefaultFilenameRules>
+ <NamingRule>
+  <Field>31</Field>
+  <Text>\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>30</Field>
+  <Text>\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>53</Field>
+  <Text> </Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</OrganisationDefaultFilenameRules>
+<OrganisationUseABFolderRules>true</OrganisationUseABFolderRules>
+<OrganisationUseABFilenameRules>true</OrganisationUseABFilenameRules>
+<OrganisationABFilenameRules>
+ <NamingRule>
+  <Field>30</Field>
+  <Text> - </Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>32</Field>
+  <Text>\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>53</Field>
+  <Text> </Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</OrganisationABFilenameRules>
+<OrganisationUseVFolderRules>true</OrganisationUseVFolderRules>
+<OrganisationUseVFilenameRules>true</OrganisationUseVFilenameRules>
+<OrganisationVFilenameRules>
+ <NamingRule>
+  <Field>30</Field>
+  <Text>\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</OrganisationVFilenameRules>
+<OrganisationInPlaceFilenameRules>
+ <NamingRule>
+  <Field>32</Field>
+  <Text> - </Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</OrganisationInPlaceFilenameRules>
+<OrganisationAddManualOrganisedToLibrary>false</OrganisationAddManualOrganisedToLibrary>
+<OrganisationImportPlaylists>false</OrganisationImportPlaylists>
+<OrganisationImportVideoFiles>false</OrganisationImportVideoFiles>
+<OrganisationRestrictTypes>
+</OrganisationRestrictTypes>
+<OrganisationDontReorganiseTagsMissing>true</OrganisationDontReorganiseTagsMissing>
+<OrganisationCleanupFolders>false</OrganisationCleanupFolders>
+<OrganisationBackup>
+</OrganisationBackup>
+<SystemSwitchCompact>0</SystemSwitchCompact>
+<PlayerStartupResumePrevious>false</PlayerStartupResumePrevious>
+<PlayerStartupResumePosition>false</PlayerStartupResumePosition>
+<PlayerSavedState>0</PlayerSavedState>
+<FormNowPlayingFollowCursor>false</FormNowPlayingFollowCursor>
+<PlaylistsRememberLastPlayedTrack>false</PlaylistsRememberLastPlayedTrack>
+<PlayerSilenceSync>false</PlayerSilenceSync>
+<PlayerBufferMs>0</PlayerBufferMs>
+<PlayerLoadEntireFile>false</PlayerLoadEntireFile>
+<ShowClickToPlayButton>false</ShowClickToPlayButton>
+<PlayerVolume>0.5</PlayerVolume>
+<PlayerLogarithmicVolume>false</PlayerLogarithmicVolume>
+<PlayCountSkipPercent>0</PlayCountSkipPercent>
+<PlayCountSkipSecs>20</PlayCountSkipSecs>
+<PlayCountPlayPercent>50</PlayCountPlayPercent>
+<PlayCountPlaySecs>240</PlayCountPlaySecs>
+<WebLastFmEnabled>false</WebLastFmEnabled>
+<WebLastFmExcludeDevices>false</WebLastFmExcludeDevices>
+<WebLastFmExcludePodcasts>true</WebLastFmExcludePodcasts>
+<PlayerOriginContentType>0</PlayerOriginContentType>
+<PlayerLastTrackIndex>0</PlayerLastTrackIndex>
+<PlayerSavedTrackPosition>0</PlayerSavedTrackPosition>
+<PlayerSavedQueue>
+</PlayerSavedQueue>
+<PlayerSavedSkipList>
+</PlayerSavedSkipList>
+<PlayerNowPlayingWhenStoppedAction>0</PlayerNowPlayingWhenStoppedAction>
+<PlayerNowPlayingWhenStartedAction>0</PlayerNowPlayingWhenStartedAction>
+<CoversPlayDefaultSettings>false</CoversPlayDefaultSettings>
+<PlayerNowPlayingPlayNowAction>0</PlayerNowPlayingPlayNowAction>
+<PlayerShuffleEnabled>false</PlayerShuffleEnabled>
+<PlayerShuffleMode>1</PlayerShuffleMode>
+<PlayerShuffleSameArtistBias>0</PlayerShuffleSameArtistBias>
+<PlayerShuffleBy>0</PlayerShuffleBy>
+<PlayerShuffleInAlbum>false</PlayerShuffleInAlbum>
+<PlayerRepeatMode>0</PlayerRepeatMode>
+<FormNowPlayingClearList>false</FormNowPlayingClearList>
+<FormNowPlayingRetain>0</FormNowPlayingRetain>
+<PlayerPopupEnabled>false</PlayerPopupEnabled>
+<PlayerPopupDuration>4000</PlayerPopupDuration>
+<PlayerPopupWhenInactiveOnly>true</PlayerPopupWhenInactiveOnly>
+<PlayerPopupAtEndDuration>0</PlayerPopupAtEndDuration>
+<PlayerPopupOnMediaKey>false</PlayerPopupOnMediaKey>
+<PlayerResampleRate>0</PlayerResampleRate>
+<PlayerUpmixChannelCount>0</PlayerUpmixChannelCount>
+<PlayerTrimSilence>false</PlayerTrimSilence>
+<PlayerAddSilence>0</PlayerAddSilence>
+<PlayerNormaliseStreamVolume>true</PlayerNormaliseStreamVolume>
+<PlayerEqualiserEnabled>false</PlayerEqualiserEnabled>
+<PlayerEqualiserName>Manual</PlayerEqualiserName>
+<PlayerManualEqualiser>
+ <Name>Manual</Name>
+ <PreAmpLevel>1</PreAmpLevel>
+ <GainDb>
+  <float>0</float>
+  <float>0</float>
+  <float>0</float>
+  <float>0</float>
+  <float>0</float>
+  <float>0</float>
+  <float>0</float>
+  <float>0</float>
+  <float>0</float>
+  <float>0</float>
+ </GainDb>
+</PlayerManualEqualiser>
+<PlayerTempo>0</PlayerTempo>
+<PlayerTempoPreset>0</PlayerTempoPreset>
+<PlayerRate>0</PlayerRate>
+<PlayerPitch>0</PlayerPitch>
+<PlayerDspState>
+</PlayerDspState>
+<PlayerDspLastActive>
+</PlayerDspLastActive>
+<PlayerStereoBalance>0</PlayerStereoBalance>
+<PlayerReplayGainActive>true</PlayerReplayGainActive>
+<PlayerReplayGainType>2</PlayerReplayGainType>
+<PlayerCrossfadeEnabled>false</PlayerCrossfadeEnabled>
+<PlayerCrossfadePeriod>5000</PlayerCrossfadePeriod>
+<PlayerCrossfadeExcludeAlbums>true</PlayerCrossfadeExcludeAlbums>
+<PlayerCrossfadeSkipped>false</PlayerCrossfadeSkipped>
+<PlayerFadeInPeriod>500</PlayerFadeInPeriod>
+<PlayerFadePlayerControls>true</PlayerFadePlayerControls>
+<PlayerSoundEnhancerLevel>2</PlayerSoundEnhancerLevel>
+<PlayerOutputApi>1</PlayerOutputApi>
+<PlayerSoundDeviceNumber>-1</PlayerSoundDeviceNumber>
+<PlayerDSInit>0</PlayerDSInit>
+<PlayerDS32Bit>true</PlayerDS32Bit>
+<PlayerAsioDsd>0</PlayerAsioDsd>
+<PlayerWasapiEventMode>false</PlayerWasapiEventMode>
+<PlayerWasapiEventModeBuffer>0</PlayerWasapiEventModeBuffer>
+<PlayerVideoWin>false</PlayerVideoWin>
+<AutoDjEnabled>false</AutoDjEnabled>
+<AutoDjErrorInitialPlaylistSize>15</AutoDjErrorInitialPlaylistSize>
+<AutoDjUpcomingTrackCount>5</AutoDjUpcomingTrackCount>
+<AutoDjFileSource>1</AutoDjFileSource>
+<AutoDjLibrarySources>1</AutoDjLibrarySources>
+<AutoDjMinimumArtistGap>0</AutoDjMinimumArtistGap>
+<AutoDjShuffleMode>1</AutoDjShuffleMode>
+<AutoDjShuffleBy>0</AutoDjShuffleBy>
+<AutoDjSimilarityEnabled>false</AutoDjSimilarityEnabled>
+<AutoDjSimilarityType>0</AutoDjSimilarityType>
+<AutoDjMinimumArtistSimilarityRating>0.25</AutoDjMinimumArtistSimilarityRating>
+<AutoDjSameArtistBias>0</AutoDjSameArtistBias>
+<AutoDjApplyFilter>false</AutoDjApplyFilter>
+<WebLastFmSyncLovedTracks>false</WebLastFmSyncLovedTracks>
+<WebLastFmSyncPlayCount>false</WebLastFmSyncPlayCount>
+<FormNowPlayingCdArtDisabled>true</FormNowPlayingCdArtDisabled>
+<FormNowPlayingCdArtLaunch>false</FormNowPlayingCdArtLaunch>
+<ServiceUpcomingReleasesDayOffset>0</ServiceUpcomingReleasesDayOffset>
+<ServiceUpcomingReleasesFilterArtists>false</ServiceUpcomingReleasesFilterArtists>
+<ServiceUpcomingReleasesDescending>false</ServiceUpcomingReleasesDescending>
+<MiniLyricsSearchEmbeded>false</MiniLyricsSearchEmbeded>
+<MiniLyricsSearchDownloaded>false</MiniLyricsSearchDownloaded>
+<TagPreserveTimestamp>false</TagPreserveTimestamp>
+<TagSaveMp3TagsId3v1>true</TagSaveMp3TagsId3v1>
+<TagSaveMp3TagsAsciiOnly>false</TagSaveMp3TagsAsciiOnly>
+<TagSaveMp3TagsId3v2MinorVersion>3</TagSaveMp3TagsId3v2MinorVersion>
+<TagUseCodePageForWaveTags>false</TagUseCodePageForWaveTags>
+<TagStoreRatings>true</TagStoreRatings>
+<TagAutoCalcAlbumRatings>false</TagAutoCalcAlbumRatings>
+<TagAutoCalcAlbumExZeroRating>false</TagAutoCalcAlbumExZeroRating>
+<TagDisableHalfRatings>false</TagDisableHalfRatings>
+<TagFormatDiscNo>0</TagFormatDiscNo>
+<TagFormatDiscAndTrackNoSeparator>-</TagFormatDiscAndTrackNoSeparator>
+<TagFormatTrackNo>00</TagFormatTrackNo>
+<TagReplaceBitRateWithEncodingQuality>false</TagReplaceBitRateWithEncodingQuality>
+<AutoTagMetadataProviders>
+ <int>36</int>
+</AutoTagMetadataProviders>
+<TagCustom1Name>Custom1</TagCustom1Name>
+<TagCustom1Order>0</TagCustom1Order>
+<TagVirtual1Id>Virtual1</TagVirtual1Id>
+<TagCustom2Name>Custom2</TagCustom2Name>
+<TagCustom2Order>0</TagCustom2Order>
+<TagVirtual2Id>Virtual2</TagVirtual2Id>
+<TagCustom3Name>Custom3</TagCustom3Name>
+<TagCustom3Order>0</TagCustom3Order>
+<TagVirtual3Id>Virtual3</TagVirtual3Id>
+<TagCustom4Name>Custom4</TagCustom4Name>
+<TagCustom4Order>0</TagCustom4Order>
+<TagVirtual4Id>Virtual4</TagVirtual4Id>
+<TagCustom5Name>Custom5</TagCustom5Name>
+<TagCustom5Order>0</TagCustom5Order>
+<TagVirtual5Id>Virtual5</TagVirtual5Id>
+<TagCustom6Name>Custom6</TagCustom6Name>
+<TagCustom6Order>0</TagCustom6Order>
+<TagVirtual6Id>Virtual6</TagVirtual6Id>
+<TagCustom7Name>Custom7</TagCustom7Name>
+<TagCustom7Order>0</TagCustom7Order>
+<TagVirtual7Id>Virtual7</TagVirtual7Id>
+<TagCustom8Name>Custom8</TagCustom8Name>
+<TagCustom8Order>0</TagCustom8Order>
+<TagVirtual8Id>Virtual8</TagVirtual8Id>
+<TagCustom9Name>Custom9</TagCustom9Name>
+<TagCustom9Order>0</TagCustom9Order>
+<TagVirtual9Id>Virtual9</TagVirtual9Id>
+<TagCustom10Name>Custom10</TagCustom10Name>
+<TagCustom10Order>0</TagCustom10Order>
+<TagVirtual10Id>Virtual10</TagVirtual10Id>
+<TagCustom11Name>Custom11</TagCustom11Name>
+<TagCustom11Order>0</TagCustom11Order>
+<TagVirtual11Id>Virtual11</TagVirtual11Id>
+<TagCustom12Name>Custom12</TagCustom12Name>
+<TagCustom12Order>0</TagCustom12Order>
+<TagVirtual12Id>Virtual12</TagVirtual12Id>
+<TagCustom13Name>Custom13</TagCustom13Name>
+<TagCustom13Order>0</TagCustom13Order>
+<TagVirtual13Id>Virtual13</TagVirtual13Id>
+<TagCustom14Name>Custom14</TagCustom14Name>
+<TagCustom14Order>0</TagCustom14Order>
+<TagVirtual14Id>Virtual14</TagVirtual14Id>
+<TagCustom15Name>Custom15</TagCustom15Name>
+<TagCustom15Order>0</TagCustom15Order>
+<TagVirtual15Id>Virtual15</TagVirtual15Id>
+<TagCustom16Name>Custom16</TagCustom16Name>
+<TagCustom16Order>0</TagCustom16Order>
+<TagVirtual16Id>Virtual16</TagVirtual16Id>
+<TagCustom17Name>Custom17</TagCustom17Name>
+<TagCustom17Order>0</TagCustom17Order>
+<TagVirtual17Id>Virtual17</TagVirtual17Id>
+<TagCustom18Name>Custom18</TagCustom18Name>
+<TagCustom18Order>0</TagCustom18Order>
+<TagVirtual18Id>Virtual18</TagVirtual18Id>
+<TagCustom19Name>Custom19</TagCustom19Name>
+<TagCustom19Order>0</TagCustom19Order>
+<TagVirtual19Id>Virtual19</TagVirtual19Id>
+<TagCustom20Name>Custom20</TagCustom20Name>
+<TagCustom20Order>0</TagCustom20Order>
+<TagVirtual20Id>Virtual20</TagVirtual20Id>
+<TagVirtual21Id>Virtual21</TagVirtual21Id>
+<TagVirtual22Id>Virtual22</TagVirtual22Id>
+<TagVirtual23Id>Virtual23</TagVirtual23Id>
+<TagVirtual24Id>Virtual24</TagVirtual24Id>
+<TagVirtual25Id>Virtual25</TagVirtual25Id>
+<TagVirtual26Id>Virtual26</TagVirtual26Id>
+<TagVirtual27Id>Virtual27</TagVirtual27Id>
+<TagVirtual28Id>Virtual28</TagVirtual28Id>
+<TagVirtual29Id>Virtual29</TagVirtual29Id>
+<TagVirtual30Id>Virtual30</TagVirtual30Id>
+<TagVirtual31Id>Virtual31</TagVirtual31Id>
+<TagVirtual32Id>Virtual32</TagVirtual32Id>
+<TagVirtual33Id>Virtual33</TagVirtual33Id>
+<TagVirtual34Id>Virtual34</TagVirtual34Id>
+<TagVirtual35Id>Virtual35</TagVirtual35Id>
+<TagVirtual36Id>Virtual36</TagVirtual36Id>
+<TagVirtual37Id>Virtual37</TagVirtual37Id>
+<TagVirtual38Id>Virtual38</TagVirtual38Id>
+<TagVirtual39Id>Virtual39</TagVirtual39Id>
+<TagVirtual40Id>Virtual40</TagVirtual40Id>
+<TagVirtual41Id>Virtual41</TagVirtual41Id>
+<TagVirtual42Id>Virtual42</TagVirtual42Id>
+<TagVirtual43Id>Virtual43</TagVirtual43Id>
+<TagVirtual44Id>Virtual44</TagVirtual44Id>
+<TagVirtual45Id>Virtual45</TagVirtual45Id>
+<TagVirtual46Id>Virtual46</TagVirtual46Id>
+<TagVirtual47Id>Virtual47</TagVirtual47Id>
+<TagVirtual48Id>Virtual48</TagVirtual48Id>
+<TagVirtual49Id>Virtual49</TagVirtual49Id>
+<TagVirtual50Id>Virtual50</TagVirtual50Id>
+<TagCustomTagNames>
+</TagCustomTagNames>
+<AutoTagSaveReplayGainTags>false</AutoTagSaveReplayGainTags>
+<AutoTagArtworkProviders>
+ <int>39</int>
+ <int>44</int>
+</AutoTagArtworkProviders>
+<AutoTagArtworkMinPictureSize>0</AutoTagArtworkMinPictureSize>
+<AutoTagArtworkMaxPictureSize>0</AutoTagArtworkMaxPictureSize>
+<ArtworkLocationUpgraded>true</ArtworkLocationUpgraded>
+<TagPictureLocations>2</TagPictureLocations>
+<TagArtworkScanFolders>false</TagArtworkScanFolders>
+<TagArtworkNamingRules>
+ <NamingRule>
+  <Field>0</Field>
+  <Text>Cover.*</Text>
+ </NamingRule>
+</TagArtworkNamingRules>
+<TagArtworkScanFilter>
+ <string>Cover.*</string>
+ <string>Artwork.*</string>
+ <string>Front.*</string>
+ <string>Back.*</string>
+ <string>&lt;Filename&gt;.*</string>
+ <string>Embedded</string>
+</TagArtworkScanFilter>
+<TagArtworkPreferFolder>false</TagArtworkPreferFolder>
+<TagArtworkAutoDownload>false</TagArtworkAutoDownload>
+<TagArtworkAutoSaveDownloaded>false</TagArtworkAutoSaveDownloaded>
+<DisableMovieArtworkDownload>false</DisableMovieArtworkDownload>
+<TagArtistArtworkGoogle>true</TagArtistArtworkGoogle>
+<AutoTagLyricProviders>
+ <int>33</int>
+ <int>19</int>
+</AutoTagLyricProviders>
+<TagLyricsAutoDownload>true</TagLyricsAutoDownload>
+<TagLyricsAutoSaveDownloaded>false</TagLyricsAutoSaveDownloaded>
+<TagLyricsLocation>1</TagLyricsLocation>
+<AutoTagIdentifyTrack>false</AutoTagIdentifyTrack>
+<AutoTagFromFilenameTemplate>
+ <NamingRule>
+  <Field>31</Field>
+  <Text>\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>30</Field>
+  <Text>\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>86</Field>
+  <Text> - </Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</AutoTagFromFilenameTemplate>
+<AutoTagRetrieveTags>true</AutoTagRetrieveTags>
+<AutoTagRetrieveArtwork>true</AutoTagRetrieveArtwork>
+<AutoTagRetrieveLyrics>false</AutoTagRetrieveLyrics>
+<AutoTagArtistGenreOnly>false</AutoTagArtistGenreOnly>
+<AutoTagMultiGenreCount>0</AutoTagMultiGenreCount>
+<TagAlbumGroupingExcludeArtist>false</TagAlbumGroupingExcludeArtist>
+<TagAlbumGroupingField1>0</TagAlbumGroupingField1>
+<TagAlbumGroupingField2>0</TagAlbumGroupingField2>
+<NavigatorAlbumGroupByFolder>false</NavigatorAlbumGroupByFolder>
+<NavigatorAlbumGroupByCompilation>true</NavigatorAlbumGroupByCompilation>
+<NavigatorAlbumGroupByCompilationValue>Various Artists</NavigatorAlbumGroupByCompilationValue>
+<FileConverterRemoveOriginal>false</FileConverterRemoveOriginal>
+<OrganisationAddConvertedToInbox>false</OrganisationAddConvertedToInbox>
+<FileConverterOutputToOrigFolder>false</FileConverterOutputToOrigFolder>
+<FileConverterOrganisedFilename>true</FileConverterOrganisedFilename>
+<FileConverterOrganisedFileNaming>
+ <NamingRule>
+  <Field>31</Field>
+  <Text>\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>30</Field>
+  <Text>\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>53</Field>
+  <Text> </Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</FileConverterOrganisedFileNaming>
+<FileConverterSampleRate>0</FileConverterSampleRate>
+<FileConverterAlwaysEmbedArtwork>false</FileConverterAlwaysEmbedArtwork>
+<FileConverterPreservePlayCounts>false</FileConverterPreservePlayCounts>
+<FileConverterAllowTagOnlySynch>false</FileConverterAllowTagOnlySynch>
+<FileConverterTargetCodec>1</FileConverterTargetCodec>
+<FileConverterEncodingCategory>2</FileConverterEncodingCategory>
+<FileConverterLevelVolume>false</FileConverterLevelVolume>
+<FileConverterLevelVolumeType>1</FileConverterLevelVolumeType>
+<FileConverterOverrides>
+</FileConverterOverrides>
+<RipMode>0</RipMode>
+<RipCodec>1</RipCodec>
+<RipEncodingCategory>3</RipEncodingCategory>
+<RipAutoRipOnInsert>false</RipAutoRipOnInsert>
+<RipCalcVolumeLeveling>true</RipCalcVolumeLeveling>
+<RipSearchInternetForArtwork>true</RipSearchInternetForArtwork>
+<RipAddToInbox>false</RipAddToInbox>
+<RipFolderPath />
+<RipSaveIndividualTracks>true</RipSaveIndividualTracks>
+<RipTrackPreGapHandling>0</RipTrackPreGapHandling>
+<RipFilenameTemplate>
+ <NamingRule>
+  <Field>31</Field>
+  <Text>\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>30</Field>
+  <Text>\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>53</Field>
+  <Text> </Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</RipFilenameTemplate>
+<RipAlbumFilenameTemplate>
+ <NamingRule>
+  <Field>31</Field>
+  <Text>\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>30</Field>
+  <Text />
+ </NamingRule>
+</RipAlbumFilenameTemplate>
+<RipEjectCdOnCompletion>true</RipEjectCdOnCompletion>
+<RipPlaySoundOnCompletion>false</RipPlaySoundOnCompletion>
+<BurnSpeedOffset>0</BurnSpeedOffset>
+<BurnDataDisc>false</BurnDataDisc>
+<BurnAudioCdCapacity>0</BurnAudioCdCapacity>
+<BurnNoGap>false</BurnNoGap>
+<BurnLevelVolume>false</BurnLevelVolume>
+<BurnLevelMode>0</BurnLevelMode>
+<BurnMp3Cd>false</BurnMp3Cd>
+<BurnFilenameTemplate>
+ <NamingRule>
+  <Field>0</Field>
+  <Text>Music\</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>0</Field>
+  <Text>-</Text>
+  <Func>$Pad(&lt;Rank&gt;,3)</Func>
+ </NamingRule>
+ <NamingRule>
+  <Field>32</Field>
+  <Text>-</Text>
+ </NamingRule>
+ <NamingRule>
+  <Field>65</Field>
+  <Text />
+ </NamingRule>
+</BurnFilenameTemplate>
+<BurnPlaylistSubFolders>false</BurnPlaylistSubFolders>
+<BurnSaveArtwork>false</BurnSaveArtwork>
+<BurnEjectDisc>false</BurnEjectDisc>
+<BurnPlaySound>false</BurnPlaySound>
+<DevWifiTransfer>false</DevWifiTransfer>
+<Devices>
+</Devices>
+<AlertReplayGainClipping>false</AlertReplayGainClipping>
+<LastReplayGainAdjustment>0</LastReplayGainAdjustment>
+<AutoTagAllowManualLyricsSearch>false</AutoTagAllowManualLyricsSearch>
+<AutoTagReleaseTypeRestrict>false</AutoTagReleaseTypeRestrict>
+<AutoTagReleaseTypeAlbum>true</AutoTagReleaseTypeAlbum>
+<AutoTagReleaseTypeLive>true</AutoTagReleaseTypeLive>
+<AutoTagReleaseTypeRemix>false</AutoTagReleaseTypeRemix>
+<AutoTagReleaseTypeCompilation>false</AutoTagReleaseTypeCompilation>
+<AutoTagAddToLibrary>false</AutoTagAddToLibrary>
+<AutoTagMissingOnly>true</AutoTagMissingOnly>
+<TagAutoNumberTrackCount>true</TagAutoNumberTrackCount>
+<TagAutoNumberTrackNumberPadding>false</TagAutoNumberTrackNumberPadding>
+<TagAutoNumberResetOnDisc>false</TagAutoNumberResetOnDisc>
+<sRpl_SearchField>0</sRpl_SearchField>
+<TagDuplicatesAction>0</TagDuplicatesAction>
+<TagDuplicatesIgnoreApos>false</TagDuplicatesIgnoreApos>
+<ArtworkDownloaderCategory>0</ArtworkDownloaderCategory>
+<ArtworkDownloaderArtistTypes>0</ArtworkDownloaderArtistTypes>
+<ArtworkDownloaderPreview>true</ArtworkDownloaderPreview>
+</ApplicationSettings>

@@ -1,0 +1,9 @@
+E:\MBPlugin\C# Source3.1\bin\Debug\mb_TestCSharpDll.dll.config
+E:\MBPlugin\C# Source3.1\bin\Debug\mb_TestCSharpDll.dll
+E:\MBPlugin\C# Source3.1\bin\Debug\mb_TestCSharpDll.pdb
+E:\MBPlugin\C# Source3.1\obj\Debug\CSharpDll.csproj.AssemblyReference.cache
+E:\MBPlugin\C# Source3.1\obj\Debug\CSharpDll.csproj.CoreCompileInputs.cache
+E:\MBPlugin\C# Source3.1\obj\Debug\mb_TestCSharpDll.dll
+E:\MBPlugin\C# Source3.1\obj\Debug\mb_TestCSharpDll.pdb
+E:\MBPlugin\C# Source3.1\obj\Debug\MusicBeePlugin.Form1.resources
+E:\MBPlugin\C# Source3.1\obj\Debug\CSharpDll.csproj.GenerateResource.cache

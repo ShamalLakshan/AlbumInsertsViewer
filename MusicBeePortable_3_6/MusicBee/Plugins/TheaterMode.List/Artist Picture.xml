@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+<settings enableScaling="true" />
+<settings backgroundImage="Default Landscape.jpg" />
+<settings rotationPeriod="300" />
+<theaterMode>
+  <settings bdr="128,128,128" />
+</theaterMode>
+<screenSaver>
+  <settings idlePeriod="0" />
+  <settings monitor="1" otherMonitors="blackout" />
+</screenSaver>
+
+<element type="ArtistPicture" x="1" y="1" widthDock="Panel" width="-2" heightDock="Panel" height="-2" aspectRatio="zoomKeep" fillColor="255,10,10,10" fade="0.0"></element>
+<element type="PlayerBar" extras="ProgressBar" x="3" y="3" width="250" height="52" bdr="230,20,20,20" bg="230,20,20,20" fg="245,245,245" fg2="200,200,200" ></element>
+
+<autoHide name="#RightSidebarLyrics" xAnchor="Panel.Right" x="-281" y="1" width="281" heightDock="Panel" height="-2" bg="20,20,20" fg="215,215,215" fg2="255,255,255" allowPinning="true" autoOpenLyrics="true" resizePictures="true" >
+  <element type="Line" xAnchor="#RightSidebarLyrics.Left" x="0" y="1" width="1" heightDock="Y:#RightSidebarLyrics.Bottom" height="0" bg="0,0,0"></element>
+  <element type="Text" xAnchor="Panel.Right" x="-265" y="26" width="253" font="Arial" style="Bold" size="13" fg="210,210,210" >Lyrics</element>
+  <element type="Lyrics" xAnchor="Panel.Right" x="-260" y="55" width="257" heightDock="Y:#RightSidebarLyrics.Bottom" height="-110" font="Arial" style="Regular" size="10.5" fg="190,190,190" fg2="255,140,0" ></element>
+</autoHide>
+
+<autoHide name="#RightSidebarArtist" xAnchor="Panel.Right" x="-281" y="1" width="281" heightDock="Panel" height="-2" bg="20,20,20" fg="215,215,215" fg2="255,255,255" allowPinning="true" resizePictures="true" >
+  <element type="Line" xAnchor="#RightSidebarArtist.Left" x="0" y="1" width="1" heightDock="Y:#RightSidebarArtist.Bottom" height="0" bg="0,0,0"></element>
+  <element type="Field" id="Artist" xAnchor="Panel.Right" x="-265" y="26" width="253" font="Arial" style="Bold" size="13" fg="210,210,210" ></element>
+  <element type="ArtistInfo" xAnchor="Panel.Right" x="-260" y="51" width="257" heightDock="Y:#RightSidebarArtist.Bottom" height="-110" font="Arial" style="Regular" size="10.5" fg="190,190,190" ></element>
+</autoHide>
+
+<element name="#NextInfo" type="Block" xAnchor="Panel.Right" x="-280" yAnchor="Panel.Bottom" y="-74" width="280" height="53" bg="253,79,24,22" onDoubleClick="OpenNowPlayingAssistant"></element>
+<element type="Line" xAnchor="Panel.Right" x="-280" yAnchor="Panel.Bottom" y="-75" width="280" height="1" bg="253,0,0,0"></element>
+<element type="Text" xAnchor="Panel.Right" x="-260" yAnchor="Panel.Bottom" y="-64" width="250" font="Arial" style="Regular" size="9" fg="230,230,230" onClick="OpenNowPlayingAssistant" >Up next...</element>
+<element type="Field" id="Tracks[1]" xAnchor="Panel.Right" x="-260" yAnchor="Panel.Bottom" y="-47" width="250" font="Arial" style="Regular" size="9" fg="250,250,250" >
+    <child id="Title" ></child>
+    <child fg="220,220,220" > by </child>
+    <child id="Artist"></child>
+</element>
+<element type="Line" xAnchor="Panel.Right" x="-280" yAnchor="Panel.Bottom" y="-21" width="280" height="1" bg="253,0,0,0"></element>
+<element name="#InfoBar" type="Block" x="1" yAnchor="Panel.Bottom" y="-75" widthDock="X:#NextInfo.Left" width="0" height="55" bg="254,0,0,0" onDoubleClick="OpenNowPlayingAssistant"></element>
+<element type="AlbumCover" x="10" yAnchor="Panel.Bottom" y="-190" width="180" height="180" min="180" max="180" brightness="1.0" ></element>
+<element type="ProgressPosition" xAnchor="#InfoBar.Right" x="-180" yAnchor="Panel.Bottom" y="-69" width="165" align="right" font="Arial" style="Regluar" size="14" fg="255,140,0" ></element>
+<element name="#TitleAndRating" type="Field" id="Title" xAnchor="Picture.Right" x="15" yAnchor="Panel.Bottom" y="-69" widthDock="X:ProgressPosition.Left" width="0" reserveWidth="120" font="Arial" style="Bold" size="13" fg="250,250,250" >
+  <child>   </child>
+  <child id="RatingLove" visible="MusicBeeSetting" fg="55,55,55" size="14" rightMargin="5" ></child>
+  <child id="Rating" visible="MusicBeeSetting" fg="200,150,8" fg2="55,55,55" size="15" ></child>
+</element>
+<element type="Field" id="Artist" xAnchor="AlbumCover.Right" x="16" yAnchor="#TitleAndRating.Bottom" y="3" widthDock="X:ProgressPosition.Left" width="-10" font="Arial" style="Regular" size="12" fg="245,245,245" onClick="OpenAutoHidePanel(#RightSidebarArtist)" >
+  <child fg="190,190,190" font="Arial" style="Regular" size="8" > in </child>
+  <child id="Album" fg="190,190,190" font="Arial" style="Regular" size="8" ></child>
+</element>
+</root>
