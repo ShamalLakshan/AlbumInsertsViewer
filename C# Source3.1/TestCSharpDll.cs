@@ -19,7 +19,7 @@ namespace MusicBeePlugin
             about.Name = "Viewer";
             about.Description = "View some stuff";
             about.Author = "Goni Billa";
-            about.TargetApplication = "";   //  the name of a Plugin Storage device or panel header for a dockable panel
+            about.TargetApplication = "LeftMainPanel";   //  the name of a Plugin Storage device or panel header for a dockable panel
             about.Type = PluginType.General;
             about.VersionMajor = 1;  // your plugin version
             about.VersionMinor = 0;
