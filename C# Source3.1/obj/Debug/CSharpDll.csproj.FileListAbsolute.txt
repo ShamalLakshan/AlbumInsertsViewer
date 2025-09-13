@@ -7,3 +7,13 @@ E:\MBPlugin\C# Source3.1\obj\Debug\mb_TestCSharpDll.dll
 E:\MBPlugin\C# Source3.1\obj\Debug\mb_TestCSharpDll.pdb
 E:\MBPlugin\C# Source3.1\obj\Debug\MusicBeePlugin.Form1.resources
 E:\MBPlugin\C# Source3.1\obj\Debug\CSharpDll.csproj.GenerateResource.cache
+E:\Github\AlbumInsertsViewer\C# Source3.1\bin\Debug\mb_TestCSharpDll.dll.config
+E:\Github\AlbumInsertsViewer\C# Source3.1\bin\Debug\mb_TestCSharpDll.dll
+E:\Github\AlbumInsertsViewer\C# Source3.1\bin\Debug\mb_TestCSharpDll.pdb
+E:\Github\AlbumInsertsViewer\C# Source3.1\obj\Debug\CSharpDll.csproj.AssemblyReference.cache
+E:\Github\AlbumInsertsViewer\C# Source3.1\obj\Debug\MusicBeePlugin.Form1.resources
+E:\Github\AlbumInsertsViewer\C# Source3.1\obj\Debug\MusicBeePlugin.Properties.Resources.resources
+E:\Github\AlbumInsertsViewer\C# Source3.1\obj\Debug\CSharpDll.csproj.GenerateResource.cache
+E:\Github\AlbumInsertsViewer\C# Source3.1\obj\Debug\CSharpDll.csproj.CoreCompileInputs.cache
+E:\Github\AlbumInsertsViewer\C# Source3.1\obj\Debug\mb_TestCSharpDll.dll
+E:\Github\AlbumInsertsViewer\C# Source3.1\obj\Debug\mb_TestCSharpDll.pdb

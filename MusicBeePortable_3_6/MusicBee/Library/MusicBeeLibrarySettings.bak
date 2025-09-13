@@ -4,7 +4,7 @@
 <SystemInitialiseOnceOnly>false</SystemInitialiseOnceOnly>
 <CustomSortTagsUpgraded>true</CustomSortTagsUpgraded>
 <PdfLinksUpdated>true</PdfLinksUpdated>
-<Path>E:\Setups\MusicBeePortable_3_6\MusicBee\Library\</Path>
+<Path>E:\MBPlugin\MusicBeePortable_3_6\MusicBee\Library\</Path>
 <OrganisationLibraryKeepOrganised>false</OrganisationLibraryKeepOrganised>
 <OrganisationAllowReorganiseTagsMissing>false</OrganisationAllowReorganiseTagsMissing>
 <OrganisationLibraryMoveNonMusicFiles>false</OrganisationLibraryMoveNonMusicFiles>
@@ -67,7 +67,7 @@
  </NamingRule>
 </VFilenameRules>
 <OrganisationPlaylistsFormat2>12</OrganisationPlaylistsFormat2>
-<OrganisationExportedPlaylistsMFolderPath>\Setups\MusicBeePortable_3_6\MusicBee\Library\Exported Playlists\</OrganisationExportedPlaylistsMFolderPath>
+<OrganisationExportedPlaylistsMFolderPath>\MBPlugin\MusicBeePortable_3_6\MusicBee\Library\Exported Playlists\</OrganisationExportedPlaylistsMFolderPath>
 <OrganisationExportedPlaylistsFormat>1</OrganisationExportedPlaylistsFormat>
 <OrganisationExportRelativeFilePaths>false</OrganisationExportRelativeFilePaths>
 <OrganisationExportUnixConvention>false</OrganisationExportUnixConvention>
