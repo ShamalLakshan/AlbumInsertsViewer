@@ -10,6 +10,7 @@ namespace MusicBeePlugin
     {
         private MusicBeeApiInterface mbApiInterface;
         private PluginInfo about = new PluginInfo();
+        private Form1 albumInsertsForm; // Keep reference to the form
 
         public PluginInfo Initialise(IntPtr apiInterfacePtr)
         {
@@ -19,7 +20,7 @@ namespace MusicBeePlugin
             about.Name = "Viewer";
             about.Description = "View some stuff";
             about.Author = "Goni Billa";
-            about.TargetApplication = "LeftMainPanel";   //  the name of a Plugin Storage device or panel header for a dockable panel
+            about.TargetApplication = "AlbumInsertsViewer";   //  the name of a Plugin Storage device or panel header for a dockable panel
             about.Type = PluginType.General;
             about.VersionMajor = 1;  // your plugin version
             about.VersionMinor = 0;
@@ -52,7 +53,7 @@ namespace MusicBeePlugin
             }
             return false;
         }
-       
+
         // called by MusicBee when the user clicks Apply or Save in the MusicBee Preferences screen.
         // its up to you to figure out whether anything has changed and needs updating
         public void SaveSettings()
@@ -64,11 +65,21 @@ namespace MusicBeePlugin
         // MusicBee is closing the plugin (plugin is being disabled by user or MusicBee is shutting down)
         public void Close(PluginCloseReason reason)
         {
+            // Close the form if it's still open
+            if (albumInsertsForm != null && !albumInsertsForm.IsDisposed)
+            {
+                albumInsertsForm.Close();
+            }
         }
 
         // uninstall this plugin - clean up any persisted files
         public void Uninstall()
         {
+            // Close the form if it's still open
+            if (albumInsertsForm != null && !albumInsertsForm.IsDisposed)
+            {
+                albumInsertsForm.Close();
+            }
         }
 
         // receive event notifications from MusicBee
@@ -90,21 +101,57 @@ namespace MusicBeePlugin
                     break;
                 case NotificationType.TrackChanged:
                     string artist = mbApiInterface.NowPlaying_GetFileTag(MetaDataType.Artist);
-                    // ...
+
+                    // If the album inserts form is open, refresh it with new track
+                    if (albumInsertsForm != null && !albumInsertsForm.IsDisposed)
+                    {
+                        // Use Invoke to ensure we're on the UI thread
+                        if (albumInsertsForm.InvokeRequired)
+                        {
+                            albumInsertsForm.Invoke(new Action(() =>
+                            {
+                                albumInsertsForm.RefreshImagesForCurrentTrack();
+                            }));
+                        }
+                        else
+                        {
+                            albumInsertsForm.RefreshImagesForCurrentTrack();
+                        }
+                    }
+                    break;
+                case NotificationType.PlayStateChanged:
+                    // You could also refresh on play state changes if needed
+                    break;
+                case NotificationType.TagsChanged:
+                    // Handle tag changes if needed
                     break;
             }
         }
 
-        private void createMenuItem() 
+        private void createMenuItem()
         {
-            mbApiInterface.MB_AddMenuItem("mnuTools/Start My Plugin", "HotKey", menuClicked);
-
+            mbApiInterface.MB_AddMenuItem("mnuView/Album Inserts Viewer", "HotKey", menuClicked);
         }
 
-        private void menuClicked(object sender, EventArgs args) 
+        private void menuClicked(object sender, EventArgs args)
         {
-            Form1 myForm = new Form1(); myForm.Show();
+            // Check if form is already open
+            if (albumInsertsForm == null || albumInsertsForm.IsDisposed)
+            {
+                // Create new form with API interface reference
+                albumInsertsForm = new Form1(mbApiInterface);
 
+                // Handle form closed event to reset our reference
+                albumInsertsForm.FormClosed += (s, e) => albumInsertsForm = null;
+
+                albumInsertsForm.Show();
+            }
+            else
+            {
+                // Form is already open, just bring it to front
+                albumInsertsForm.BringToFront();
+                albumInsertsForm.Focus();
+            }
         }
 
         // return an array of lyric or artwork provider names this plugin supports
@@ -135,36 +182,35 @@ namespace MusicBeePlugin
         //  you can add your own controls to the panel if needed
         //  you can control the scrollable area of the panel using the mbApiInterface.MB_SetPanelScrollableArea function
         //  to set a MusicBee header for the panel, set about.TargetApplication in the Initialise function above to the panel header text
-        //public int OnDockablePanelCreated(Control panel)
-        //{
-        //  //    return the height of the panel and perform any initialisation here
-        //  //    MusicBee will call panel.Dispose() when the user removes this panel from the layout configuration
-        //  //    < 0 indicates to MusicBee this control is resizable and should be sized to fill the panel it is docked to in MusicBee
-        //  //    = 0 indicates to MusicBee this control resizeable
-        //  //    > 0 indicates to MusicBee the fixed height for the control.Note it is recommended you scale the height for high DPI screens(create a graphics object and get the DpiY value)
-        //    float dpiScaling = 0;
-        //    using (Graphics g = panel.CreateGraphics())
-        //    {
-        //        dpiScaling = g.DpiY / 96f;
-        //    }
-        //    panel.Paint += panel_Paint;
-        //    return Convert.ToInt32(100 * dpiScaling);
-        //}
+        public int OnDockablePanelCreated(Control panel)
+        {
+            //    return the height of the panel and perform any initialisation here
+            //    MusicBee will call panel.Dispose() when the user removes this panel from the layout configuration
+            //    < 0 indicates to MusicBee this control is resizable and should be sized to fill the panel it is docked to in MusicBee
+            //    = 0 indicates to MusicBee this control resizeable
+            //    > 0 indicates to MusicBee the fixed height for the control.Note it is recommended you scale the height for high DPI screens(create a graphics object and get the DpiY value)
+            float dpiScaling = 0;
+            using (Graphics g = panel.CreateGraphics())
+            {
+                dpiScaling = g.DpiY / 96f;
+            }
+            panel.Paint += panel_Paint;
+            return Convert.ToInt32(100 * dpiScaling);
+        }
 
         // presence of this function indicates to MusicBee that the dockable panel created above will show menu items when the panel header is clicked
         // return the list of ToolStripMenuItems that will be displayed
-        //public List<ToolStripItem> GetHeaderMenuItems()
-        //{
-        //    List<ToolStripItem> list = new List<ToolStripItem>();
-        //    list.Add(new ToolStripMenuItem("A menu item"));
-        //    return list;
-        //}
+        public List<ToolStripItem> GetHeaderMenuItems()
+        {
+            List<ToolStripItem> list = new List<ToolStripItem>();
+            list.Add(new ToolStripMenuItem("Album Inserts Viewer menu item"));
+            return list;
+        }
 
-        //private void panel_Paint(object sender, PaintEventArgs e)
-        //{
-        //    e.Graphics.Clear(Color.Red);
-        //    TextRenderer.DrawText(e.Graphics, "hello", SystemFonts.CaptionFont, new Point(10, 10), Color.Blue);
-        //}
-
+        private void panel_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(Color.Red);
+            TextRenderer.DrawText(e.Graphics, "Album Inserts Viewer", SystemFonts.CaptionFont, new Point(10, 10), Color.Blue);
+        }
     }
 }
