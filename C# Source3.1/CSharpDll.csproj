@@ -133,7 +133,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetDir)\*.*" "E:\MBPlugin\MusicBeePortable_3_6\MusicBee\Plugins"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetDir)\*.*" "C:\Users\USER\Github\AlbumInsertsViewer\MusicBeePortable_3_6\MusicBee\Plugins"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -16,11 +16,15 @@ namespace MusicBeePlugin
     public partial class Form1 : Form
     {
         int counter = 0;
-        // Hardcoded directory path - change this to your desired directory
-        string imageDirectory = @"E:\Github\AlbumInsertsViewer\TestCoverArts";
         string[] images;
         bool playing = false;
         private MusicBeeApiInterface mbApi; // API interface reference
+
+        // Add this TextBox - you'll need to add it to your form designer as well
+        private TextBox noImagesTextBox;
+
+        // Array of folder names to search for
+        private string[] targetFolders = { "Scans", "Artwork", "Booklet", "Insert", "Inserts", "Images", "Album Art" };
 
         // Modified constructor to accept the API interface
         public Form1(MusicBeeApiInterface apiInterface)
@@ -30,7 +34,10 @@ namespace MusicBeePlugin
 
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            // Load images from current track directory or fallback to hardcoded directory
+            // Initialize the no images text box (you should also add this in the designer)
+            InitializeNoImagesTextBox();
+
+            // Load images from target folders or fallback to cover art
             LoadImagesFromDirectory();
 
             // Now you can get the current track path for debugging or other purposes
@@ -45,7 +52,7 @@ namespace MusicBeePlugin
             {
                 if (images == null || images.Length == 0)
                 {
-                    MessageBox.Show("No images available to display.");
+                    ShowNoImagesMessage();
                     return;
                 }
                 timer1.Start();
@@ -56,6 +63,54 @@ namespace MusicBeePlugin
                 playing = false;
                 timer1.Stop();
             }
+        }
+
+        /// <summary>
+        /// Initialize the TextBox for displaying "No images found" message
+        /// You should also add this TextBox in the Form Designer
+        /// </summary>
+        private void InitializeNoImagesTextBox()
+        {
+            // Create TextBox programmatically (alternatively, add it in the designer)
+            noImagesTextBox = new TextBox();
+            noImagesTextBox.Name = "noImagesTextBox";
+            noImagesTextBox.ReadOnly = true;
+            noImagesTextBox.Multiline = true;
+            noImagesTextBox.TextAlign = HorizontalAlignment.Center;
+            noImagesTextBox.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular);
+            noImagesTextBox.BackColor = SystemColors.Control;
+            noImagesTextBox.BorderStyle = BorderStyle.None;
+            noImagesTextBox.Visible = false; // Initially hidden
+
+            // Position it over the PictureBox (adjust coordinates as needed)
+            noImagesTextBox.Location = pictureBox1.Location;
+            noImagesTextBox.Size = pictureBox1.Size;
+            noImagesTextBox.Anchor = pictureBox1.Anchor;
+
+            // Add to the form
+            this.Controls.Add(noImagesTextBox);
+            noImagesTextBox.BringToFront();
+        }
+
+        /// <summary>
+        /// Show the "No images found" message and hide PictureBox
+        /// </summary>
+        private void ShowNoImagesMessage()
+        {
+            pictureBox1.Visible = false;
+            noImagesTextBox.Visible = true;
+            noImagesTextBox.Text = "No images found\r\n\r\nSelect an album with image files or embedded artwork to display content.";
+            timer1.Stop();
+            playing = false;
+        }
+
+        /// <summary>
+        /// Show the PictureBox and hide the no images message
+        /// </summary>
+        private void ShowPictureBox()
+        {
+            noImagesTextBox.Visible = false;
+            pictureBox1.Visible = true;
         }
 
         /// <summary>
@@ -114,76 +169,162 @@ namespace MusicBeePlugin
             return trackInfo;
         }
 
+        /// <summary>
+        /// Search for images in target folders within the current track directory
+        /// </summary>
+        /// <param name="baseDirectory">The directory to search in</param>
+        /// <returns>List of image file paths found in target folders</returns>
+        private List<string> SearchImagesInTargetFolders(string baseDirectory)
+        {
+            List<string> imageFiles = new List<string>();
+            string[] extensions = { "*.jpg", "*.jpeg", "*.png", "*.bmp", "*.gif", "*.pdf" };
+
+            try
+            {
+                // Get all subdirectories in the base directory
+                string[] subdirectories = Directory.GetDirectories(baseDirectory);
+
+                foreach (string subdirectory in subdirectories)
+                {
+                    string folderName = Path.GetFileName(subdirectory);
+
+                    // Check if the folder name matches any of our target folders (case-insensitive)
+                    if (targetFolders.Any(target => string.Equals(target, folderName, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        // Search for images in this folder
+                        foreach (string extension in extensions)
+                        {
+                            imageFiles.AddRange(Directory.GetFiles(subdirectory, extension, SearchOption.TopDirectoryOnly));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error but don't show message box
+                Console.WriteLine($"Error searching target folders: {ex.Message}");
+            }
+
+            return imageFiles;
+        }
+
+        /// <summary>
+        /// Search for cover files (Cover.jpg, Cover.png, etc.) in the current directory
+        /// </summary>
+        /// <param name="directory">Directory to search in</param>
+        /// <returns>List of cover files found</returns>
+        private List<string> SearchCoverFiles(string directory)
+        {
+            List<string> coverFiles = new List<string>();
+            string[] coverExtensions = { "jpg", "jpeg", "png", "bmp", "gif" };
+
+            try
+            {
+                foreach (string extension in coverExtensions)
+                {
+                    string coverPath = Path.Combine(directory, $"Cover.{extension}");
+                    if (File.Exists(coverPath))
+                    {
+                        coverFiles.Add(coverPath);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error searching cover files: {ex.Message}");
+            }
+
+            return coverFiles;
+        }
+
         private void LoadImagesFromDirectory()
         {
             try
             {
-                // Try to get current track directory first, fallback to hardcoded directory
+                // Try to get current track directory
                 string currentTrackDir = GetCurrentTrackDirectory();
-                string searchDirectory = !string.IsNullOrEmpty(currentTrackDir) ? currentTrackDir : imageDirectory;
 
-                // Get all image files from the search directory
-                string[] extensions = { "*.jpg", "*.jpeg", "*.png", "*.bmp", "*.gif", "*.pdf" };
-                List<string> imageFiles = new List<string>();
-
-                foreach (string extension in extensions)
+                if (string.IsNullOrEmpty(currentTrackDir))
                 {
-                    imageFiles.AddRange(Directory.GetFiles(searchDirectory, extension, SearchOption.TopDirectoryOnly));
+                    // No current track, try to load embedded artwork
+                    LoadCurrentTrackArtwork();
+                    if (images == null || images.Length == 0)
+                    {
+                        ShowNoImagesMessage();
+                    }
+                    return;
                 }
 
+                // First, search for images in target folders
+                List<string> imageFiles = SearchImagesInTargetFolders(currentTrackDir);
+
+                // If no images found in target folders, look for Cover.jpg/png files
+                if (imageFiles.Count == 0)
+                {
+                    imageFiles = SearchCoverFiles(currentTrackDir);
+                }
+
+                // If still no images found, try embedded artwork
+                if (imageFiles.Count == 0)
+                {
+                    LoadCurrentTrackArtwork();
+                    if (images == null || images.Length == 0)
+                    {
+                        ShowNoImagesMessage();
+                    }
+                    return;
+                }
+
+                // Convert to array and display
                 images = imageFiles.ToArray();
 
-                // Display first image if any images found
                 if (images.Length > 0)
                 {
-                    pictureBox1.Image = System.Drawing.Image.FromFile(images[0]);
+                    ShowPictureBox();
+                    DisplayImage(images[0]);
 
-                    // Update window title to show source directory
-                    //this.Text += $" - Found {images.Length} images in: {Path.GetFileName(searchDirectory)}";
-                }
-                else
-                {
-                    string message = currentTrackDir != null
-                        ? $"No images found in current track directory: {searchDirectory}\nTrying fallback directory: {imageDirectory}"
-                        : $"No images found in directory: {searchDirectory}";
-
-                    // If we tried current track dir and found nothing, try fallback
-                    if (currentTrackDir != null && searchDirectory == currentTrackDir)
+                    // Start timer only if we have multiple images to cycle through
+                    if (images.Length > 1)
                     {
-                        searchDirectory = imageDirectory;
-                        foreach (string extension in extensions)
+                        if (!playing)
                         {
-                            imageFiles.AddRange(Directory.GetFiles(searchDirectory, extension, SearchOption.TopDirectoryOnly));
-                        }
-
-                        images = imageFiles.ToArray();
-                        if (images.Length > 0)
-                        {
-                            pictureBox1.Image = System.Drawing.Image.FromFile(images[0]);
-                            //this.Text += $" - Found {images.Length} images in fallback directory";
-                        }
-                        else
-                        {
-                            MessageBox.Show($"No images found in either current track directory or fallback directory.");
+                            timer1.Start();
+                            playing = true;
                         }
                     }
                     else
                     {
-                        MessageBox.Show(message);
+                        // Only one image, no need to cycle
+                        if (playing)
+                        {
+                            timer1.Stop();
+                            playing = false;
+                        }
                     }
                 }
+                else
+                {
+                    ShowNoImagesMessage();
+                }
             }
-            catch (DirectoryNotFoundException ex)
+            catch (DirectoryNotFoundException)
             {
-                MessageBox.Show($"Directory not found: {ex.Message}");
+                // Try embedded artwork as fallback
+                LoadCurrentTrackArtwork();
+                if (images == null || images.Length == 0)
+                {
+                    ShowNoImagesMessage();
+                }
             }
             catch (UnauthorizedAccessException ex)
             {
                 MessageBox.Show($"Access denied: {ex.Message}");
+                ShowNoImagesMessage();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading images: {ex.Message}");
+                ShowNoImagesMessage();
             }
         }
 
@@ -208,6 +349,7 @@ namespace MusicBeePlugin
                 // For image files
                 pictureBox1.Image?.Dispose(); // Dispose previous image
                 pictureBox1.Image = System.Drawing.Image.FromFile(filePath);
+                ShowPictureBox(); // Ensure PictureBox is visible
             }
             catch (Exception ex)
             {
@@ -228,24 +370,29 @@ namespace MusicBeePlugin
                 {
                     pictureBox1.Image?.Dispose();
                     pictureBox1.Image = System.Drawing.Image.FromFile(artworkUrl);
-                    //this.Text = "Album Inserts Viewer - Displaying track artwork";
 
                     // Create a single-item array for consistency with timer functionality
                     images = new string[] { artworkUrl };
+                    ShowPictureBox();
+
+                    // Stop timer since we only have one image
+                    if (playing)
+                    {
+                        timer1.Stop();
+                        playing = false;
+                    }
                 }
                 else
                 {
                     // No artwork available
                     pictureBox1.Image = null;
-                    //this.Text = "Album Inserts Viewer - No artwork available";
                     images = new string[0];
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading track artwork: {ex.Message}");
+                // Don't show error for missing artwork, just set empty
                 pictureBox1.Image = null;
-                //this.Text = "Album Inserts Viewer - No artwork available";
                 images = new string[0];
             }
         }
@@ -305,5 +452,10 @@ namespace MusicBeePlugin
             pictureBox1.Image?.Dispose();
             base.OnFormClosed(e);
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-}
+}   

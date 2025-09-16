@@ -5,12 +5,12 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpDll", "CSharpDll.csproj", "{F5D46BA1-6F21-40EF-9695-46105CCACD08}"
 EndProject
-Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "MusicBee", "..\..\..\MBPlugin\MusicBeePortable_3_6\MusicBee\MusicBee.exe", "{19BC2CCA-DFA8-45A7-8B5D-1F866D4238C5}"
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "MusicBee", "..\MusicBeePortable_3_6\MusicBee\MusicBee.exe", "{C4E27D57-B388-402C-880A-D22F6B4969F6}"
 	ProjectSection(DebuggerProjectSystem) = preProject
 		PortSupplier = 00000000-0000-0000-0000-000000000000
-		Executable = E:\MBPlugin\MusicBeePortable_3_6\MusicBee\MusicBee.exe
-		RemoteMachine = AKIRA
-		StartingDirectory = E:\MBPlugin\MusicBeePortable_3_6\MusicBee
+		Executable = C:\Users\USER\Github\AlbumInsertsViewer\MusicBeePortable_3_6\MusicBee\MusicBee.exe
+		RemoteMachine = LAPTOP
+		StartingDirectory = C:\Users\USER\Github\AlbumInsertsViewer\MusicBeePortable_3_6\MusicBee
 		Environment = Default
 		LaunchingEngine = 00000000-0000-0000-0000-000000000000
 		UseLegacyDebugEngines = No
@@ -35,10 +35,10 @@ Global
 		{F5D46BA1-6F21-40EF-9695-46105CCACD08}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5D46BA1-6F21-40EF-9695-46105CCACD08}.Release|x86.ActiveCfg = Release|x86
 		{F5D46BA1-6F21-40EF-9695-46105CCACD08}.Release|x86.Build.0 = Release|x86
-		{19BC2CCA-DFA8-45A7-8B5D-1F866D4238C5}.Debug|Any CPU.ActiveCfg = Release
-		{19BC2CCA-DFA8-45A7-8B5D-1F866D4238C5}.Debug|x86.ActiveCfg = Release
-		{19BC2CCA-DFA8-45A7-8B5D-1F866D4238C5}.Release|Any CPU.ActiveCfg = Release
-		{19BC2CCA-DFA8-45A7-8B5D-1F866D4238C5}.Release|x86.ActiveCfg = Release
+		{C4E27D57-B388-402C-880A-D22F6B4969F6}.Debug|Any CPU.ActiveCfg = Release|x86
+		{C4E27D57-B388-402C-880A-D22F6B4969F6}.Debug|x86.ActiveCfg = Release|x86
+		{C4E27D57-B388-402C-880A-D22F6B4969F6}.Release|Any CPU.ActiveCfg = Release|x86
+		{C4E27D57-B388-402C-880A-D22F6B4969F6}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
