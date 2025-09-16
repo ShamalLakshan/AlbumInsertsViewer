@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SmartPlaylist LiveUpdating="True" Layout="2" LayoutGroupBy="0">
+  <Source Type="1" />
+  <Conditions CombineMethod="All">
+    <Condition Field="AlbumDateAdded" Comparison="InTheLast" Value="6m" />
+  </Conditions>
+  <DefinedSort Id="147" />
+  <GroupBy Field="180" />
+  <Fields>
+    <Group Id="TrackDetail">
+      <Field Code="20"/><Field Code="30"/><Field Code="53"/><Field Code="32"/><Field Code="65"/><Field Code="16"/><Field Code="12"/>
+    </Group>
+    <Group Id="AlbumAndTracks">
+      <Field Code="40"/><Field Code="20"/><Field Code="53"/><Field Code="32"/><Field Code="65"/><Field Code="16"/><Field Code="180"/>
+    </Group>
+  </Fields>
+  <Limit Enabled="False" Count="25" Type="Items" SelectedBy="Random" />
+</SmartPlaylist>

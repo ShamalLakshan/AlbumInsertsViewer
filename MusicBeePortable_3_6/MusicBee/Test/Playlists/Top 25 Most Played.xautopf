@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SmartPlaylist KeepLive="True">
+  <Source Type="1" />
+  <Conditions CombineMethod="All">
+    <Condition Field="FilePlayCount" Comparison="GreaterThan" Value="0" />
+  </Conditions>
+  <Limit Enabled="True" Count="25" Type="Items" SelectedBy="MostOftenPlayed" />
+  <SortBy Field="14" Order="Descending" />
+  <Fields>
+    <Group Id="TrackDetail">
+      <Field Code="20"/><Field Code="30"/><Field Code="53"/><Field Code="32"/><Field Code="65"/><Field Code="16"/><Field Code="14"/>
+    </Group>
+    <Group Id="AlbumAndTracks">
+      <Field Code="40"/><Field Code="20"/><Field Code="53"/><Field Code="32"/><Field Code="65"/><Field Code="16"/><Field Code="14"/>
+    </Group>
+  </Fields>
+</SmartPlaylist>

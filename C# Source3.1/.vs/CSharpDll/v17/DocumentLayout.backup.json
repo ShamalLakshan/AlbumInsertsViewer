@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\",
+  "WorkspaceRootPath": "C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\musicbeeinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:musicbeeinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|e:\\github\\albuminsertsviewer\\c# source3.1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|c:\\users\\user\\github\\albuminsertsviewer\\c# source3.1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|e:\\github\\albuminsertsviewer\\c# source3.1\\testcsharpdll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\musicbeeinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:musicbeeinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\testcsharpdll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:testcsharpdll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -30,11 +30,11 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.cs [Design]",
               "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-15T05:14:53.308Z",
@@ -42,11 +42,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MusicBeeInterface.cs",
-              "DocumentMoniker": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\MusicBeeInterface.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\MusicBeeInterface.cs",
               "RelativeDocumentMoniker": "MusicBeeInterface.cs",
-              "ToolTip": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\MusicBeeInterface.cs",
+              "ToolTip": "C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\MusicBeeInterface.cs",
               "RelativeToolTip": "MusicBeeInterface.cs",
               "ViewState": "AgIAAFEDAAAAAAAAAAAYwGgDAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -57,11 +57,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs",
-              "DocumentMoniker": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.cs",
+              "ToolTip": "C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAcwK4AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAALIBAAAAAAAAAAAQwMABAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-02T06:55:35.302Z",
               "EditorCaption": ""
@@ -70,9 +70,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "TestCSharpDll.cs",
-              "DocumentMoniker": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\TestCSharpDll.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\TestCSharpDll.cs",
               "RelativeDocumentMoniker": "TestCSharpDll.cs",
-              "ToolTip": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\TestCSharpDll.cs",
+              "ToolTip": "C:\\Users\\USER\\Github\\AlbumInsertsViewer\\C# Source3.1\\TestCSharpDll.cs",
               "RelativeToolTip": "TestCSharpDll.cs",
               "ViewState": "AgIAAJMAAAAAAAAAAAAkwJ4AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
