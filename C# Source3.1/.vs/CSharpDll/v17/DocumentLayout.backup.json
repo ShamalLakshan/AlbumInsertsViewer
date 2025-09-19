@@ -3,26 +3,27 @@
   "WorkspaceRootPath": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\musicbeeinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:musicbeeinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|CSharpDll||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|e:\\github\\albuminsertsviewer\\c# source3.1\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|e:\\github\\albuminsertsviewer\\c# source3.1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|e:\\github\\albuminsertsviewer\\c# source3.1\\musicbeeinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:musicbeeinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|CSharpDll||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\testcsharpdll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|solutionrelative:testcsharpdll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F5D46BA1-6F21-40EF-9695-46105CCACD08}|CSharpDll.csproj|e:\\github\\albuminsertsviewer\\c# source3.1\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|1e78f8db-6c07-4d61-a18f-7514010abd56"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,19 +33,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "Form1.Designer.cs",
+              "ToolTip": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.Designer.cs",
+              "RelativeToolTip": "Form1.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T06:51:51.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "CSharpDll",
               "DocumentMoniker": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\CSharpDll.csproj",
               "RelativeDocumentMoniker": "CSharpDll.csproj",
               "ToolTip": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\CSharpDll.csproj",
               "RelativeToolTip": "CSharpDll.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-09-19T05:54:47.973Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-19T05:54:47.973Z"
             },
             {
               "$type": "Document",
@@ -60,33 +73,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "MusicBeeInterface.cs",
               "DocumentMoniker": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\MusicBeeInterface.cs",
               "RelativeDocumentMoniker": "MusicBeeInterface.cs",
               "ToolTip": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\MusicBeeInterface.cs",
               "RelativeToolTip": "MusicBeeInterface.cs",
-              "ViewState": "AgIAAFEDAAAAAAAAAAAYwFcDAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAFEDAAAAAAAAAAAYwGEDAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-13T05:21:56.203Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Form1.cs",
               "DocumentMoniker": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAlwDAAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-02T06:55:35.302Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "TestCSharpDll.cs",
               "DocumentMoniker": "E:\\Github\\AlbumInsertsViewer\\C# Source3.1\\TestCSharpDll.cs",
               "RelativeDocumentMoniker": "TestCSharpDll.cs",
@@ -94,8 +107,7 @@
               "RelativeToolTip": "TestCSharpDll.cs",
               "ViewState": "AgIAAJwAAAAAAAAAAAAgwL8AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-02T06:11:38.242Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-02T06:11:38.242Z"
             }
           ]
         }

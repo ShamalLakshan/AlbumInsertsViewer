@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using static MusicBeePlugin.Plugin;
+using System.Runtime.InteropServices;
 
 namespace MusicBeePlugin
 {
@@ -20,22 +21,47 @@ namespace MusicBeePlugin
         bool playing = false;
         private MusicBeeApiInterface mbApi; // API interface reference
 
+        // Import functions from user32.dll for dragging(form)
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HTCAPTION = 0x2;
+
         private TextBox noImagesTextBox;
 
         // Array of folder names to search for
         private string[] targetFolders = { "Scans", "Artwork", "Booklet", "Insert", "Inserts", "Images", "Album Art", "scans", "artwork", "booklet", "insert", "inserts", "images", "album art" };
 
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
+        }
+
         // Constructor to accept the APi interface
         public Form1(MusicBeeApiInterface apiInterface)
         {
-            InitializeComponent();
             mbApi = apiInterface; // Store the reference
-
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            InitializeComponent();
             InitializeNoImagesTextBox();
 
             // Load images from target folders or fallback to cover art
             LoadImagesFromDirectory();
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            this.MouseDown += Form1_MouseDown;
+            // Allow dragging by clicking PictureBox background too
+            pictureBox1.MouseDown += Form1_MouseDown;
+            noImagesTextBox.MouseDown += Form1_MouseDown;
+
+
 
             string currentTrackPath = GetCurrentTrackPath();
             if (!string.IsNullOrEmpty(currentTrackPath))
