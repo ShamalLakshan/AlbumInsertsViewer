@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using static MusicBeePlugin.Plugin;
+using System.Runtime.InteropServices;
 
 namespace MusicBeePlugin
 {
@@ -20,27 +21,48 @@ namespace MusicBeePlugin
         bool playing = false;
         private MusicBeeApiInterface mbApi; // API interface reference
 
-        // Add this TextBox - you'll need to add it to your form designer as well
+        // Import functions from user32.dll for dragging(form)
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HTCAPTION = 0x2;
+
         private TextBox noImagesTextBox;
 
         // Array of folder names to search for
-        private string[] targetFolders = { "Scans", "Artwork", "Booklet", "Insert", "Inserts", "Images", "Album Art" };
+        private string[] targetFolders = { "Scans", "Artwork", "Booklet", "Insert", "Inserts", "Images", "Album Art", "scans", "artwork", "booklet", "insert", "inserts", "images", "album art" };
 
-        // Modified constructor to accept the API interface
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
+        }
+
+        // Constructor to accept the APi interface
         public Form1(MusicBeeApiInterface apiInterface)
         {
-            InitializeComponent();
             mbApi = apiInterface; // Store the reference
-
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            // Initialize the no images text box (you should also add this in the designer)
+            InitializeComponent();
             InitializeNoImagesTextBox();
 
             // Load images from target folders or fallback to cover art
             LoadImagesFromDirectory();
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            // Now you can get the current track path for debugging or other purposes
+            this.MouseDown += Form1_MouseDown;
+            // Allow dragging by clicking PictureBox background too
+            pictureBox1.MouseDown += Form1_MouseDown;
+            noImagesTextBox.MouseDown += Form1_MouseDown;
+
+
+
             string currentTrackPath = GetCurrentTrackPath();
             if (!string.IsNullOrEmpty(currentTrackPath))
             {
@@ -121,11 +143,30 @@ namespace MusicBeePlugin
         {
             try
             {
-                return mbApi.NowPlaying_GetFileUrl();
+                string trackPath = mbApi.NowPlaying_GetFileUrl();
+                Console.WriteLine($"MusicBee API returned: '{trackPath}'");
+
+                if (!string.IsNullOrEmpty(trackPath))
+                {
+                    if (trackPath.StartsWith("file:///"))
+                    {
+                        trackPath = trackPath.Substring(8); // Remove "file:///"
+                        trackPath = Uri.UnescapeDataString(trackPath); // Decode URL encoding
+                        Console.WriteLine($"Converted to local path: '{trackPath}'");
+                    }
+                    else if (trackPath.StartsWith("file://"))
+                    {
+                        trackPath = trackPath.Substring(7); // Remove "file://"
+                        trackPath = Uri.UnescapeDataString(trackPath); // Decode URL encoding
+                        Console.WriteLine($"Converted to local path: '{trackPath}'");
+                    }
+                }
+
+                return trackPath;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error getting current track: {ex.Message}");
+                Console.WriteLine($"Error getting current track: {ex.Message}");
                 return null;
             }
         }
@@ -137,11 +178,90 @@ namespace MusicBeePlugin
         private string GetCurrentTrackDirectory()
         {
             string currentTrack = GetCurrentTrackPath();
+            Console.WriteLine($"GetCurrentTrackDirectory - Track path: '{currentTrack}'");
+
             if (!string.IsNullOrEmpty(currentTrack))
             {
-                return System.IO.Path.GetDirectoryName(currentTrack);
+                string directory = System.IO.Path.GetDirectoryName(currentTrack);
+                Console.WriteLine($"GetCurrentTrackDirectory - Extracted directory: '{directory}'");
+                return directory;
             }
+
+            Console.WriteLine("GetCurrentTrackDirectory - No track path available");
             return null;
+        }
+
+        /// <summary>
+        /// Search for all image files in the specified directory
+        /// </summary>
+        /// <param name="directory">Directory to search in</param>
+        /// <returns>List of image files found</returns>
+        private List<string> SearchAllImagesInDirectory(string directory)
+        {
+            List<string> imageFiles = new List<string>();
+            string[] extensions = { "*.jpg", "*.jpeg", "*.png", "*.bmp", "*.gif", "*.pdf" };
+
+            try
+            {
+                Console.WriteLine($"=== SearchAllImagesInDirectory ===");
+                Console.WriteLine($"Searching for images in directory: '{directory}'");
+
+                // Check if directory exists
+                if (!Directory.Exists(directory))
+                {
+                    Console.WriteLine($"ERROR: Directory does not exist: '{directory}'");
+                    return imageFiles;
+                }
+                Console.WriteLine($"Directory exists: TRUE");
+
+                // Get all files in directory first to see what's actually there
+                try
+                {
+                    string[] allFiles = Directory.GetFiles(directory, "*.*", SearchOption.TopDirectoryOnly);
+                    Console.WriteLine($"Total files in directory: {allFiles.Length}");
+
+                    foreach (string file in allFiles)
+                    {
+                        string fileName = Path.GetFileName(file);
+                        string extension = Path.GetExtension(file).ToLower();
+                        Console.WriteLine($"  File: '{fileName}' | Extension: '{extension}'");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"ERROR getting all files: {ex.Message}");
+                }
+
+                // Now search for each image extension specifically
+                foreach (string extension in extensions)
+                {
+                    try
+                    {
+                        string[] foundFiles = Directory.GetFiles(directory, extension, SearchOption.TopDirectoryOnly);
+                        Console.WriteLine($"Extension '{extension}': found {foundFiles.Length} files");
+
+                        foreach (string file in foundFiles)
+                        {
+                            Console.WriteLine($"  → Image file: '{Path.GetFileName(file)}'");
+                            imageFiles.Add(file);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"ERROR searching extension '{extension}': {ex.Message}");
+                    }
+                }
+
+                Console.WriteLine($"Total image files found in main directory: {imageFiles.Count}");
+                Console.WriteLine($"=== End SearchAllImagesInDirectory ===");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERROR in SearchAllImagesInDirectory: {ex.Message}");
+                Console.WriteLine($"Stack trace: {ex.StackTrace}");
+            }
+
+            return imageFiles;
         }
 
         /// <summary>
@@ -255,16 +375,24 @@ namespace MusicBeePlugin
                     return;
                 }
 
-                // First, search for images in target folders
-                List<string> imageFiles = SearchImagesInTargetFolders(currentTrackDir);
+                // Search for images in current track's main directory 
+                List<string> imageFiles = SearchAllImagesInDirectory(currentTrackDir);
+                // Then search for images in target folders and merge results
+                List<string> targetFolderImages = SearchImagesInTargetFolders(currentTrackDir);
+                imageFiles.AddRange(targetFolderImages);
 
-                // If no images found in target folders, look for Cover.jpg/png files
+                // Remove duplicates (case-insensitive paths)
+                imageFiles = imageFiles
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .ToList();
+
+                // If no images found
                 if (imageFiles.Count == 0)
                 {
                     imageFiles = SearchCoverFiles(currentTrackDir);
                 }
 
-                // If still no images found, try embedded artwork
+                // Then, try embedded artwork
                 if (imageFiles.Count == 0)
                 {
                     LoadCurrentTrackArtwork();
@@ -458,4 +586,4 @@ namespace MusicBeePlugin
 
         }
     }
-}   
+}
