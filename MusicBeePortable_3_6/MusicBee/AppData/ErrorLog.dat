@@ -6,3 +6,18 @@
    at #=zRumo3MQ9G7WdvXy9LWH2Tzw=.#=z6LnKsv8=.#=z_w5YFSAuyulQV6qVVgRCiC4hwMNt(#=zenWmmsSZ4r4X2EyRJ5w7dzI= #=zec6axhs=, #=zmM4u3bcw91pRhE7yGB6S36mzAjQGh0_3VXMeRvY=[] #=zox3_iiXn0H8o672zO1KFrkQ=, String[] #=zr1rI6EU=)
    at #=zRumo3MQ9G7WdvXy9LWH2Tzw=.#=z6LnKsv8=.#=zphezX9g=()
 
+10/4/2025 8:41:40 AM - 10.0.22631.0 - 3.6.9202.37404P - System.DllNotFoundException: Unable to load DLL 'pdfium.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)
+   at PdfiumViewer.NativeMethods.Imports.FPDF_Release()
+   at PdfiumViewer.NativeMethods.FPDF_Release()
+   at PdfiumViewer.PdfLibrary.Finalize()
+
+10/4/2025 9:01:31 AM - 10.0.22631.0 - 3.6.9202.37404P - System.EntryPointNotFoundException: Unable to find an entry point named 'FPDF_Release' in DLL 'pdfium.dll'.
+   at PdfiumViewer.NativeMethods.Imports.FPDF_Release()
+   at PdfiumViewer.NativeMethods.FPDF_Release()
+   at PdfiumViewer.PdfLibrary.Finalize()
+
+10/4/2025 9:53:04 AM - 10.0.22631.0 - 3.6.9202.37404P - System.EntryPointNotFoundException: Unable to find an entry point named 'FPDF_Release' in DLL 'pdfium.dll'.
+   at PdfiumViewer.NativeMethods.Imports.FPDF_Release()
+   at PdfiumViewer.NativeMethods.FPDF_Release()
+   at PdfiumViewer.PdfLibrary.Finalize()
+
