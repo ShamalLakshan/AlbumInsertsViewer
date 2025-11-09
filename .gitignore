@@ -1,0 +1,6 @@
+# Build directories
+bin/
+obj/
+
+# Visual Studio temporary files
+.vs/
