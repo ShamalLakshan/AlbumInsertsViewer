@@ -1,0 +1,1 @@
+"copy /Y "$(TargetDir)\*.*" "E:\MBPlugin\MusicBeePortable_3_6\MusicBee\Plugins"" 
