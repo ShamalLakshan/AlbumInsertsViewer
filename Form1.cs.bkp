@@ -11,6 +11,7 @@ using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using static MusicBeePlugin.Plugin;
 using System.Runtime.InteropServices;
+using PdfiumViewer;   // pdfviewer
 using System.Diagnostics;
 
 namespace MusicBeePlugin
@@ -20,11 +21,10 @@ namespace MusicBeePlugin
         int counter = 0;
         string[] images;
         bool playing = false;
-        private MusicBeeApiInterface mbApi;
-        private string currentImagePath;
-        private string currentPdfPath;
-        private bool hasPdfInCollection = false; // NEW: Track if any PDF exists in the image array
+        private MusicBeeApiInterface mbApi; // API interface reference
+        private string currentImagePath; // Store the currently displayed image path
 
+        // Import functions from user32.dll for dragging(form)
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
@@ -35,9 +35,10 @@ namespace MusicBeePlugin
         private const int HTCAPTION = 0x2;
 
         private TextBox noImagesTextBox;
-        private Label pdfMessageLabel;
-        private Button launchPdfButton;
-        private Label openImageLabel; // NEW: Subtle label to open current image
+        private PdfViewer pdfViewer;   // ✅ Booklet tab PDF viewer
+
+        // Array of folder names to search for
+        private string[] targetFolders = { "Arts", "Art", "Scans", "Artwork", "Booklet", "Insert", "Inserts", "Images", "Album Art", "scans", "artwork", "booklet", "insert", "inserts", "images", "album art" };
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -48,76 +49,17 @@ namespace MusicBeePlugin
             }
         }
 
+        // Constructor
         public Form1(MusicBeeApiInterface apiInterface)
         {
-            mbApi = apiInterface;
+            mbApi = apiInterface; // Store the reference
             InitializeComponent();
             InitializeNoImagesTextBox();
-
-            // PDF VIEWER UI SETUP (tabPage2)
-            pdfMessageLabel = new Label();
-            pdfMessageLabel.Dock = DockStyle.Top;
-            pdfMessageLabel.Height = 100;
-            pdfMessageLabel.TextAlign = ContentAlignment.MiddleCenter;
-            pdfMessageLabel.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular);
-            pdfMessageLabel.Visible = false;
-            tabPage2.Controls.Add(pdfMessageLabel);
-
-            launchPdfButton = new Button();
-            launchPdfButton.Text = "Launch in External Viewer";
-            launchPdfButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            launchPdfButton.Height = 35;
-            launchPdfButton.Width = tabPage2.Width - 40;
-            launchPdfButton.Left = 20;
-            launchPdfButton.Top = 120;
-            launchPdfButton.Click += LaunchPdfButton_Click;
-            launchPdfButton.Visible = false;
-
-            tabPage2.Resize += (sender, e) =>
-            {
-                launchPdfButton.Width = tabPage2.Width - 40;
-            };
-
-            tabPage2.Controls.Add(launchPdfButton);
-
-            // Open Image Label Setup (tabPage1)
-            openImageLabel = new Label();
-            openImageLabel.Text = "🔗 Open in viewer";
-            openImageLabel.AutoSize = true;
-            openImageLabel.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Underline);
-            openImageLabel.ForeColor = Color.FromArgb(100, 100, 100); // Subtle gray color
-            openImageLabel.Cursor = Cursors.Hand;
-            openImageLabel.BackColor = Color.Transparent;
-            openImageLabel.Visible = false;
-            openImageLabel.Click += OpenImageLabel_Click;
-
-            // Position in bottom right corner
-            Action positionOpenImageLabel = () =>
-            {
-                openImageLabel.Left = pictureBox1.Right - openImageLabel.Width - 10;
-                openImageLabel.Top = pictureBox1.Bottom - openImageLabel.Height - 10;
-            };
-
-            tabPage1.Controls.Add(openImageLabel);
-            openImageLabel.BringToFront();
-
-            // Update position on resize
-            this.Resize += (sender, e) => positionOpenImageLabel();
-            openImageLabel.TextChanged += (sender, e) => positionOpenImageLabel();
-
-            // Hover effect for the label
-            openImageLabel.MouseEnter += (sender, e) =>
-            {
-                openImageLabel.ForeColor = Color.FromArgb(50, 50, 50); // Darker on hover
-            };
-            openImageLabel.MouseLeave += (sender, e) =>
-            {
-                openImageLabel.ForeColor = Color.FromArgb(100, 100, 100); // Back to subtle gray
-            };
+            InitializePdfViewer();   // Initialize booklet PDF viewer
 
             // Load images from target folders or fallback to cover art
             LoadImagesFromDirectory();
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom; // Changed from StretchImage to Zoom to maintain aspect ratio
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
             this.MouseDown += Form1_MouseDown;
             pictureBox1.MouseDown += Form1_MouseDown;
@@ -136,15 +78,19 @@ namespace MusicBeePlugin
                     ShowNoImagesMessage();
                     return;
                 }
-
-                if (images.Length > 1)
-                {
-                    timer1.Start();
-                    playing = true;
-                }
+                timer1.Start();
+                playing = true;
+            }
+            else
+            {
+                playing = false;
+                timer1.Stop();
             }
         }
 
+        /// <summary>
+        /// Initialize the TextBox for "No images" message
+        /// </summary>
         private void InitializeNoImagesTextBox()
         {
             noImagesTextBox = new TextBox();
@@ -165,18 +111,23 @@ namespace MusicBeePlugin
             noImagesTextBox.BringToFront();
         }
 
+        /// <summary>
+        /// Initialize PDF viewer in Booklet tab
+        /// </summary>
+        private void InitializePdfViewer()
+        {
+            pdfViewer = new PdfViewer();
+            pdfViewer.Dock = DockStyle.Fill;
+            pdfViewer.ShowToolbar = true;
+            pdfViewer.ShowBookmarks = false;
+            tabPage2.Controls.Add(pdfViewer); // assumes tabPage2 = Booklet
+        }
+
         private void ShowNoImagesMessage()
         {
             pictureBox1.Visible = false;
             noImagesTextBox.Visible = true;
             noImagesTextBox.Text = "No images found\r\n\r\nSelect an album with image files or embedded artwork to display content.";
-
-            pdfMessageLabel.Visible = false;
-            launchPdfButton.Visible = false;
-            openImageLabel.Visible = false; // Hide the open image label
-            hasPdfInCollection = false;
-            currentPdfPath = null;
-
             timer1.Stop();
             playing = false;
         }
@@ -185,25 +136,6 @@ namespace MusicBeePlugin
         {
             noImagesTextBox.Visible = false;
             pictureBox1.Visible = true;
-            openImageLabel.Visible = true; // Show the open image label when displaying images
-        }
-
-        // NEW: Method to update PDF tab UI
-        private void UpdatePdfTabUI()
-        {
-            if (hasPdfInCollection && !string.IsNullOrEmpty(currentPdfPath))
-            {
-                pdfMessageLabel.Visible = true;
-                launchPdfButton.Visible = true;
-                string pdfName = Path.GetFileName(currentPdfPath);
-                pdfMessageLabel.Text = $"📄 {pdfName}\r\n\r\nPDF booklet detected in album folder.\r\nUse the button below to launch the file externally.";
-            }
-            else
-            {
-                pdfMessageLabel.Visible = true;
-                launchPdfButton.Visible = false;
-                pdfMessageLabel.Text = "No PDF booklet detected.\r\n\r\nPDF booklets (liner notes, album inserts, etc.)\r\nwill appear here when available in the album folder.";
-            }
         }
 
         private string GetCurrentTrackPath()
@@ -244,6 +176,64 @@ namespace MusicBeePlugin
             return null;
         }
 
+        private List<string> SearchAllImagesInDirectory(string directory)
+        {
+            List<string> imageFiles = new List<string>();
+            string[] extensions = { "*.jpg", "*.jpeg", "*.png", "*.bmp", "*.gif", "*.pdf" };
+
+            if (!Directory.Exists(directory))
+                return imageFiles;
+
+            foreach (string extension in extensions)
+            {
+                imageFiles.AddRange(Directory.GetFiles(directory, extension, SearchOption.TopDirectoryOnly));
+            }
+
+            return imageFiles;
+        }
+
+        private Dictionary<string, string> GetCurrentTrackInfo()
+        {
+            var trackInfo = new Dictionary<string, string>();
+            try
+            {
+                trackInfo["FilePath"] = mbApi.NowPlaying_GetFileUrl() ?? "";
+                trackInfo["Artist"] = mbApi.NowPlaying_GetFileTag(MetaDataType.Artist) ?? "";
+                trackInfo["Album"] = mbApi.NowPlaying_GetFileTag(MetaDataType.Album) ?? "";
+                trackInfo["Title"] = mbApi.NowPlaying_GetFileTag(MetaDataType.TrackTitle) ?? "";
+                trackInfo["Year"] = mbApi.NowPlaying_GetFileTag(MetaDataType.Year) ?? "";
+                trackInfo["Genre"] = mbApi.NowPlaying_GetFileTag(MetaDataType.Genre) ?? "";
+            }
+            catch { }
+            return trackInfo;
+        }
+
+        private List<string> SearchImagesInTargetFolders(string baseDirectory)
+        {
+            List<string> imageFiles = new List<string>();
+            string[] extensions = { "*.jpg", "*.jpeg", "*.png", "*.bmp", "*.gif", "*.pdf" };
+
+            try
+            {
+                string[] subdirectories = Directory.GetDirectories(baseDirectory);
+                foreach (string subdirectory in subdirectories)
+                {
+                    string folderName = Path.GetFileName(subdirectory);
+                    if (targetFolders.Any(target => string.Equals(target, folderName, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        foreach (string extension in extensions)
+                        {
+                            imageFiles.AddRange(Directory.GetFiles(subdirectory, extension, SearchOption.TopDirectoryOnly));
+                        }
+                    }
+                }
+            }
+            catch { }
+
+            return imageFiles;
+        }
+
+
         private List<string> SearchImagesInAllSubfolders(string baseDirectory)
         {
             List<string> imageFiles = new List<string>();
@@ -251,6 +241,7 @@ namespace MusicBeePlugin
 
             try
             {
+                // Search in all subdirectories recursively
                 foreach (string extension in extensions)
                 {
                     imageFiles.AddRange(Directory.GetFiles(baseDirectory, extension, SearchOption.AllDirectories));
@@ -258,12 +249,31 @@ namespace MusicBeePlugin
             }
             catch (UnauthorizedAccessException)
             {
+                // Skip folders we don't have permission to access
             }
             catch (Exception)
             {
+                // Handle other potential errors silently
             }
 
             return imageFiles;
+        }
+
+        private List<string> SearchCoverFiles(string directory)
+        {
+            List<string> coverFiles = new List<string>();
+            string[] coverExtensions = { "jpg", "jpeg", "png", "bmp", "gif" };
+
+            foreach (string extension in coverExtensions)
+            {
+                string coverPath = Path.Combine(directory, $"Cover.{extension}");
+                if (File.Exists(coverPath))
+                {
+                    coverFiles.Add(coverPath);
+                }
+            }
+
+            return coverFiles;
         }
 
         private void LoadImagesFromDirectory()
@@ -275,31 +285,38 @@ namespace MusicBeePlugin
                 if (string.IsNullOrEmpty(currentTrackDir))
                 {
                     LoadCurrentTrackArtwork();
+                    if (images == null || images.Length == 0)
+                        ShowNoImagesMessage();
                     return;
                 }
 
+                // Search for all images in the current directory and ALL subfolders
                 List<string> imageFiles = SearchImagesInAllSubfolders(currentTrackDir);
+
+                // Remove duplicates (case-insensitive)
                 imageFiles = imageFiles.Distinct(StringComparer.OrdinalIgnoreCase).ToList();
 
-                // NEW: Separate PDFs from images
-                List<string> pdfFiles = imageFiles.Where(f => Path.GetExtension(f).ToLower() == ".pdf").ToList();
-                List<string> imageOnlyFiles = imageFiles.Where(f => Path.GetExtension(f).ToLower() != ".pdf").ToList();
+                if (imageFiles.Count == 0)
+                {
+                    // Fallback to cover files if no images found
+                    imageFiles = SearchCoverFiles(currentTrackDir);
+                }
 
-                // Check if any PDFs exist and store the first one
-                hasPdfInCollection = pdfFiles.Count > 0;
-                currentPdfPath = hasPdfInCollection ? pdfFiles.First() : null;
-
-                // If no images found in folder, try embedded artwork
-                if (imageOnlyFiles.Count == 0)
+                if (imageFiles.Count == 0)
                 {
                     LoadCurrentTrackArtwork();
+                    if (images == null || images.Length == 0)
+                        ShowNoImagesMessage();
                     return;
                 }
 
-                images = imageOnlyFiles.ToArray();
+                images = imageFiles.ToArray();
 
                 if (images.Length > 0)
                 {
+                    ShowPictureBox();
+                    DisplayImage(images[0]);
+
                     if (images.Length > 1)
                     {
                         if (!playing)
@@ -316,17 +333,17 @@ namespace MusicBeePlugin
                             playing = false;
                         }
                     }
-
-                    // Update PDF tab UI state
-                    UpdatePdfTabUI();
-
-                    // Display the first image
-                    DisplayImage(images[0]);
+                }
+                else
+                {
+                    ShowNoImagesMessage();
                 }
             }
             catch
             {
                 LoadCurrentTrackArtwork();
+                if (images == null || images.Length == 0)
+                    ShowNoImagesMessage();
             }
         }
 
@@ -334,16 +351,20 @@ namespace MusicBeePlugin
         {
             try
             {
-                // Images only - PDFs are now handled separately and don't cycle through here
-                ShowPictureBox();
+                string extension = Path.GetExtension(filePath).ToLower();
 
-                if (pictureBox1.Image != null)
+                if (extension == ".pdf")
                 {
-                    pictureBox1.Image.Dispose();
+                    LoadPdfInBooklet(filePath);
+                    currentImagePath = null; // No image in PictureBox for PDFs
+                    return;
                 }
 
+                pictureBox1.Image?.Dispose();
                 pictureBox1.Image = System.Drawing.Image.FromFile(filePath);
-                currentImagePath = filePath;
+                currentImagePath = filePath; // Store the current image path
+                ShowPictureBox();
+
             }
             catch (Exception ex)
             {
@@ -351,33 +372,18 @@ namespace MusicBeePlugin
             }
         }
 
-        private void LaunchPdfButton_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(currentPdfPath) && File.Exists(currentPdfPath))
-            {
-                try
-                {
-                    Process.Start(currentPdfPath);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error launching PDF: {ex.Message}", "PDF Launch Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void OpenImageLabel_Click(object sender, EventArgs e)
+        private void LoadPdfInBooklet(string filePath)
         {
             try
             {
-                if (!string.IsNullOrEmpty(currentImagePath) && File.Exists(currentImagePath))
-                {
-                    Process.Start(currentImagePath);
-                }
+                var document = PdfiumViewer.PdfDocument.Load(filePath);
+                pdfViewer.Document?.Dispose();
+                pdfViewer.Document = document;
+                tabControl1.SelectedTab = tabPage2; // switch to booklet tab
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error opening image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading PDF: {ex.Message}");
             }
         }
 
@@ -400,27 +406,17 @@ namespace MusicBeePlugin
                         timer1.Stop();
                         playing = false;
                     }
-
-                    // Update PDF tab (may or may not have PDFs from folder scan)
-                    UpdatePdfTabUI();
-
-                    // Show the open image label for artwork
-                    openImageLabel.Visible = true;
-                    currentImagePath = artworkUrl;
                 }
                 else
                 {
-                    // Only show "no images found" if there's truly no artwork at all
                     pictureBox1.Image = null;
                     images = new string[0];
-                    ShowNoImagesMessage();
                 }
             }
             catch
             {
                 pictureBox1.Image = null;
                 images = new string[0];
-                ShowNoImagesMessage();
             }
         }
 
@@ -466,7 +462,12 @@ namespace MusicBeePlugin
         {
             timer1?.Stop();
             pictureBox1.Image?.Dispose();
+            pdfViewer?.Document?.Dispose();
             base.OnFormClosed(e);
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
         }
     }
 }

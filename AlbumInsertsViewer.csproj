@@ -140,7 +140,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetDir)\*.*" "E:\MBPlugin\MusicBeePortable_3_6\MusicBee\Plugins"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetDir)*.*" "E:\MBPlugin\MusicBeePortable_3_6\MusicBee\Plugins\" &amp; copy /Y "$(TargetDir)x86\*.*" "E:\MBPlugin\MusicBeePortable_3_6\MusicBee\Plugins\x86\" &amp; copy /Y "$(TargetDir)nl\*.*" "E:\MBPlugin\MusicBeePortable_3_6\MusicBee\Plugins\nl\"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

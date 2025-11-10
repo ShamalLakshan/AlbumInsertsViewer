@@ -1,0 +1,118 @@
+Folder PATH listing for volume Projects
+Volume serial number is C2D8-2A7E
+E:.
+³   .gitignore
+³   AlbumInsertsViewer.cs
+³   AlbumInsertsViewer.csproj
+³   AlbumInsertsViewer.sln
+³   app.config
+³   filestructure.txt
+³   Form1.cs
+³   Form1.Designer.cs
+³   Form1.resx
+³   MusicBeeInterface.cs
+³   packages.config
+³   pdfium.dll
+³   PdfiumViewer.dll
+³   README.md
+³   
+ÃÄÄÄ.vs
+³   ³   AlbumInsertsViewer.csproj.dtbcache.json
+³   ³   CSharpDll.csproj.dtbcache.json
+³   ³   
+³   ÃÄÄÄAlbumInsertsViewer
+³   ³   ÃÄÄÄFileContentIndex
+³   ³   ³       79ee6a11-b538-4a80-8fd8-b1fe82b27de9.vsidx
+³   ³   ³       d29d7d85-4c96-4d8d-85d9-205d6cd44ed7.vsidx
+³   ³   ³       
+³   ³   ÀÄÄÄv17
+³   ³           DocumentLayout.backup.json
+³   ³           DocumentLayout.json
+³   ³           
+³   ÀÄÄÄCSharpDll
+³       ÃÄÄÄFileContentIndex
+³       ³       21ecff8b-61b9-4c93-9522-e33ee9556196.vsidx
+³       ³       237586ac-474d-4917-8b77-f5e265859f33.vsidx
+³       ³       afb1782b-aec7-4ce1-9757-ffe6a02a317b.vsidx
+³       ³       c4b617ba-a6f3-4a4c-b164-b8e1b460b709.vsidx
+³       ³       eb7ba36e-6d48-435e-92f6-4fd8e9cb3df0.vsidx
+³       ³       
+³       ÀÄÄÄv17
+³               DocumentLayout.backup.json
+³               DocumentLayout.json
+³               
+ÃÄÄÄbin
+³   ÃÄÄÄDebug
+³   ³   ³   mb_TestCSharpDll.dll
+³   ³   ³   mb_TestCSharpDll.dll.config
+³   ³   ³   mb_TestCSharpDll.pdb
+³   ³   ³   pdfium.dll
+³   ³   ³   PdfiumViewer.dll
+³   ³   ³   PdfiumViewer.xml
+³   ³   ³   
+³   ³   ÃÄÄÄnl
+³   ³   ³       PdfiumViewer.resources.dll
+³   ³   ³       
+³   ³   ÀÄÄÄx86
+³   ³           pdfium.dll
+³   ³           
+³   ÃÄÄÄRelease
+³   ÀÄÄÄx86
+³       ÃÄÄÄDebug
+³       ÀÄÄÄRelease
+ÃÄÄÄobj
+³   ÀÄÄÄDebug
+³       ³   .NETFramework,Version=v4.0.AssemblyAttributes.cs
+³       ³   .NETFramework,Version=v4.8.AssemblyAttributes.cs
+³       ³   AlbumInsertsViewer.csproj.AssemblyReference.cache
+³       ³   AlbumInsertsViewer.csproj.CoreCompileInputs.cache
+³       ³   AlbumInsertsViewer.csproj.FileListAbsolute.txt
+³       ³   AlbumInsertsViewer.csproj.GenerateResource.cache
+³       ³   CSharpDll.csproj.AssemblyReference.cache
+³       ³   CSharpDll.csproj.CoreCompileInputs.cache
+³       ³   CSharpDll.csproj.FileListAbsolute.txt
+³       ³   CSharpDll.csproj.GenerateResource.cache
+³       ³   CSharpDll.csproj.Up2Date
+³       ³   DesignTimeResolveAssemblyReferences.cache
+³       ³   DesignTimeResolveAssemblyReferencesInput.cache
+³       ³   mb_TestCSharpDll.dll
+³       ³   mb_TestCSharpDll.pdb
+³       ³   MusicBeePlugin.Form1.resources
+³       ³   MusicBeePlugin.Properties.Resources.resources
+³       ³   
+³       ÀÄÄÄTempPE
+³               Properties.Resources.Designer.cs.dll
+³               
+ÃÄÄÄpackages
+³   ³   pdfium.dll
+³   ³   
+³   ÃÄÄÄPdfiumViewer.2.13.0.0
+³   ³   ³   .signature.p7s
+³   ³   ³   PdfiumViewer.2.13.0.0.nupkg
+³   ³   ³   
+³   ³   ÃÄÄÄlib
+³   ³   ³   ÀÄÄÄnet20
+³   ³   ³       ³   PdfiumViewer.dll
+³   ³   ³       ³   PdfiumViewer.xml
+³   ³   ³       ³   
+³   ³   ³       ÀÄÄÄnl
+³   ³   ³               PdfiumViewer.resources.dll
+³   ³   ³               
+³   ³   ÀÄÄÄTools
+³   ³           Install.ps1
+³   ³           
+³   ÀÄÄÄPdfiumViewer.Native.x86.v8-xfa.2018.4.8.256
+³       ³   .signature.p7s
+³       ³   PdfiumViewer.Native.x86.v8-xfa.2018.4.8.256.nupkg
+³       ³   
+³       ÀÄÄÄBuild
+³           ³   PdfiumViewer.Native.x86.v8-xfa.props
+³           ³   
+³           ÀÄÄÄx86
+³                   pdfium.dll
+³                   
+ÀÄÄÄProperties
+        AssemblyInfo.cs
+        Resources.Designer.cs
+        Resources.resx
+        
