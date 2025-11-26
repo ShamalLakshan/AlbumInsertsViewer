@@ -17,9 +17,9 @@ namespace MusicBeePlugin
             mbApiInterface = new MusicBeeApiInterface();
             mbApiInterface.Initialise(apiInterfacePtr);
             about.PluginInfoVersion = PluginInfoVersion;
-            about.Name = "Viewer";
-            about.Description = "View some stuff";
-            about.Author = "Goni Billa";
+            about.Name = "Album Inserts Viewer";
+            about.Description = "A plugin to display the scans/booklets/artwork included inside an album.";
+            about.Author = "Shamal Lakshan";
             about.TargetApplication = "AlbumInsertsViewer";   //  the name of a Plugin Storage device or panel header for a dockable panel
             about.Type = PluginType.General;
             about.VersionMajor = 1;  // your plugin version
