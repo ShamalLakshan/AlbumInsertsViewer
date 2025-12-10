@@ -9,13 +9,6 @@ using static MusicBeePlugin.Plugin;
 
 namespace MusicBeePlugin
 {
-    /**
-     * @class AlbumInsertsPanel
-     * @brief Dockable panel version of the Album Inserts Viewer
-     * 
-     * This control provides the same functionality as Form1 but designed
-     * to be embedded in MusicBee's panel system.
-     */
     public class AlbumInsertsPanel : UserControl
     {
         #region Fields
@@ -28,7 +21,6 @@ namespace MusicBeePlugin
         private string currentPdfPath;
         private bool hasPdfInCollection = false;
 
-        // UI Controls
         private TabControl tabControl;
         private TabPage imagesTab;
         private TabPage bookletTab;
@@ -49,7 +41,6 @@ namespace MusicBeePlugin
             InitializeComponent();
             LoadImagesFromDirectory();
 
-            // Start slideshow timer if multiple images are available
             if (images != null && images.Length > 1)
             {
                 timer.Start();
@@ -61,40 +52,32 @@ namespace MusicBeePlugin
         {
             this.SuspendLayout();
 
-            // Create tab control
             tabControl = new TabControl();
             tabControl.Dock = DockStyle.Fill;
 
-            // Create Images tab
             imagesTab = new TabPage("Scans");
 
-            // Create PictureBox for images
             pictureBox = new PictureBox();
             pictureBox.Dock = DockStyle.Fill;
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox.BackColor = SystemColors.Control;
             pictureBox.Click += PictureBox_Click;
             imagesTab.Controls.Add(pictureBox);
 
-            // Create "No images" TextBox
             noImagesTextBox = new TextBox();
             noImagesTextBox.Dock = DockStyle.Fill;
             noImagesTextBox.ReadOnly = true;
             noImagesTextBox.Multiline = true;
             noImagesTextBox.TextAlign = HorizontalAlignment.Center;
             noImagesTextBox.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular);
-            noImagesTextBox.BackColor = SystemColors.Control;
             noImagesTextBox.BorderStyle = BorderStyle.None;
             noImagesTextBox.Visible = false;
             imagesTab.Controls.Add(noImagesTextBox);
             noImagesTextBox.BringToFront();
 
-            // Create "Open in viewer" label
             openImageLabel = new Label();
             openImageLabel.Text = "🔗 Open in viewer";
             openImageLabel.AutoSize = true;
             openImageLabel.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Underline);
-            openImageLabel.ForeColor = Color.FromArgb(100, 100, 100);
             openImageLabel.Cursor = Cursors.Hand;
             openImageLabel.BackColor = Color.Transparent;
             openImageLabel.Visible = false;
@@ -102,7 +85,6 @@ namespace MusicBeePlugin
             imagesTab.Controls.Add(openImageLabel);
             openImageLabel.BringToFront();
 
-            // Position label in bottom-right corner
             Action positionOpenImageLabel = () =>
             {
                 openImageLabel.Left = pictureBox.Right - openImageLabel.Width - 10;
@@ -114,17 +96,21 @@ namespace MusicBeePlugin
 
             openImageLabel.MouseEnter += (sender, e) =>
             {
-                openImageLabel.ForeColor = Color.FromArgb(50, 50, 50);
+                Color currentColor = openImageLabel.ForeColor;
+                int brighten = 60;
+                openImageLabel.ForeColor = Color.FromArgb(
+                    Math.Min(255, currentColor.R + brighten),
+                    Math.Min(255, currentColor.G + brighten),
+                    Math.Min(255, currentColor.B + brighten)
+                );
             };
             openImageLabel.MouseLeave += (sender, e) =>
             {
-                openImageLabel.ForeColor = Color.FromArgb(100, 100, 100);
+                openImageLabel.ForeColor = this.ForeColor;
             };
 
-            // Create Booklet tab
             bookletTab = new TabPage("Booklet");
 
-            // Create PDF message label
             pdfMessageLabel = new Label();
             pdfMessageLabel.Dock = DockStyle.Top;
             pdfMessageLabel.Height = 100;
@@ -133,7 +119,6 @@ namespace MusicBeePlugin
             pdfMessageLabel.Visible = false;
             bookletTab.Controls.Add(pdfMessageLabel);
 
-            // Create PDF launch button
             launchPdfButton = new Button();
             launchPdfButton.Text = "Launch in External Viewer";
             launchPdfButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -143,24 +128,21 @@ namespace MusicBeePlugin
             launchPdfButton.Top = 120;
             launchPdfButton.Click += LaunchPdfButton_Click;
             launchPdfButton.Visible = false;
+            launchPdfButton.FlatStyle = FlatStyle.Flat;
             bookletTab.Controls.Add(launchPdfButton);
 
-            // Update button width when resized
             bookletTab.Resize += (sender, e) =>
             {
                 launchPdfButton.Width = bookletTab.Width - 40;
             };
 
-            // Add tabs to tab control
             tabControl.TabPages.Add(imagesTab);
             tabControl.TabPages.Add(bookletTab);
 
-            // Create timer for slideshow
             timer = new Timer();
-            timer.Interval = 3000; // 3 seconds
+            timer.Interval = 3000;
             timer.Tick += Timer_Tick;
 
-            // Add tab control to panel
             this.Controls.Add(tabControl);
 
             this.ResumeLayout(false);
@@ -270,11 +252,9 @@ namespace MusicBeePlugin
             }
             catch (UnauthorizedAccessException)
             {
-                // Skip folders we don't have permission to access
             }
             catch (Exception)
             {
-                // Handle other potential errors silently
             }
 
             return imageFiles;
