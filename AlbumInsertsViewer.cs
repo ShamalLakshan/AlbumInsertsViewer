@@ -10,7 +10,8 @@ namespace MusicBeePlugin
     {
         private MusicBeeApiInterface mbApiInterface;
         private PluginInfo about = new PluginInfo();
-        private Form1 albumInsertsForm; // Keep reference to the form
+        private Form1 albumInsertsForm; // Keep reference to the floating form
+        private AlbumInsertsPanel dockablePanel; // Keep reference to the dockable panel
 
         public PluginInfo Initialise(IntPtr apiInterfacePtr)
         {
@@ -118,6 +119,22 @@ namespace MusicBeePlugin
                             albumInsertsForm.RefreshImagesForCurrentTrack();
                         }
                     }
+
+                    // If the dockable panel is open, refresh it with new track
+                    if (dockablePanel != null && !dockablePanel.IsDisposed)
+                    {
+                        if (dockablePanel.InvokeRequired)
+                        {
+                            dockablePanel.Invoke(new Action(() =>
+                            {
+                                dockablePanel.RefreshImagesForCurrentTrack();
+                            }));
+                        }
+                        else
+                        {
+                            dockablePanel.RefreshImagesForCurrentTrack();
+                        }
+                    }
                     break;
                 case NotificationType.PlayStateChanged:
                     // You could also refresh on play state changes if needed
@@ -189,13 +206,26 @@ namespace MusicBeePlugin
             //    < 0 indicates to MusicBee this control is resizable and should be sized to fill the panel it is docked to in MusicBee
             //    = 0 indicates to MusicBee this control resizeable
             //    > 0 indicates to MusicBee the fixed height for the control.Note it is recommended you scale the height for high DPI screens(create a graphics object and get the DpiY value)
-            float dpiScaling = 0;
-            using (Graphics g = panel.CreateGraphics())
+
+            // Create the album inserts panel control on the UI thread
+            if (panel.InvokeRequired)
             {
-                dpiScaling = g.DpiY / 96f;
+                panel.Invoke(new Action(() =>
+                {
+                    dockablePanel = new AlbumInsertsPanel(mbApiInterface);
+                    dockablePanel.Dock = DockStyle.Fill;
+                    panel.Controls.Add(dockablePanel);
+                }));
             }
-            panel.Paint += panel_Paint;
-            return Convert.ToInt32(100 * dpiScaling);
+            else
+            {
+                dockablePanel = new AlbumInsertsPanel(mbApiInterface);
+                dockablePanel.Dock = DockStyle.Fill;
+                panel.Controls.Add(dockablePanel);
+            }
+
+            // Return -1 to indicate the panel should fill the available space
+            return -1;
         }
 
         // presence of this function indicates to MusicBee that the dockable panel created above will show menu items when the panel header is clicked
@@ -203,14 +233,13 @@ namespace MusicBeePlugin
         public List<ToolStripItem> GetHeaderMenuItems()
         {
             List<ToolStripItem> list = new List<ToolStripItem>();
-            list.Add(new ToolStripMenuItem("Album Inserts Viewer menu item"));
-            return list;
-        }
 
-        private void panel_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.Clear(Color.Red);
-            TextRenderer.DrawText(e.Graphics, "Album Inserts Viewer", SystemFonts.CaptionFont, new Point(10, 10), Color.Blue);
+            // Add a menu item to open in floating window
+            ToolStripMenuItem openFloatingItem = new ToolStripMenuItem("Open in Floating Window");
+            openFloatingItem.Click += menuClicked;
+            list.Add(openFloatingItem);
+
+            return list;
         }
     }
 }
