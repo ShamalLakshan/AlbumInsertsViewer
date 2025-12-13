@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Diagnostics;
 using static MusicBeePlugin.Plugin;
 
 namespace MusicBeePlugin
 {
-    public partial class Form1 : Form
+    public class AlbumInsertsPanel : UserControl
     {
         #region Fields
 
@@ -27,6 +22,24 @@ namespace MusicBeePlugin
         private string currentPdfPath;
         private bool hasPdfInCollection = false;
 
+        // UI Controls
+        private Panel navigationPanel;
+        private Button scansButton;
+        private Button bookletButton;
+        private Panel contentPanel;
+
+        // Scans view controls
+        private Panel scansPanel;
+        private PictureBox pictureBox;
+        private TextBox noImagesTextBox;
+        private Label openImageLabel;
+
+        // Booklet view controls
+        private Panel bookletPanel;
+        private Label pdfMessageLabel;
+        private Button launchPdfButton;
+
+        private Timer timer;
         private ViewMode currentView = ViewMode.Scans;
 
         private enum ViewMode
@@ -37,146 +50,196 @@ namespace MusicBeePlugin
 
         #endregion
 
-        #region Windows API Imports for Form Dragging
+        #region Constructor and Initialization
 
-        [DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        [DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HTCAPTION = 0x2;
-
-        #endregion
-
-        #region Constructor
-
-        public Form1(MusicBeeApiInterface apiInterface, PluginConfig pluginConfig)
+        public AlbumInsertsPanel(MusicBeeApiInterface apiInterface, PluginConfig pluginConfig)
         {
             mbApi = apiInterface;
             config = pluginConfig;
-
             InitializeComponent();
-
-            this.Size = new Size(config.WindowWidth, config.WindowHeight);
-            this.Text = "Album Inserts Viewer";
-
-            ApplyTheming();
-            SetupEventHandlers();
+            ApplyConfig(config);
             LoadImagesFromDirectory();
 
-            string currentTrackPath = GetCurrentTrackPath();
-            if (!string.IsNullOrEmpty(currentTrackPath))
+            if (images != null && images.Length > 1 && config.AutoStartSlideshow)
             {
-                this.Text = $"Album Inserts Viewer - {Path.GetFileName(currentTrackPath)}";
-            }
-
-            if (!playing)
-            {
-                if (images == null || images.Length == 0)
-                {
-                    ShowNoImagesMessage();
-                    return;
-                }
-
-                if (images.Length > 1 && config.AutoStartSlideshow)
-                {
-                    timer1.Start();
-                    playing = true;
-                }
+                timer.Start();
+                playing = true;
             }
         }
 
-        private void SetupEventHandlers()
+        private void InitializeComponent()
         {
-            // Timer
-            timer1.Interval = config.SlideshowIntervalSeconds * 1000;
-            timer1.Tick += Timer1_Tick;
+            this.SuspendLayout();
 
-            // Navigation buttons
-            btnScans.Click += (s, e) => SwitchView(ViewMode.Scans);
-            btnBooklet.Click += (s, e) => SwitchView(ViewMode.Booklet);
+            // Navigation panel at top
+            navigationPanel = new Panel();
+            navigationPanel.Dock = DockStyle.Top;
+            navigationPanel.Height = 40;
 
-            // Picture box
-            pictureBox1.Click += PictureBox1_Click;
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            scansButton = new Button();
+            scansButton.Text = "Scans";
+            scansButton.FlatStyle = FlatStyle.Flat;
+            scansButton.FlatAppearance.BorderSize = 0;
+            scansButton.Dock = DockStyle.Left;
+            scansButton.Width = 100;
+            scansButton.Click += (s, e) => SwitchView(ViewMode.Scans);
 
-            // Open image label
-            lblOpenImage.Click += OpenImageLabel_Click;
-            lblOpenImage.MouseEnter += (sender, e) =>
+            bookletButton = new Button();
+            bookletButton.Text = "Booklet";
+            bookletButton.FlatStyle = FlatStyle.Flat;
+            bookletButton.FlatAppearance.BorderSize = 0;
+            bookletButton.Dock = DockStyle.Left;
+            bookletButton.Width = 100;
+            bookletButton.Click += (s, e) => SwitchView(ViewMode.Booklet);
+
+            navigationPanel.Controls.Add(bookletButton);
+            navigationPanel.Controls.Add(scansButton);
+
+            // Content panel
+            contentPanel = new Panel();
+            contentPanel.Dock = DockStyle.Fill;
+
+            // === SCANS PANEL ===
+            scansPanel = new Panel();
+            scansPanel.Dock = DockStyle.Fill;
+
+            pictureBox = new PictureBox();
+            pictureBox.Dock = DockStyle.Fill;
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.Click += PictureBox_Click;
+            scansPanel.Controls.Add(pictureBox);
+
+            noImagesTextBox = new TextBox();
+            noImagesTextBox.Dock = DockStyle.Fill;
+            noImagesTextBox.ReadOnly = true;
+            noImagesTextBox.Multiline = true;
+            noImagesTextBox.TextAlign = HorizontalAlignment.Center;
+            noImagesTextBox.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular);
+            noImagesTextBox.BorderStyle = BorderStyle.None;
+            noImagesTextBox.Visible = false;
+            scansPanel.Controls.Add(noImagesTextBox);
+            noImagesTextBox.BringToFront();
+
+            openImageLabel = new Label();
+            openImageLabel.Text = "🔗 Open in viewer";
+            openImageLabel.AutoSize = true;
+            openImageLabel.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Underline);
+            openImageLabel.Cursor = Cursors.Hand;
+            openImageLabel.BackColor = Color.Transparent;
+            openImageLabel.Visible = false;
+            openImageLabel.Click += OpenImageLabel_Click;
+            scansPanel.Controls.Add(openImageLabel);
+            openImageLabel.BringToFront();
+
+            Action positionOpenImageLabel = () =>
             {
-                Color currentColor = lblOpenImage.ForeColor;
+                openImageLabel.Left = pictureBox.Right - openImageLabel.Width - 10;
+                openImageLabel.Top = pictureBox.Bottom - openImageLabel.Height - 10;
+            };
+
+            this.Resize += (sender, e) => positionOpenImageLabel();
+            openImageLabel.TextChanged += (sender, e) => positionOpenImageLabel();
+
+            openImageLabel.MouseEnter += (sender, e) =>
+            {
+                Color currentColor = openImageLabel.ForeColor;
                 int brighten = 60;
-                lblOpenImage.ForeColor = Color.FromArgb(
+                openImageLabel.ForeColor = Color.FromArgb(
                     Math.Min(255, currentColor.R + brighten),
                     Math.Min(255, currentColor.G + brighten),
                     Math.Min(255, currentColor.B + brighten)
                 );
             };
-            lblOpenImage.MouseLeave += (sender, e) =>
+            openImageLabel.MouseLeave += (sender, e) =>
             {
-                lblOpenImage.ForeColor = this.ForeColor;
+                openImageLabel.ForeColor = this.ForeColor;
             };
 
-            // Position open image label
-            Action positionLabel = () =>
-            {
-                lblOpenImage.Left = pictureBox1.Right - lblOpenImage.Width - 10;
-                lblOpenImage.Top = pictureBox1.Bottom - lblOpenImage.Height - 10;
-            };
-            this.Resize += (sender, e) => positionLabel();
-            lblOpenImage.TextChanged += (sender, e) => positionLabel();
+            // === BOOKLET PANEL ===
+            bookletPanel = new Panel();
+            bookletPanel.Dock = DockStyle.Fill;
+            bookletPanel.Visible = false;
 
-            // PDF button
-            btnLaunchPdf.Click += LaunchPdfButton_Click;
+            pdfMessageLabel = new Label();
+            pdfMessageLabel.Dock = DockStyle.Top;
+            pdfMessageLabel.Height = 100;
+            pdfMessageLabel.TextAlign = ContentAlignment.MiddleCenter;
+            pdfMessageLabel.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular);
+            pdfMessageLabel.Visible = false;
+            bookletPanel.Controls.Add(pdfMessageLabel);
 
-            // Booklet panel resize
+            launchPdfButton = new Button();
+            launchPdfButton.Text = "Launch in External Viewer";
+            launchPdfButton.FlatStyle = FlatStyle.Flat;
+            launchPdfButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            launchPdfButton.Height = 35;
+            launchPdfButton.Width = bookletPanel.Width - 40;
+            launchPdfButton.Left = 20;
+            launchPdfButton.Top = 120;
+            launchPdfButton.Click += LaunchPdfButton_Click;
+            launchPdfButton.Visible = false;
+            bookletPanel.Controls.Add(launchPdfButton);
+
             bookletPanel.Resize += (sender, e) =>
             {
-                btnLaunchPdf.Width = bookletPanel.Width - 40;
+                launchPdfButton.Width = bookletPanel.Width - 40;
             };
 
-            // Form dragging
-            this.MouseDown += Form1_MouseDown;
-            pictureBox1.MouseDown += Form1_MouseDown;
-            txtNoImages.MouseDown += Form1_MouseDown;
-            navPanel.MouseDown += Form1_MouseDown;
+            // Add panels to content panel
+            contentPanel.Controls.Add(scansPanel);
+            contentPanel.Controls.Add(bookletPanel);
+
+            // Timer for slideshow
+            timer = new Timer();
+            timer.Interval = 3000; // Will be updated from config
+            timer.Tick += Timer_Tick;
+
+            // Add to main control
+            this.Controls.Add(contentPanel);
+            this.Controls.Add(navigationPanel);
+
+            // Set initial view
+            SwitchView(ViewMode.Scans);
+
+            this.ResumeLayout(false);
         }
 
-        private void ApplyTheming()
+        public void ApplyConfig(PluginConfig newConfig)
         {
+            config = newConfig;
+
+            // Apply colors
             this.BackColor = config.BackgroundColor;
             this.ForeColor = config.ForegroundColor;
 
-            navPanel.BackColor = config.BackgroundColor;
+            navigationPanel.BackColor = config.BackgroundColor;
 
-            btnScans.BackColor = config.ButtonBackColor;
-            btnScans.ForeColor = config.ButtonForeColor;
-            btnBooklet.BackColor = config.ButtonBackColor;
-            btnBooklet.ForeColor = config.ButtonForeColor;
+            scansButton.BackColor = config.ButtonBackColor;
+            scansButton.ForeColor = config.ButtonForeColor;
+            bookletButton.BackColor = config.ButtonBackColor;
+            bookletButton.ForeColor = config.ButtonForeColor;
 
             contentPanel.BackColor = config.BackgroundColor;
             scansPanel.BackColor = config.PanelBackColor;
             bookletPanel.BackColor = config.PanelBackColor;
 
-            pictureBox1.BackColor = config.PanelBackColor;
-            txtNoImages.BackColor = config.PanelBackColor;
-            txtNoImages.ForeColor = config.ForegroundColor;
+            pictureBox.BackColor = config.PanelBackColor;
+            noImagesTextBox.BackColor = config.PanelBackColor;
+            noImagesTextBox.ForeColor = config.ForegroundColor;
 
-            lblPdfMessage.BackColor = config.PanelBackColor;
-            lblPdfMessage.ForeColor = config.ForegroundColor;
-            btnLaunchPdf.BackColor = config.ButtonBackColor;
-            btnLaunchPdf.ForeColor = config.ButtonForeColor;
+            pdfMessageLabel.BackColor = config.PanelBackColor;
+            pdfMessageLabel.ForeColor = config.ForegroundColor;
+            launchPdfButton.BackColor = config.ButtonBackColor;
+            launchPdfButton.ForeColor = config.ButtonForeColor;
 
-            lblOpenImage.Visible = config.ShowOpenInViewerLink;
+            openImageLabel.Visible = config.ShowOpenInViewerLink;
 
-            SwitchView(ViewMode.Scans);
+            // Update timer interval
+            timer.Interval = config.SlideshowIntervalSeconds * 1000;
+
+            // Update active button appearance
+            UpdateButtonAppearance();
         }
-
-        #endregion
-
-        #region View Management
 
         private void SwitchView(ViewMode view)
         {
@@ -202,30 +265,17 @@ namespace MusicBeePlugin
         {
             if (currentView == ViewMode.Scans)
             {
-                btnScans.BackColor = config.ActiveButtonBackColor;
-                btnScans.ForeColor = config.ActiveButtonForeColor;
-                btnBooklet.BackColor = config.ButtonBackColor;
-                btnBooklet.ForeColor = config.ButtonForeColor;
+                scansButton.BackColor = config.ActiveButtonBackColor;
+                scansButton.ForeColor = config.ActiveButtonForeColor;
+                bookletButton.BackColor = config.ButtonBackColor;
+                bookletButton.ForeColor = config.ButtonForeColor;
             }
             else
             {
-                btnScans.BackColor = config.ButtonBackColor;
-                btnScans.ForeColor = config.ButtonForeColor;
-                btnBooklet.BackColor = config.ActiveButtonBackColor;
-                btnBooklet.ForeColor = config.ActiveButtonForeColor;
-            }
-        }
-
-        #endregion
-
-        #region Form Dragging
-
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+                scansButton.BackColor = config.ButtonBackColor;
+                scansButton.ForeColor = config.ButtonForeColor;
+                bookletButton.BackColor = config.ActiveButtonBackColor;
+                bookletButton.ForeColor = config.ActiveButtonForeColor;
             }
         }
 
@@ -235,39 +285,39 @@ namespace MusicBeePlugin
 
         private void ShowNoImagesMessage()
         {
-            pictureBox1.Visible = false;
-            txtNoImages.Visible = true;
-            txtNoImages.Text = "No images found\r\n\r\nSelect an album with image files or embedded artwork to display content.";
+            pictureBox.Visible = false;
+            noImagesTextBox.Visible = true;
+            noImagesTextBox.Text = "No images found\r\n\r\nSelect an album with image files or embedded artwork to display content.";
 
-            lblOpenImage.Visible = false;
+            openImageLabel.Visible = false;
             hasPdfInCollection = false;
             currentPdfPath = null;
 
-            timer1.Stop();
+            timer.Stop();
             playing = false;
         }
 
         private void ShowPictureBox()
         {
-            txtNoImages.Visible = false;
-            pictureBox1.Visible = true;
-            lblOpenImage.Visible = config.ShowOpenInViewerLink;
+            noImagesTextBox.Visible = false;
+            pictureBox.Visible = true;
+            openImageLabel.Visible = config.ShowOpenInViewerLink;
         }
 
         private void UpdatePdfTabUI()
         {
             if (hasPdfInCollection && !string.IsNullOrEmpty(currentPdfPath))
             {
-                lblPdfMessage.Visible = true;
-                btnLaunchPdf.Visible = true;
+                pdfMessageLabel.Visible = true;
+                launchPdfButton.Visible = true;
                 string pdfName = Path.GetFileName(currentPdfPath);
-                lblPdfMessage.Text = $"📄 {pdfName}\r\n\r\nPDF booklet detected in album folder.\r\nUse the button below to launch the file externally.";
+                pdfMessageLabel.Text = $"📄 {pdfName}\r\n\r\nPDF booklet detected in album folder.\r\nUse the button below to launch the file externally.";
             }
             else
             {
-                lblPdfMessage.Visible = true;
-                btnLaunchPdf.Visible = false;
-                lblPdfMessage.Text = "No PDF booklet detected.\r\n\r\nPDF booklets (liner notes, album inserts, etc.)\r\nwill appear here when available in the album folder.";
+                pdfMessageLabel.Visible = true;
+                launchPdfButton.Visible = false;
+                pdfMessageLabel.Text = "No PDF booklet detected.\r\n\r\nPDF booklets (liner notes, album inserts, etc.)\r\nwill appear here when available in the album folder.";
             }
         }
 
@@ -378,7 +428,7 @@ namespace MusicBeePlugin
                     {
                         if (!playing)
                         {
-                            timer1.Start();
+                            timer.Start();
                             playing = true;
                         }
                     }
@@ -386,7 +436,7 @@ namespace MusicBeePlugin
                     {
                         if (playing)
                         {
-                            timer1.Stop();
+                            timer.Stop();
                             playing = false;
                         }
                     }
@@ -406,12 +456,12 @@ namespace MusicBeePlugin
             {
                 ShowPictureBox();
 
-                if (pictureBox1.Image != null)
+                if (pictureBox.Image != null)
                 {
-                    pictureBox1.Image.Dispose();
+                    pictureBox.Image.Dispose();
                 }
 
-                pictureBox1.Image = System.Drawing.Image.FromFile(filePath);
+                pictureBox.Image = Image.FromFile(filePath);
                 currentImagePath = filePath;
             }
             catch (Exception ex)
@@ -428,31 +478,31 @@ namespace MusicBeePlugin
 
                 if (!string.IsNullOrEmpty(artworkUrl))
                 {
-                    pictureBox1.Image?.Dispose();
-                    pictureBox1.Image = System.Drawing.Image.FromFile(artworkUrl);
+                    pictureBox.Image?.Dispose();
+                    pictureBox.Image = Image.FromFile(artworkUrl);
 
                     images = new string[] { artworkUrl };
                     ShowPictureBox();
 
                     if (playing)
                     {
-                        timer1.Stop();
+                        timer.Stop();
                         playing = false;
                     }
 
-                    lblOpenImage.Visible = config.ShowOpenInViewerLink;
+                    openImageLabel.Visible = config.ShowOpenInViewerLink;
                     currentImagePath = artworkUrl;
                 }
                 else
                 {
-                    pictureBox1.Image = null;
+                    pictureBox.Image = null;
                     images = new string[0];
                     ShowNoImagesMessage();
                 }
             }
             catch
             {
-                pictureBox1.Image = null;
+                pictureBox.Image = null;
                 images = new string[0];
                 ShowNoImagesMessage();
             }
@@ -462,7 +512,7 @@ namespace MusicBeePlugin
 
         #region Event Handlers
 
-        private void Timer1_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             if (images != null && images.Length > 1)
             {
@@ -475,12 +525,7 @@ namespace MusicBeePlugin
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            // Designer event - kept for compatibility
-        }
-
-        private void PictureBox1_Click(object sender, EventArgs e)
+        private void PictureBox_Click(object sender, EventArgs e)
         {
             try
             {
@@ -539,11 +584,15 @@ namespace MusicBeePlugin
 
         #region Cleanup
 
-        protected override void OnFormClosed(FormClosedEventArgs e)
+        protected override void Dispose(bool disposing)
         {
-            timer1?.Stop();
-            pictureBox1?.Image?.Dispose();
-            base.OnFormClosed(e);
+            if (disposing)
+            {
+                timer?.Stop();
+                timer?.Dispose();
+                pictureBox?.Image?.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
         #endregion

@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.IO;
 
 namespace MusicBeePlugin
 {
@@ -10,7 +11,52 @@ namespace MusicBeePlugin
     {
         private MusicBeeApiInterface mbApiInterface;
         private PluginInfo about = new PluginInfo();
-        private Form1 albumInsertsForm; // Keep reference to the form
+        private Form1 albumInsertsForm;
+        private AlbumInsertsPanel dockablePanel;
+        private string configFilePath;
+        private PluginConfig config;
+
+        public class PluginConfig
+        {
+            // Color settings
+            public Color BackgroundColor { get; set; }
+            public Color ForegroundColor { get; set; }
+            public Color ButtonBackColor { get; set; }
+            public Color ButtonForeColor { get; set; }
+            public Color ActiveButtonBackColor { get; set; }
+            public Color ActiveButtonForeColor { get; set; }
+            public Color PanelBackColor { get; set; }
+
+            // Slideshow settings
+            public int SlideshowIntervalSeconds { get; set; }
+            public bool AutoStartSlideshow { get; set; }
+
+            // Display settings
+            public bool ShowOpenInViewerLink { get; set; }
+            public int WindowWidth { get; set; }
+            public int WindowHeight { get; set; }
+
+            public PluginConfig()
+            {
+                // Default: Everything black with white text
+                BackgroundColor = Color.Black;
+                ForegroundColor = Color.White;
+                ButtonBackColor = Color.FromArgb(30, 30, 30);
+                ButtonForeColor = Color.White;
+                ActiveButtonBackColor = Color.FromArgb(60, 60, 60);
+                ActiveButtonForeColor = Color.White;
+                PanelBackColor = Color.Black;
+
+                // Default slideshow settings
+                SlideshowIntervalSeconds = 3;
+                AutoStartSlideshow = true;
+
+                // Default display settings
+                ShowOpenInViewerLink = true;
+                WindowWidth = 800;
+                WindowHeight = 600;
+            }
+        }
 
         public PluginInfo Initialise(IntPtr apiInterfacePtr)
         {
@@ -20,92 +66,251 @@ namespace MusicBeePlugin
             about.Name = "Album Inserts Viewer";
             about.Description = "A plugin to display the scans/booklets/artwork included inside an album.";
             about.Author = "Shamal Lakshan";
-            about.TargetApplication = "AlbumInsertsViewer";   //  the name of a Plugin Storage device or panel header for a dockable panel
+            about.TargetApplication = "AlbumInsertsViewer";
             about.Type = PluginType.General;
-            about.VersionMajor = 1;  // your plugin version
+            about.VersionMajor = 1;
             about.VersionMinor = 0;
-            about.Revision = 1;
+            about.Revision = 2;
             about.MinInterfaceVersion = MinInterfaceVersion;
             about.MinApiRevision = MinApiRevision;
             about.ReceiveNotifications = (ReceiveNotificationFlags.PlayerEvents | ReceiveNotificationFlags.TagEvents);
-            about.ConfigurationPanelHeight = 0;   // height in pixels that musicbee should reserve in a panel for config settings. When set, a handle to an empty panel will be passed to the Configure function
+            about.ConfigurationPanelHeight = 0;
+
+            string dataPath = mbApiInterface.Setting_GetPersistentStoragePath();
+            configFilePath = Path.Combine(dataPath, "albuminsertsviewer.colors.conf");
+
+            LoadOrCreateConfig();
             createMenuItem();
             return about;
         }
 
+        private void LoadOrCreateConfig()
+        {
+            config = new PluginConfig();
+
+            if (!File.Exists(configFilePath))
+            {
+                CreateDefaultConfig();
+            }
+            else
+            {
+                LoadConfig();
+            }
+        }
+
+        private void CreateDefaultConfig()
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(configFilePath))
+                {
+                    writer.WriteLine("# Album Inserts Viewer Configuration");
+                    writer.WriteLine("# Colors are in R,G,B format (0-255 for each component)");
+                    writer.WriteLine("# Edit these values to match your MusicBee theme");
+                    writer.WriteLine();
+                    writer.WriteLine("# ===== COLOR SETTINGS =====");
+                    writer.WriteLine();
+                    writer.WriteLine("# Main background color");
+                    writer.WriteLine($"BackgroundColor={config.BackgroundColor.R},{config.BackgroundColor.G},{config.BackgroundColor.B}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Main text/foreground color");
+                    writer.WriteLine($"ForegroundColor={config.ForegroundColor.R},{config.ForegroundColor.G},{config.ForegroundColor.B}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Navigation button background (inactive)");
+                    writer.WriteLine($"ButtonBackColor={config.ButtonBackColor.R},{config.ButtonBackColor.G},{config.ButtonBackColor.B}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Navigation button text (inactive)");
+                    writer.WriteLine($"ButtonForeColor={config.ButtonForeColor.R},{config.ButtonForeColor.G},{config.ButtonForeColor.B}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Navigation button background (active/selected)");
+                    writer.WriteLine($"ActiveButtonBackColor={config.ActiveButtonBackColor.R},{config.ActiveButtonBackColor.G},{config.ActiveButtonBackColor.B}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Navigation button text (active/selected)");
+                    writer.WriteLine($"ActiveButtonForeColor={config.ActiveButtonForeColor.R},{config.ActiveButtonForeColor.G},{config.ActiveButtonForeColor.B}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Content panel background");
+                    writer.WriteLine($"PanelBackColor={config.PanelBackColor.R},{config.PanelBackColor.G},{config.PanelBackColor.B}");
+                    writer.WriteLine();
+                    writer.WriteLine("# ===== SLIDESHOW SETTINGS =====");
+                    writer.WriteLine();
+                    writer.WriteLine("# Slideshow interval in seconds (minimum 1, recommended 3-10)");
+                    writer.WriteLine($"SlideshowIntervalSeconds={config.SlideshowIntervalSeconds}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Auto-start slideshow when multiple images are available (true/false)");
+                    writer.WriteLine($"AutoStartSlideshow={config.AutoStartSlideshow.ToString().ToLower()}");
+                    writer.WriteLine();
+                    writer.WriteLine("# ===== DISPLAY SETTINGS =====");
+                    writer.WriteLine();
+                    writer.WriteLine("# Show 'Open in viewer' link on images (true/false)");
+                    writer.WriteLine($"ShowOpenInViewerLink={config.ShowOpenInViewerLink.ToString().ToLower()}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Default floating window width in pixels");
+                    writer.WriteLine($"WindowWidth={config.WindowWidth}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Default floating window height in pixels");
+                    writer.WriteLine($"WindowHeight={config.WindowHeight}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to create config file: {ex.Message}", "Config Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void LoadConfig()
+        {
+            try
+            {
+                string[] lines = File.ReadAllLines(configFilePath);
+                foreach (string line in lines)
+                {
+                    if (string.IsNullOrWhiteSpace(line) || line.Trim().StartsWith("#"))
+                        continue;
+
+                    string[] parts = line.Split('=');
+                    if (parts.Length != 2)
+                        continue;
+
+                    string key = parts[0].Trim();
+                    string value = parts[1].Trim();
+
+                    switch (key)
+                    {
+                        case "BackgroundColor":
+                            config.BackgroundColor = ParseColor(value);
+                            break;
+                        case "ForegroundColor":
+                            config.ForegroundColor = ParseColor(value);
+                            break;
+                        case "ButtonBackColor":
+                            config.ButtonBackColor = ParseColor(value);
+                            break;
+                        case "ButtonForeColor":
+                            config.ButtonForeColor = ParseColor(value);
+                            break;
+                        case "ActiveButtonBackColor":
+                            config.ActiveButtonBackColor = ParseColor(value);
+                            break;
+                        case "ActiveButtonForeColor":
+                            config.ActiveButtonForeColor = ParseColor(value);
+                            break;
+                        case "PanelBackColor":
+                            config.PanelBackColor = ParseColor(value);
+                            break;
+                        case "SlideshowIntervalSeconds":
+                            if (int.TryParse(value, out int interval) && interval >= 1)
+                                config.SlideshowIntervalSeconds = interval;
+                            break;
+                        case "AutoStartSlideshow":
+                            config.AutoStartSlideshow = value.ToLower() == "true";
+                            break;
+                        case "ShowOpenInViewerLink":
+                            config.ShowOpenInViewerLink = value.ToLower() == "true";
+                            break;
+                        case "WindowWidth":
+                            if (int.TryParse(value, out int width) && width > 0)
+                                config.WindowWidth = width;
+                            break;
+                        case "WindowHeight":
+                            if (int.TryParse(value, out int height) && height > 0)
+                                config.WindowHeight = height;
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load config file: {ex.Message}\nUsing default settings.", "Config Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private Color ParseColor(string colorString)
+        {
+            try
+            {
+                string[] rgb = colorString.Split(',');
+                if (rgb.Length == 3)
+                {
+                    int r = int.Parse(rgb[0].Trim());
+                    int g = int.Parse(rgb[1].Trim());
+                    int b = int.Parse(rgb[2].Trim());
+                    return Color.FromArgb(r, g, b);
+                }
+            }
+            catch { }
+
+            return Color.Black;
+        }
+
         public bool Configure(IntPtr panelHandle)
         {
-            // save any persistent settings in a sub-folder of this path
             string dataPath = mbApiInterface.Setting_GetPersistentStoragePath();
-            // panelHandle will only be set if you set about.ConfigurationPanelHeight to a non-zero value
-            // keep in mind the panel width is scaled according to the font the user has selected
-            // if about.ConfigurationPanelHeight is set to 0, you can display your own popup window
             if (panelHandle != IntPtr.Zero)
             {
                 Panel configPanel = (Panel)Panel.FromHandle(panelHandle);
-                Label prompt = new Label();
-                prompt.AutoSize = true;
-                prompt.Location = new Point(0, 0);
-                prompt.Text = "prompt:";
-                TextBox textBox = new TextBox();
-                textBox.Bounds = new Rectangle(60, 0, 100, textBox.Height);
-                configPanel.Controls.AddRange(new Control[] { prompt, textBox });
+
+                Label pathLabel = new Label();
+                pathLabel.AutoSize = true;
+                pathLabel.Location = new Point(0, 0);
+                pathLabel.Text = $"Config file: {configFilePath}";
+                pathLabel.Font = new Font("Microsoft Sans Serif", 8F);
+                pathLabel.MaximumSize = new Size(400, 0);
+
+                Button openConfigButton = new Button();
+                openConfigButton.Text = "Open Config in Notepad";
+                openConfigButton.Location = new Point(0, 40);
+                openConfigButton.Width = 150;
+                openConfigButton.Click += (s, e) =>
+                {
+                    try
+                    {
+                        System.Diagnostics.Process.Start("notepad.exe", configFilePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to open config file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                };
+
+                Label infoLabel = new Label();
+                infoLabel.Location = new Point(0, 70);
+                infoLabel.Size = new Size(400, 60);
+                infoLabel.Text = "Edit the config file to customize:\n• Colors (background, foreground, buttons)\n• Slideshow interval and auto-start\n• Window size and display options";
+
+                configPanel.Controls.AddRange(new Control[] { pathLabel, openConfigButton, infoLabel });
             }
             return false;
         }
 
-        // called by MusicBee when the user clicks Apply or Save in the MusicBee Preferences screen.
-        // its up to you to figure out whether anything has changed and needs updating
         public void SaveSettings()
         {
-            // save any persistent settings in a sub-folder of this path
-            string dataPath = mbApiInterface.Setting_GetPersistentStoragePath();
         }
 
-        // MusicBee is closing the plugin (plugin is being disabled by user or MusicBee is shutting down)
         public void Close(PluginCloseReason reason)
         {
-            // Close the form if it's still open
             if (albumInsertsForm != null && !albumInsertsForm.IsDisposed)
             {
                 albumInsertsForm.Close();
             }
         }
 
-        // uninstall this plugin - clean up any persisted files
         public void Uninstall()
         {
-            // Close the form if it's still open
             if (albumInsertsForm != null && !albumInsertsForm.IsDisposed)
             {
                 albumInsertsForm.Close();
             }
         }
 
-        // receive event notifications from MusicBee
-        // you need to set about.ReceiveNotificationFlags = PlayerEvents to receive all notifications, and not just the startup event
         public void ReceiveNotification(string sourceFileUrl, NotificationType type)
         {
-            // perform some action depending on the notification type
             switch (type)
             {
                 case NotificationType.PluginStartup:
-                    // perform startup initialisation
-                    switch (mbApiInterface.Player_GetPlayState())
-                    {
-                        case PlayState.Playing:
-                        case PlayState.Paused:
-                            // ...
-                            break;
-                    }
                     break;
                 case NotificationType.TrackChanged:
-                    string artist = mbApiInterface.NowPlaying_GetFileTag(MetaDataType.Artist);
-
-                    // If the album inserts form is open, refresh it with new track
                     if (albumInsertsForm != null && !albumInsertsForm.IsDisposed)
                     {
-                        // Use Invoke to ensure we're on the UI thread
                         if (albumInsertsForm.InvokeRequired)
                         {
                             albumInsertsForm.Invoke(new Action(() =>
@@ -118,12 +323,21 @@ namespace MusicBeePlugin
                             albumInsertsForm.RefreshImagesForCurrentTrack();
                         }
                     }
-                    break;
-                case NotificationType.PlayStateChanged:
-                    // You could also refresh on play state changes if needed
-                    break;
-                case NotificationType.TagsChanged:
-                    // Handle tag changes if needed
+
+                    if (dockablePanel != null && !dockablePanel.IsDisposed)
+                    {
+                        if (dockablePanel.InvokeRequired)
+                        {
+                            dockablePanel.Invoke(new Action(() =>
+                            {
+                                dockablePanel.RefreshImagesForCurrentTrack();
+                            }));
+                        }
+                        else
+                        {
+                            dockablePanel.RefreshImagesForCurrentTrack();
+                        }
+                    }
                     break;
             }
         }
@@ -135,82 +349,75 @@ namespace MusicBeePlugin
 
         private void menuClicked(object sender, EventArgs args)
         {
-            // Check if form is already open
             if (albumInsertsForm == null || albumInsertsForm.IsDisposed)
             {
-                // Create new form with API interface reference
-                albumInsertsForm = new Form1(mbApiInterface);
-
-                // Handle form closed event to reset our reference
+                albumInsertsForm = new Form1(mbApiInterface, config);
                 albumInsertsForm.FormClosed += (s, e) => albumInsertsForm = null;
-
                 albumInsertsForm.Show();
             }
             else
             {
-                // Form is already open, just bring it to front
                 albumInsertsForm.BringToFront();
                 albumInsertsForm.Focus();
             }
         }
 
-        // return an array of lyric or artwork provider names this plugin supports
-        // the providers will be iterated through one by one and passed to the RetrieveLyrics/ RetrieveArtwork function in order set by the user in the MusicBee Tags(2) preferences screen until a match is found
-        //public string[] GetProviders()
-        //{
-        //    return null;
-        //}
-
-        // return lyrics for the requested artist/title from the requested provider
-        // only required if PluginType = LyricsRetrieval
-        // return null if no lyrics are found
-        //public string RetrieveLyrics(string sourceFileUrl, string artist, string trackTitle, string album, bool synchronisedPreferred, string provider)
-        //{
-        //    return null;
-        //}
-
-        // return Base64 string representation of the artwork binary data from the requested provider
-        // only required if PluginType = ArtworkRetrieval
-        // return null if no artwork is found
-        //public string RetrieveArtwork(string sourceFileUrl, string albumArtist, string album, string provider)
-        //{
-        //    //Return Convert.ToBase64String(artworkBinaryData)
-        //    return null;
-        //}
-
-        //  presence of this function indicates to MusicBee that this plugin has a dockable panel. MusicBee will create the control and pass it as the panel parameter
-        //  you can add your own controls to the panel if needed
-        //  you can control the scrollable area of the panel using the mbApiInterface.MB_SetPanelScrollableArea function
-        //  to set a MusicBee header for the panel, set about.TargetApplication in the Initialise function above to the panel header text
         public int OnDockablePanelCreated(Control panel)
         {
-            //    return the height of the panel and perform any initialisation here
-            //    MusicBee will call panel.Dispose() when the user removes this panel from the layout configuration
-            //    < 0 indicates to MusicBee this control is resizable and should be sized to fill the panel it is docked to in MusicBee
-            //    = 0 indicates to MusicBee this control resizeable
-            //    > 0 indicates to MusicBee the fixed height for the control.Note it is recommended you scale the height for high DPI screens(create a graphics object and get the DpiY value)
-            float dpiScaling = 0;
-            using (Graphics g = panel.CreateGraphics())
+            if (panel.InvokeRequired)
             {
-                dpiScaling = g.DpiY / 96f;
+                panel.Invoke(new Action(() =>
+                {
+                    dockablePanel = new AlbumInsertsPanel(mbApiInterface, config);
+                    dockablePanel.Dock = DockStyle.Fill;
+                    panel.Controls.Add(dockablePanel);
+                }));
             }
-            panel.Paint += panel_Paint;
-            return Convert.ToInt32(100 * dpiScaling);
+            else
+            {
+                dockablePanel = new AlbumInsertsPanel(mbApiInterface, config);
+                dockablePanel.Dock = DockStyle.Fill;
+                panel.Controls.Add(dockablePanel);
+            }
+
+            return -1;
         }
 
-        // presence of this function indicates to MusicBee that the dockable panel created above will show menu items when the panel header is clicked
-        // return the list of ToolStripMenuItems that will be displayed
         public List<ToolStripItem> GetHeaderMenuItems()
         {
             List<ToolStripItem> list = new List<ToolStripItem>();
-            list.Add(new ToolStripMenuItem("Album Inserts Viewer menu item"));
-            return list;
-        }
 
-        private void panel_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.Clear(Color.Red);
-            TextRenderer.DrawText(e.Graphics, "Album Inserts Viewer", SystemFonts.CaptionFont, new Point(10, 10), Color.Blue);
+            ToolStripMenuItem openFloatingItem = new ToolStripMenuItem("Open in Floating Window");
+            openFloatingItem.Click += menuClicked;
+            list.Add(openFloatingItem);
+
+            ToolStripMenuItem openConfigItem = new ToolStripMenuItem("Edit Config");
+            openConfigItem.Click += (s, e) =>
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start("notepad.exe", configFilePath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to open config file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            };
+            list.Add(openConfigItem);
+
+            ToolStripMenuItem reloadItem = new ToolStripMenuItem("Reload Config");
+            reloadItem.Click += (s, e) =>
+            {
+                LoadConfig();
+                if (dockablePanel != null && !dockablePanel.IsDisposed)
+                {
+                    dockablePanel.ApplyConfig(config);
+                }
+                MessageBox.Show("Config reloaded! Reopen floating window for changes to take effect.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            };
+            list.Add(reloadItem);
+
+            return list;
         }
     }
 }
