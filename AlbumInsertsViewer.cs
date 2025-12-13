@@ -14,26 +14,47 @@ namespace MusicBeePlugin
         private Form1 albumInsertsForm;
         private AlbumInsertsPanel dockablePanel;
         private string configFilePath;
-        private ThemeColors themeColors;
+        private PluginConfig config;
 
-        public class ThemeColors
+        public class PluginConfig
         {
+            // Color settings
             public Color BackgroundColor { get; set; }
             public Color ForegroundColor { get; set; }
-            public Color TabControlBackColor { get; set; }
-            public Color TabPageBackColor { get; set; }
             public Color ButtonBackColor { get; set; }
             public Color ButtonForeColor { get; set; }
+            public Color ActiveButtonBackColor { get; set; }
+            public Color ActiveButtonForeColor { get; set; }
+            public Color PanelBackColor { get; set; }
 
-            public ThemeColors()
+            // Slideshow settings
+            public int SlideshowIntervalSeconds { get; set; }
+            public bool AutoStartSlideshow { get; set; }
+
+            // Display settings
+            public bool ShowOpenInViewerLink { get; set; }
+            public int WindowWidth { get; set; }
+            public int WindowHeight { get; set; }
+
+            public PluginConfig()
             {
-                // Default: Everything black
+                // Default: Everything black with white text
                 BackgroundColor = Color.Black;
                 ForegroundColor = Color.White;
-                TabControlBackColor = Color.Black;
-                TabPageBackColor = Color.Black;
                 ButtonBackColor = Color.FromArgb(30, 30, 30);
                 ButtonForeColor = Color.White;
+                ActiveButtonBackColor = Color.FromArgb(60, 60, 60);
+                ActiveButtonForeColor = Color.White;
+                PanelBackColor = Color.Black;
+
+                // Default slideshow settings
+                SlideshowIntervalSeconds = 3;
+                AutoStartSlideshow = true;
+
+                // Default display settings
+                ShowOpenInViewerLink = true;
+                WindowWidth = 800;
+                WindowHeight = 600;
             }
         }
 
@@ -49,75 +70,94 @@ namespace MusicBeePlugin
             about.Type = PluginType.General;
             about.VersionMajor = 1;
             about.VersionMinor = 0;
-            about.Revision = 1;
+            about.Revision = 2;
             about.MinInterfaceVersion = MinInterfaceVersion;
             about.MinApiRevision = MinApiRevision;
             about.ReceiveNotifications = (ReceiveNotificationFlags.PlayerEvents | ReceiveNotificationFlags.TagEvents);
             about.ConfigurationPanelHeight = 0;
 
-            // Initialize config file path
             string dataPath = mbApiInterface.Setting_GetPersistentStoragePath();
             configFilePath = Path.Combine(dataPath, "albuminsertsviewer.colors.conf");
 
-            // Load or create color configuration
-            LoadOrCreateColorConfig();
-
+            LoadOrCreateConfig();
             createMenuItem();
             return about;
         }
 
-        private void LoadOrCreateColorConfig()
+        private void LoadOrCreateConfig()
         {
-            themeColors = new ThemeColors();
+            config = new PluginConfig();
 
             if (!File.Exists(configFilePath))
             {
-                // Create default config file
-                CreateDefaultColorConfig();
+                CreateDefaultConfig();
             }
             else
             {
-                // Load existing config
-                LoadColorConfig();
+                LoadConfig();
             }
         }
 
-        private void CreateDefaultColorConfig()
+        private void CreateDefaultConfig()
         {
             try
             {
                 using (StreamWriter writer = new StreamWriter(configFilePath))
                 {
-                    writer.WriteLine("# Album Inserts Viewer Color Configuration");
+                    writer.WriteLine("# Album Inserts Viewer Configuration");
                     writer.WriteLine("# Colors are in R,G,B format (0-255 for each component)");
                     writer.WriteLine("# Edit these values to match your MusicBee theme");
                     writer.WriteLine();
+                    writer.WriteLine("# ===== COLOR SETTINGS =====");
+                    writer.WriteLine();
                     writer.WriteLine("# Main background color");
-                    writer.WriteLine($"BackgroundColor={themeColors.BackgroundColor.R},{themeColors.BackgroundColor.G},{themeColors.BackgroundColor.B}");
+                    writer.WriteLine($"BackgroundColor={config.BackgroundColor.R},{config.BackgroundColor.G},{config.BackgroundColor.B}");
                     writer.WriteLine();
                     writer.WriteLine("# Main text/foreground color");
-                    writer.WriteLine($"ForegroundColor={themeColors.ForegroundColor.R},{themeColors.ForegroundColor.G},{themeColors.ForegroundColor.B}");
+                    writer.WriteLine($"ForegroundColor={config.ForegroundColor.R},{config.ForegroundColor.G},{config.ForegroundColor.B}");
                     writer.WriteLine();
-                    writer.WriteLine("# Tab control background");
-                    writer.WriteLine($"TabControlBackColor={themeColors.TabControlBackColor.R},{themeColors.TabControlBackColor.G},{themeColors.TabControlBackColor.B}");
+                    writer.WriteLine("# Navigation button background (inactive)");
+                    writer.WriteLine($"ButtonBackColor={config.ButtonBackColor.R},{config.ButtonBackColor.G},{config.ButtonBackColor.B}");
                     writer.WriteLine();
-                    writer.WriteLine("# Tab page background");
-                    writer.WriteLine($"TabPageBackColor={themeColors.TabPageBackColor.R},{themeColors.TabPageBackColor.G},{themeColors.TabPageBackColor.B}");
+                    writer.WriteLine("# Navigation button text (inactive)");
+                    writer.WriteLine($"ButtonForeColor={config.ButtonForeColor.R},{config.ButtonForeColor.G},{config.ButtonForeColor.B}");
                     writer.WriteLine();
-                    writer.WriteLine("# Button background");
-                    writer.WriteLine($"ButtonBackColor={themeColors.ButtonBackColor.R},{themeColors.ButtonBackColor.G},{themeColors.ButtonBackColor.B}");
+                    writer.WriteLine("# Navigation button background (active/selected)");
+                    writer.WriteLine($"ActiveButtonBackColor={config.ActiveButtonBackColor.R},{config.ActiveButtonBackColor.G},{config.ActiveButtonBackColor.B}");
                     writer.WriteLine();
-                    writer.WriteLine("# Button text color");
-                    writer.WriteLine($"ButtonForeColor={themeColors.ButtonForeColor.R},{themeColors.ButtonForeColor.G},{themeColors.ButtonForeColor.B}");
+                    writer.WriteLine("# Navigation button text (active/selected)");
+                    writer.WriteLine($"ActiveButtonForeColor={config.ActiveButtonForeColor.R},{config.ActiveButtonForeColor.G},{config.ActiveButtonForeColor.B}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Content panel background");
+                    writer.WriteLine($"PanelBackColor={config.PanelBackColor.R},{config.PanelBackColor.G},{config.PanelBackColor.B}");
+                    writer.WriteLine();
+                    writer.WriteLine("# ===== SLIDESHOW SETTINGS =====");
+                    writer.WriteLine();
+                    writer.WriteLine("# Slideshow interval in seconds (minimum 1, recommended 3-10)");
+                    writer.WriteLine($"SlideshowIntervalSeconds={config.SlideshowIntervalSeconds}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Auto-start slideshow when multiple images are available (true/false)");
+                    writer.WriteLine($"AutoStartSlideshow={config.AutoStartSlideshow.ToString().ToLower()}");
+                    writer.WriteLine();
+                    writer.WriteLine("# ===== DISPLAY SETTINGS =====");
+                    writer.WriteLine();
+                    writer.WriteLine("# Show 'Open in viewer' link on images (true/false)");
+                    writer.WriteLine($"ShowOpenInViewerLink={config.ShowOpenInViewerLink.ToString().ToLower()}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Default floating window width in pixels");
+                    writer.WriteLine($"WindowWidth={config.WindowWidth}");
+                    writer.WriteLine();
+                    writer.WriteLine("# Default floating window height in pixels");
+                    writer.WriteLine($"WindowHeight={config.WindowHeight}");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to create color config file: {ex.Message}", "Config Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"Failed to create config file: {ex.Message}", "Config Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void LoadColorConfig()
+        private void LoadConfig()
         {
             try
             {
@@ -134,34 +174,53 @@ namespace MusicBeePlugin
                     string key = parts[0].Trim();
                     string value = parts[1].Trim();
 
-                    Color color = ParseColor(value);
-
                     switch (key)
                     {
                         case "BackgroundColor":
-                            themeColors.BackgroundColor = color;
+                            config.BackgroundColor = ParseColor(value);
                             break;
                         case "ForegroundColor":
-                            themeColors.ForegroundColor = color;
-                            break;
-                        case "TabControlBackColor":
-                            themeColors.TabControlBackColor = color;
-                            break;
-                        case "TabPageBackColor":
-                            themeColors.TabPageBackColor = color;
+                            config.ForegroundColor = ParseColor(value);
                             break;
                         case "ButtonBackColor":
-                            themeColors.ButtonBackColor = color;
+                            config.ButtonBackColor = ParseColor(value);
                             break;
                         case "ButtonForeColor":
-                            themeColors.ButtonForeColor = color;
+                            config.ButtonForeColor = ParseColor(value);
+                            break;
+                        case "ActiveButtonBackColor":
+                            config.ActiveButtonBackColor = ParseColor(value);
+                            break;
+                        case "ActiveButtonForeColor":
+                            config.ActiveButtonForeColor = ParseColor(value);
+                            break;
+                        case "PanelBackColor":
+                            config.PanelBackColor = ParseColor(value);
+                            break;
+                        case "SlideshowIntervalSeconds":
+                            if (int.TryParse(value, out int interval) && interval >= 1)
+                                config.SlideshowIntervalSeconds = interval;
+                            break;
+                        case "AutoStartSlideshow":
+                            config.AutoStartSlideshow = value.ToLower() == "true";
+                            break;
+                        case "ShowOpenInViewerLink":
+                            config.ShowOpenInViewerLink = value.ToLower() == "true";
+                            break;
+                        case "WindowWidth":
+                            if (int.TryParse(value, out int width) && width > 0)
+                                config.WindowWidth = width;
+                            break;
+                        case "WindowHeight":
+                            if (int.TryParse(value, out int height) && height > 0)
+                                config.WindowHeight = height;
                             break;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to load color config file: {ex.Message}\nUsing default colors.", "Config Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"Failed to load config file: {ex.Message}\nUsing default settings.", "Config Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -189,15 +248,18 @@ namespace MusicBeePlugin
             if (panelHandle != IntPtr.Zero)
             {
                 Panel configPanel = (Panel)Panel.FromHandle(panelHandle);
-                Label prompt = new Label();
-                prompt.AutoSize = true;
-                prompt.Location = new Point(0, 0);
-                prompt.Text = $"Color config file: {configFilePath}";
-                prompt.Font = new Font("Microsoft Sans Serif", 8F);
+
+                Label pathLabel = new Label();
+                pathLabel.AutoSize = true;
+                pathLabel.Location = new Point(0, 0);
+                pathLabel.Text = $"Config file: {configFilePath}";
+                pathLabel.Font = new Font("Microsoft Sans Serif", 8F);
+                pathLabel.MaximumSize = new Size(400, 0);
 
                 Button openConfigButton = new Button();
-                openConfigButton.Text = "Open Color Config";
-                openConfigButton.Location = new Point(0, 25);
+                openConfigButton.Text = "Open Config in Notepad";
+                openConfigButton.Location = new Point(0, 40);
+                openConfigButton.Width = 150;
                 openConfigButton.Click += (s, e) =>
                 {
                     try
@@ -210,14 +272,18 @@ namespace MusicBeePlugin
                     }
                 };
 
-                configPanel.Controls.AddRange(new Control[] { prompt, openConfigButton });
+                Label infoLabel = new Label();
+                infoLabel.Location = new Point(0, 70);
+                infoLabel.Size = new Size(400, 60);
+                infoLabel.Text = "Edit the config file to customize:\n• Colors (background, foreground, buttons)\n• Slideshow interval and auto-start\n• Window size and display options";
+
+                configPanel.Controls.AddRange(new Control[] { pathLabel, openConfigButton, infoLabel });
             }
             return false;
         }
 
         public void SaveSettings()
         {
-            string dataPath = mbApiInterface.Setting_GetPersistentStoragePath();
         }
 
         public void Close(PluginCloseReason reason)
@@ -241,16 +307,8 @@ namespace MusicBeePlugin
             switch (type)
             {
                 case NotificationType.PluginStartup:
-                    switch (mbApiInterface.Player_GetPlayState())
-                    {
-                        case PlayState.Playing:
-                        case PlayState.Paused:
-                            break;
-                    }
                     break;
                 case NotificationType.TrackChanged:
-                    string artist = mbApiInterface.NowPlaying_GetFileTag(MetaDataType.Artist);
-
                     if (albumInsertsForm != null && !albumInsertsForm.IsDisposed)
                     {
                         if (albumInsertsForm.InvokeRequired)
@@ -281,10 +339,6 @@ namespace MusicBeePlugin
                         }
                     }
                     break;
-                case NotificationType.PlayStateChanged:
-                    break;
-                case NotificationType.TagsChanged:
-                    break;
             }
         }
 
@@ -297,8 +351,7 @@ namespace MusicBeePlugin
         {
             if (albumInsertsForm == null || albumInsertsForm.IsDisposed)
             {
-                albumInsertsForm = new Form1(mbApiInterface);
-                ApplyThemeToForm(albumInsertsForm);
+                albumInsertsForm = new Form1(mbApiInterface, config);
                 albumInsertsForm.FormClosed += (s, e) => albumInsertsForm = null;
                 albumInsertsForm.Show();
             }
@@ -309,78 +362,22 @@ namespace MusicBeePlugin
             }
         }
 
-        private void ApplyThemeToForm(Form1 form)
-        {
-            form.BackColor = themeColors.BackgroundColor;
-            form.ForeColor = themeColors.ForegroundColor;
-            ApplyThemeToControls(form.Controls);
-        }
-
-        private void ApplyThemeToControls(Control.ControlCollection controls)
-        {
-            foreach (Control control in controls)
-            {
-                if (control is TabControl)
-                {
-                    control.BackColor = themeColors.TabControlBackColor;
-                    control.ForeColor = themeColors.ForegroundColor;
-
-                    TabControl tabControl = (TabControl)control;
-                    foreach (TabPage page in tabControl.TabPages)
-                    {
-                        page.BackColor = themeColors.TabPageBackColor;
-                        page.ForeColor = themeColors.ForegroundColor;
-                        ApplyThemeToControls(page.Controls);
-                    }
-                }
-                // Explicit casting to button to preserve FlatStyle properties.
-                else if (control is Button button)
-                {
-                    button.BackColor = themeColors.ButtonBackColor;
-                    button.ForeColor = themeColors.ButtonForeColor;
-                    button.FlatStyle = FlatStyle.Flat;
-                }
-                else if (control is PictureBox)
-                {
-                    control.BackColor = themeColors.BackgroundColor;
-                }
-                else
-                {
-                    control.BackColor = themeColors.BackgroundColor;
-                    control.ForeColor = themeColors.ForegroundColor;
-                }
-
-                if (control.HasChildren)
-                {
-                    ApplyThemeToControls(control.Controls);
-                }
-            }
-        }
-
         public int OnDockablePanelCreated(Control panel)
         {
             if (panel.InvokeRequired)
             {
                 panel.Invoke(new Action(() =>
                 {
-                    dockablePanel = new AlbumInsertsPanel(mbApiInterface);
+                    dockablePanel = new AlbumInsertsPanel(mbApiInterface, config);
                     dockablePanel.Dock = DockStyle.Fill;
                     panel.Controls.Add(dockablePanel);
-
-                    dockablePanel.BackColor = themeColors.BackgroundColor;
-                    dockablePanel.ForeColor = themeColors.ForegroundColor;
-                    ApplyThemeToControls(dockablePanel.Controls);
                 }));
             }
             else
             {
-                dockablePanel = new AlbumInsertsPanel(mbApiInterface);
+                dockablePanel = new AlbumInsertsPanel(mbApiInterface, config);
                 dockablePanel.Dock = DockStyle.Fill;
                 panel.Controls.Add(dockablePanel);
-
-                dockablePanel.BackColor = themeColors.BackgroundColor;
-                dockablePanel.ForeColor = themeColors.ForegroundColor;
-                ApplyThemeToControls(dockablePanel.Controls);
             }
 
             return -1;
@@ -394,7 +391,7 @@ namespace MusicBeePlugin
             openFloatingItem.Click += menuClicked;
             list.Add(openFloatingItem);
 
-            ToolStripMenuItem openConfigItem = new ToolStripMenuItem("Edit Colors Config");
+            ToolStripMenuItem openConfigItem = new ToolStripMenuItem("Edit Config");
             openConfigItem.Click += (s, e) =>
             {
                 try
@@ -408,20 +405,17 @@ namespace MusicBeePlugin
             };
             list.Add(openConfigItem);
 
-            ToolStripMenuItem reloadColorsItem = new ToolStripMenuItem("Reload Colors");
-            reloadColorsItem.Click += (s, e) =>
+            ToolStripMenuItem reloadItem = new ToolStripMenuItem("Reload Config");
+            reloadItem.Click += (s, e) =>
             {
-                LoadColorConfig();
+                LoadConfig();
                 if (dockablePanel != null && !dockablePanel.IsDisposed)
                 {
-                    dockablePanel.BackColor = themeColors.BackgroundColor;
-                    dockablePanel.ForeColor = themeColors.ForegroundColor;
-                    ApplyThemeToControls(dockablePanel.Controls);
-                    dockablePanel.Refresh();
+                    dockablePanel.ApplyConfig(config);
                 }
-                MessageBox.Show("Colors reloaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Config reloaded! Reopen floating window for changes to take effect.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
-            list.Add(reloadColorsItem);
+            list.Add(reloadItem);
 
             return list;
         }
