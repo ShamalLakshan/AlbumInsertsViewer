@@ -22,11 +22,11 @@ This plugin lets you easily view album artwork, booklets, and inserts right with
 - ⚙️ **Highly Configurable** - Customize colors, slideshow timing, and more
 
 ## 📹 Demo
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Lxa9jI8LnxE/0.jpg)](https://www.youtube.com/watch?v=Lxa9jI8LnxE)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Lxa9jI8LnxE?si=n2Qdn84uV_rOmf4N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## 📸 Screenshots
-
+> The demo contains the plugin with color configurations created to match with the MusicBee theme named ```BlossomTheme```.
+---
 ![](./screenshots/ss05.png)
 
 <div align="center">
