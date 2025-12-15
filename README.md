@@ -1,160 +1,174 @@
-# AlbumInsertViewer 
-### A MusicBee Plugin for Viewing Album Inserts
+# AlbumInsertsViewer 
+### A MusicBee Plugin for Viewing Album Inserts and Booklets
 
-I've always wanted a way to view album inserts, scanned booklets, and PDFs directly inside MusicBee. It always felt like such a missed opportunity that the beautiful scans were hidden away and only accessible through the file browser—something most people rarely use. So, I created AlbumInsertViewer to solve that problem. This plugin lets you easily view album artwork, booklets, and inserts right within MusicBee, making the music experience even better.
+I've always wanted a way to view album inserts, scanned booklets, and PDFs directly inside MusicBee. It always felt like such a missed opportunity that the beautiful scans were hidden away and only accessible through the file browser—something most people rarely use. So, I created AlbumInsertsViewer to solve that problem.
+
+This plugin lets you easily view album artwork, booklets, and inserts right within MusicBee, making the music experience even better. Experience your liner notes and artwork the way they were meant to be enjoyed—seamlessly integrated with your music.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![MusicBee](https://img.shields.io/badge/MusicBee-3.0%2B-orange)](https://getmusicbee.com/to/be/updated)
+[![GitHub stars](https://img.shields.io/github/stars/ShamalLakshan/AlbumInsertsViewer?style=social)](https://github.com/ShamalLakshan/AlbumInsertsViewer/stargazers)
+
+> **⭐ Enjoying this plugin? Please consider [giving it a star](https://github.com/ShamalLakshan/AlbumInsertsViewer/stargazers)! It helps others discover it and motivates continued development. Your support means a lot!**
+
+## ✨ Features
+
+- 🖼️ **Automatic Image Slideshow** - Displays all images found in your album folders
+- 📚 **PDF Booklet Detection** - Automatically finds and displays PDF liner notes
+- 📌 **Dockable Panel** - Integrates seamlessly into MusicBee's interface
+- 🪟 **Floating Window** - Also works as a standalone draggable window
+- 🔄 **Smart Search** - Recursively searches subdirectories for scans
+- 🎯 **Fallback Support** - Uses embedded artwork when no files are found
+- ⚙️ **Highly Configurable** - Customize colors, slideshow timing, and more
+
+## 📹 Demo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Lxa9jI8LnxE?si=n2Qdn84uV_rOmf4N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## 📸 Screenshots
+
+![](./screenshots/ss05.png)
+
+<div align="center">
+    <img src="./screenshots/ss01.png" width="200px" hspace="20" title="">
+    <img src="./screenshots/ss02.png" width="200px" hspace="20" title="">
+    <img src="./screenshots/ss03.png" width="200px" hspace="20" title="">
+    <img src="./screenshots/ss04.png" width="200px" hspace="20" title="">
+</div>
 
 
-**⚠️ This plugin is in early development and needs your help!** This is a work-in-progress project and we're looking for contributors to help improve and expand it. Check the Issues tab for ways to contribute.
+## 🚀 Quick Start
 
-## 🚨 Critical Features Needed - Help Wanted!
+### Installation
 
-We especially need help with these MusicBee-specific features:
+1. **Download** the latest `AlbumInsertsViewer.dll` from the [Releases](https://github.com/ShamalLakshan/AlbumInsertsViewer/releases) page
+2. **Copy** it to your MusicBee plugins folder:
+   ```
+   C:\Program Files (x86)\MusicBee\Plugins\
+   ```
+3. **Restart** MusicBee
+4. **Open** the viewer from the menu: `View → Album Inserts Viewer`
 
-### **1. Built-in PDF Viewer (HIGHEST PRIORITY)**
-**Currently**: PDFs open in external applications  
-**Needed**: Display PDFs directly inside the plugin window  
-**Why it matters**: Users want to view liner notes without leaving MusicBee  
-**Challenge**: Need to implement or integrate a PDF rendering solution in C#
+**Requirements**: Windows, MusicBee 3.0+, .NET Framework 4.8
 
-### **2. Dockable Plugin Panel**
-**Currently**: Floating window only  
-**Needed**: Make the plugin dockable in MusicBee's interface  
-**Why it matters**: Better integration with MusicBee's workflow  
-**Challenge**: Requires understanding MusicBee's docking API
+## 🎮 Usage
 
-### **3. Theme Integration**
-**Currently**: Uses default Windows colors  
-**Needed**: Match colors from user's active MusicBee theme  
-**Why it matters**: Visual consistency with MusicBee's appearance  
-**Challenge**: Need to access and apply MusicBee's theme colors dynamically
+### Basic Usage
 
-**If you have experience with MusicBee plugin development, PDF rendering in C#, or Windows Forms docking, your contribution would be invaluable!**
+1. Play any track in MusicBee
+2. The plugin automatically loads images from the album folder
+3. Switch between **Scans** and **Booklet** tabs to view images or PDFs
+4. Images cycle automatically (if multiple images exist)
+5. Click on any image to open it in your default viewer
 
-## What it does
+### Dockable Panel
 
-This plugin displays album artwork found in your music folders. When you play a track in MusicBee, it automatically:
-- Searches the album folder for images and PDFs
-- Shows images in a slideshow on the "Images" tab
-- Shows PDFs on the "Booklet" tab for viewing liner notes
-- Falls back to embedded album art if no files are found
+To dock the plugin in MusicBee:
+1. Go to `View → Arrange Panels → Drag the "album inserts viewer" to any panel of you preference`
+2. It should display when you Save and Apply changes.
 
-## Screenshots
-![](./screenshots/ss01.png)
-![](./screenshots/ss02.png)
-![](./screenshots/ss03.png)
+### Floating Window
 
-## Installation
+Open from `View → Album Inserts Viewer` for a standalone draggable window.
 
-1. Download `AlbumInsertViewer.dll` from the Releases page
-2. Copy it to your MusicBee plugins folder: `C:\Program Files (x86)\MusicBee\Plugins\`
-3. Restart MusicBee
-4. Open the viewer: View → Album Inserts Viewer
+## ⚙️ Configuration
 
-**Requirements**: MusicBee 3.0+, Windows, .NET Framework 4.8
+### First Use
 
-## Usage
+The plugin automatically creates a configuration file on first run at:
+```
+C:\Users\[YourUsername]\AppData\Roaming\MusicBee\albuminsertsviewer.colors.conf
+```
+To access this file, press Win+R and paste: `%appdata%\MusicBee\`
 
-Just play a track and the plugin will automatically load images from the album folder. Images cycle automatically if there's more than one. Click on images or use the "Open in viewer" link to view them externally.
+The configuration file is located at:
+```
+C:\Users\[YourUsername]\AppData\Roaming\MusicBee\albuminsertsviewer.colors.conf
+```
+The documentation for the config file can be found at : [config.md](./config.md)
 
-The plugin searches recursively, so images in subdirectories like "Scans" or "Artwork" will be found automatically.
 
-## Project Structure
+## 📁 File Organization
 
-- `Plugin.cs` - Main plugin file that handles MusicBee integration
-- `Form1.cs` - The UI window with image viewer and PDF tab
-- `Form1.Designer.cs` - Auto-generated UI code
-- `Form1.resx` - UI resources
+The plugin searches for these files in your album folders:
+- **Images**: `.jpg`, `.jpeg`, `.png`, `.bmp`, `.gif`
+- **PDFs**: `.pdf` (liner notes, booklets, etc.)
 
-The code in `Form1.cs` is fully documented with Doxygen comments to help you understand how it works.
+Files can be in the main album folder or any subdirectory like:
+- `Album/Scans/`
+- `Album/Artwork/`
+- `Album/Booklet/`
 
-## Building from Source
+The plugin automatically searches all subdirectories recursively.
 
-1. Clone this repository
-2. Open `AlbumInsertViewer.sln` in Visual Studio
-3. Add a reference to `MusicBeePlugin.dll` from your MusicBee installation folder
-4. Build the solution (Release mode)
-5. Copy the output DLL to MusicBee's Plugins folder
+## 🛠️ Building from Source
 
-## Contributing
+```bash
+# Clone the repository
+git clone https://github.com/ShamalLakshan/AlbumInsertsViewer.git
+cd AlbumInsertsViewer
 
-**This project needs contributors!** Whether you're experienced or just learning, all contributions are welcome.
+# Open in Visual Studio
+AlbumInsertsViewer.sln
 
-### How to contribute
+# Add reference to MusicBeePlugin.dll from your MusicBee installation
+# Build in Release mode
+# Copy output DLL to MusicBee Plugins folder
+```
 
-1. Look at the [Issues](https://github.com/ShamalLakshan/AlbumInsertsViewer/issues) page to find something to work on
-2. Fork the repository
-3. Create a new branch for your changes
-4. Make your changes and test them with MusicBee
-5. Submit a pull request
+## 📋 Project Structure
 
-### Code guidelines
+```
+AlbumInsertsViewer/
+├── AlbumInsertsViewer.cs      # Main plugin logic and MusicBee integration
+├── AlbumInsertsPanel.cs       # Dockable panel implementation
+├── Form1.cs                   # Floating window logic
+├── Form1.Designer.cs          # UI component initialization
+├── Form1.resx                 # UI resources
+└── MusicBeeInterface.cs       # MusicBee API interface
+```
 
-- Use PascalCase for public methods, camelCase for private fields
-- Dispose images properly to prevent memory leaks
-- Test your changes with different album folder structures
-- Use Doxygen-style comments for documentation (optional)
+## 🐛 Known Issues
 
-### What needs work
+- **PDF Viewing**: Currently opens PDFs in external applications. Native PDF viewer support is planned for a future release.
+See [Issues](https://github.com/ShamalLakshan/AlbumInsertsViewer/issues) for more details and workarounds.
 
-**Priority features** (see Issues for details):
+## 🤝 Contributing
 
-1. **🔴 Built-in PDF viewer** - Display PDFs in the plugin instead of external apps (MOST IMPORTANT!)
-2. **🔴 Dockable panel** - Make plugin dockable in MusicBee's interface
-3. **🔴 Theme support** - Match MusicBee's active theme colors
-4. Manual slideshow controls (next/previous buttons)
-5. Configurable slideshow timer
-6. Better error handling
-7. Keyboard shortcuts
-8. UI improvements
-9. Testing with edge cases
-10. Bug fixes
+Contributions are welcome! Feel free to submit bug reports, feature requests, or pull requests through the [Issues](https://github.com/ShamalLakshan/AlbumInsertsViewer/issues) page.
 
-The top 3 items require MusicBee-specific knowledge. If you've worked with MusicBee plugins before, we'd especially appreciate your help!
+## 📄 License
 
-Don't see what you want to work on? Open a new issue to discuss it!
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
-## Current Features
+## 💬 Support
 
-- Automatic image slideshow
-- Recursive folder search for images
-- PDF booklet detection (opens in external viewer)
-- Fallback to embedded artwork
-- Draggable window
-- External viewer launch
+- **Bug reports**: [Open an issue](https://github.com/ShamalLakshan/AlbumInsertsViewer/issues)
+- **Feature requests**: [Open an issue](https://github.com/ShamalLakshan/AlbumInsertsViewer/issues)
+- **Questions**: Check existing issues or start a discussion
 
-**Note**: PDF viewing currently requires an external application. We need contributors to help implement built-in PDF rendering!
+## 🙏 Acknowledgments
 
-## Known Issues
+- MusicBee community for feedback and testing
+- All contributors who help improve this plugin
 
-See the [Issues](https://github.com/ShamalLakshan/AlbumInsertsViewer/issues) page for current bugs and limitations.
+## ⭐ Show Your Support
 
-## Roadmap
+**Enjoying AlbumInsertsViewer?** If this plugin has enhanced your music listening experience, please consider giving it a star! ⭐
 
-**High Priority (need contributors with MusicBee API experience):**
-- **PDF viewer embedded in plugin** - Currently opens external apps, need in-app viewing
-- **Dockable panel support** - Integrate with MusicBee's docking system
-- **Theme color integration** - Dynamically match MusicBee's active theme
+**[⭐ Star this repository](https://github.com/ShamalLakshan/AlbumInsertsViewer/stargazers)** — It takes just a second and helps in so many ways:
+- 🔍 Helps other MusicBee users discover this plugin
+- 💪 Motivates me to keep developing and improving the plugin
+- 📊 Shows that people find this useful
+- 🙏 Your appreciation is the best reward for open-source work!
 
-**Other features we'd like to add:**
-- Previous/next buttons for manual control
-- Configurable slideshow speed
-- Zoom and pan controls
-- Fullscreen mode
-- Keyboard shortcuts
-- Image sorting options
+**Every star matters and genuinely encourages me to dedicate more time to this project!**
 
-Have other ideas? Open an issue!
-
-## License
-
-MIT License - see LICENSE file
-
-## Support
-
-- Found a bug? [Open an issue](https://github.com/ShamalLakshan/AlbumInsertsViewer/issues)
-- Have a feature idea? [Open an issue](https://github.com/ShamalLakshan/AlbumInsertsViewer/issues)
-- Want to contribute? Check the [Issues](https://github.com/ShamalLakshan/AlbumInsertsViewer/issues) page!
+You can also:
+- 🐛 Report bugs you encounter
+- 💡 Suggest new features
+- 🔄 Share with other MusicBee users
 
 ---
 
-**This is a community project - your contributions make it better!**
+**Made with ❤️ for the MusicBee community**
