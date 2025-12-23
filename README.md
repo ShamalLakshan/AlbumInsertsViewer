@@ -26,6 +26,7 @@ This plugin lets you easily view album artwork, booklets, and inserts right with
 
 
 > The demo contains the plugin with color configurations created to match with the MusicBee theme named ```BlossomTheme```.
+> Theme configuration for AlbumInsertsViewer that matches the above theme published here : [MB-AlbumInsertsViewer Blossom Theme](https://github.com/BlossomTheme/MB-AlbumInsertsViewer)
 ---
 ![](./screenshots/ss05.png)
 
