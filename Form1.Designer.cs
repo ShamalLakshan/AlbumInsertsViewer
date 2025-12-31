@@ -43,7 +43,6 @@
 
             // Scans Panel
             this.scansPanel = new System.Windows.Forms.Panel();
-            this.lblOpenImage = new System.Windows.Forms.Label();
             this.txtNoImages = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
 
@@ -115,7 +114,6 @@
             // 
             // scansPanel
             // 
-            this.scansPanel.Controls.Add(this.lblOpenImage);
             this.scansPanel.Controls.Add(this.txtNoImages);
             this.scansPanel.Controls.Add(this.pictureBox1);
             this.scansPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -123,20 +121,6 @@
             this.scansPanel.Name = "scansPanel";
             this.scansPanel.Size = new System.Drawing.Size(800, 560);
             this.scansPanel.TabIndex = 0;
-
-            // 
-            // lblOpenImage
-            // 
-            this.lblOpenImage.AutoSize = true;
-            this.lblOpenImage.BackColor = System.Drawing.Color.Transparent;
-            this.lblOpenImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblOpenImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Underline);
-            this.lblOpenImage.Location = new System.Drawing.Point(680, 520);
-            this.lblOpenImage.Name = "lblOpenImage";
-            this.lblOpenImage.Size = new System.Drawing.Size(100, 13);
-            this.lblOpenImage.TabIndex = 2;
-            this.lblOpenImage.Text = "🔗 Open in viewer";
-            this.lblOpenImage.Visible = false;
 
             // 
             // txtNoImages
@@ -234,7 +218,6 @@
         private System.Windows.Forms.Panel scansPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtNoImages;
-        private System.Windows.Forms.Label lblOpenImage;
         private System.Windows.Forms.Panel bookletPanel;
         private System.Windows.Forms.Label lblPdfMessage;
         private System.Windows.Forms.Button btnLaunchPdf;

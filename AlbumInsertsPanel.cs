@@ -32,7 +32,6 @@ namespace MusicBeePlugin
         private Panel scansPanel;
         private PictureBox pictureBox;
         private TextBox noImagesTextBox;
-        private Label openImageLabel;
 
         // Booklet view controls
         private Panel bookletPanel;
@@ -120,41 +119,6 @@ namespace MusicBeePlugin
             scansPanel.Controls.Add(noImagesTextBox);
             noImagesTextBox.BringToFront();
 
-            openImageLabel = new Label();
-            openImageLabel.Text = "🔗 Open in viewer";
-            openImageLabel.AutoSize = true;
-            openImageLabel.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Underline);
-            openImageLabel.Cursor = Cursors.Hand;
-            openImageLabel.BackColor = Color.Transparent;
-            openImageLabel.Visible = false;
-            openImageLabel.Click += OpenImageLabel_Click;
-            scansPanel.Controls.Add(openImageLabel);
-            openImageLabel.BringToFront();
-
-            Action positionOpenImageLabel = () =>
-            {
-                openImageLabel.Left = pictureBox.Right - openImageLabel.Width - 10;
-                openImageLabel.Top = pictureBox.Bottom - openImageLabel.Height - 10;
-            };
-
-            this.Resize += (sender, e) => positionOpenImageLabel();
-            openImageLabel.TextChanged += (sender, e) => positionOpenImageLabel();
-
-            openImageLabel.MouseEnter += (sender, e) =>
-            {
-                Color currentColor = openImageLabel.ForeColor;
-                int brighten = 60;
-                openImageLabel.ForeColor = Color.FromArgb(
-                    Math.Min(255, currentColor.R + brighten),
-                    Math.Min(255, currentColor.G + brighten),
-                    Math.Min(255, currentColor.B + brighten)
-                );
-            };
-            openImageLabel.MouseLeave += (sender, e) =>
-            {
-                openImageLabel.ForeColor = this.ForeColor;
-            };
-
             // === BOOKLET PANEL ===
             bookletPanel = new Panel();
             bookletPanel.Dock = DockStyle.Fill;
@@ -232,8 +196,6 @@ namespace MusicBeePlugin
             launchPdfButton.BackColor = config.ButtonBackColor;
             launchPdfButton.ForeColor = config.ButtonForeColor;
 
-            openImageLabel.Visible = config.ShowOpenInViewerLink;
-
             // Update timer interval
             timer.Interval = config.SlideshowIntervalSeconds * 1000;
 
@@ -289,7 +251,6 @@ namespace MusicBeePlugin
             noImagesTextBox.Visible = true;
             noImagesTextBox.Text = "No images found\r\n\r\nSelect an album with image files or embedded artwork to display content.";
 
-            openImageLabel.Visible = false;
             hasPdfInCollection = false;
             currentPdfPath = null;
 
@@ -301,7 +262,6 @@ namespace MusicBeePlugin
         {
             noImagesTextBox.Visible = false;
             pictureBox.Visible = true;
-            openImageLabel.Visible = config.ShowOpenInViewerLink;
         }
 
         private void UpdatePdfTabUI()
@@ -490,7 +450,6 @@ namespace MusicBeePlugin
                         playing = false;
                     }
 
-                    openImageLabel.Visible = config.ShowOpenInViewerLink;
                     currentImagePath = artworkUrl;
                 }
                 else
@@ -526,21 +485,6 @@ namespace MusicBeePlugin
         }
 
         private void PictureBox_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(currentImagePath) && File.Exists(currentImagePath))
-                {
-                    Process.Start(currentImagePath);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error opening image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void OpenImageLabel_Click(object sender, EventArgs e)
         {
             try
             {

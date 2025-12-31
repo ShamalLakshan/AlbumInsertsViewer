@@ -102,32 +102,6 @@ namespace MusicBeePlugin
             pictureBox1.Click += PictureBox1_Click;
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
-            // Open image label
-            lblOpenImage.Click += OpenImageLabel_Click;
-            lblOpenImage.MouseEnter += (sender, e) =>
-            {
-                Color currentColor = lblOpenImage.ForeColor;
-                int brighten = 60;
-                lblOpenImage.ForeColor = Color.FromArgb(
-                    Math.Min(255, currentColor.R + brighten),
-                    Math.Min(255, currentColor.G + brighten),
-                    Math.Min(255, currentColor.B + brighten)
-                );
-            };
-            lblOpenImage.MouseLeave += (sender, e) =>
-            {
-                lblOpenImage.ForeColor = this.ForeColor;
-            };
-
-            // Position open image label
-            Action positionLabel = () =>
-            {
-                lblOpenImage.Left = pictureBox1.Right - lblOpenImage.Width - 10;
-                lblOpenImage.Top = pictureBox1.Bottom - lblOpenImage.Height - 10;
-            };
-            this.Resize += (sender, e) => positionLabel();
-            lblOpenImage.TextChanged += (sender, e) => positionLabel();
-
             // PDF button
             btnLaunchPdf.Click += LaunchPdfButton_Click;
 
@@ -168,8 +142,6 @@ namespace MusicBeePlugin
             lblPdfMessage.ForeColor = config.ForegroundColor;
             btnLaunchPdf.BackColor = config.ButtonBackColor;
             btnLaunchPdf.ForeColor = config.ButtonForeColor;
-
-            lblOpenImage.Visible = config.ShowOpenInViewerLink;
 
             SwitchView(ViewMode.Scans);
         }
@@ -239,7 +211,6 @@ namespace MusicBeePlugin
             txtNoImages.Visible = true;
             txtNoImages.Text = "No images found\r\n\r\nSelect an album with image files or embedded artwork to display content.";
 
-            lblOpenImage.Visible = false;
             hasPdfInCollection = false;
             currentPdfPath = null;
 
@@ -251,7 +222,6 @@ namespace MusicBeePlugin
         {
             txtNoImages.Visible = false;
             pictureBox1.Visible = true;
-            lblOpenImage.Visible = config.ShowOpenInViewerLink;
         }
 
         private void UpdatePdfTabUI()
@@ -261,7 +231,7 @@ namespace MusicBeePlugin
                 lblPdfMessage.Visible = true;
                 btnLaunchPdf.Visible = true;
                 string pdfName = Path.GetFileName(currentPdfPath);
-                lblPdfMessage.Text = $"📄 {pdfName}\r\n\r\nPDF booklet detected in album folder.\r\nUse the button below to launch the file externally.";
+                lblPdfMessage.Text = $"{pdfName}\r\n\r\nPDF booklet detected in album folder.\r\nUse the button below to launch the file externally.";
             }
             else
             {
@@ -440,7 +410,6 @@ namespace MusicBeePlugin
                         playing = false;
                     }
 
-                    lblOpenImage.Visible = config.ShowOpenInViewerLink;
                     currentImagePath = artworkUrl;
                 }
                 else
@@ -481,21 +450,6 @@ namespace MusicBeePlugin
         }
 
         private void PictureBox1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(currentImagePath) && File.Exists(currentImagePath))
-                {
-                    Process.Start(currentImagePath);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error opening image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void OpenImageLabel_Click(object sender, EventArgs e)
         {
             try
             {
