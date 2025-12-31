@@ -32,7 +32,6 @@ namespace MusicBeePlugin
             public bool AutoStartSlideshow { get; set; }
 
             // Display settings
-            public bool ShowOpenInViewerLink { get; set; }
             public int WindowWidth { get; set; }
             public int WindowHeight { get; set; }
 
@@ -52,9 +51,9 @@ namespace MusicBeePlugin
                 AutoStartSlideshow = true;
 
                 // Default display settings
-                ShowOpenInViewerLink = true;
-                WindowWidth = 800;
-                WindowHeight = 600;
+                // Default values are adjusted to display 1:1 perfectly.
+                WindowWidth = 400;
+                WindowHeight = 460;
             }
         }
 
@@ -141,9 +140,6 @@ namespace MusicBeePlugin
                     writer.WriteLine();
                     writer.WriteLine("# ===== DISPLAY SETTINGS =====");
                     writer.WriteLine();
-                    writer.WriteLine("# Show 'Open in viewer' link on images (true/false)");
-                    writer.WriteLine($"ShowOpenInViewerLink={config.ShowOpenInViewerLink.ToString().ToLower()}");
-                    writer.WriteLine();
                     writer.WriteLine("# Default floating window width in pixels");
                     writer.WriteLine($"WindowWidth={config.WindowWidth}");
                     writer.WriteLine();
@@ -203,9 +199,6 @@ namespace MusicBeePlugin
                             break;
                         case "AutoStartSlideshow":
                             config.AutoStartSlideshow = value.ToLower() == "true";
-                            break;
-                        case "ShowOpenInViewerLink":
-                            config.ShowOpenInViewerLink = value.ToLower() == "true";
                             break;
                         case "WindowWidth":
                             if (int.TryParse(value, out int width) && width > 0)
@@ -275,7 +268,7 @@ namespace MusicBeePlugin
                 Label infoLabel = new Label();
                 infoLabel.Location = new Point(0, 70);
                 infoLabel.Size = new Size(400, 60);
-                infoLabel.Text = "Edit the config file to customize:\n• Colors (background, foreground, buttons)\n• Slideshow interval and auto-start\n• Window size and display options";
+                infoLabel.Text = "Edit the config file to customize:\n Colors (background, foreground, buttons)\n Slideshow interval and auto-start\n Window size and display options";
 
                 configPanel.Controls.AddRange(new Control[] { pathLabel, openConfigButton, infoLabel });
             }
@@ -344,7 +337,7 @@ namespace MusicBeePlugin
 
         private void createMenuItem()
         {
-            mbApiInterface.MB_AddMenuItem("mnuView/Album Inserts Viewer", "HotKey", menuClicked);
+            mbApiInterface.MB_AddMenuItem("mnuView/Album Inserts Viewer", "Album Inserts Viewer : Floating Window", menuClicked);
         }
 
         private void menuClicked(object sender, EventArgs args)
