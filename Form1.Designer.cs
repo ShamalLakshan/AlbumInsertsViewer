@@ -29,40 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-
-            // Timer
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-
-            // Navigation Panel
             this.navPanel = new System.Windows.Forms.Panel();
             this.btnBooklet = new System.Windows.Forms.Button();
             this.btnScans = new System.Windows.Forms.Button();
-
-            // Content Panel
             this.contentPanel = new System.Windows.Forms.Panel();
-
-            // Scans Panel
             this.scansPanel = new System.Windows.Forms.Panel();
             this.txtNoImages = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-
-            // Booklet Panel
             this.bookletPanel = new System.Windows.Forms.Panel();
             this.btnLaunchPdf = new System.Windows.Forms.Button();
             this.lblPdfMessage = new System.Windows.Forms.Label();
-
             this.navPanel.SuspendLayout();
             this.contentPanel.SuspendLayout();
             this.scansPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.bookletPanel.SuspendLayout();
             this.SuspendLayout();
-
             // 
             // timer1
             // 
             this.timer1.Interval = 3000;
-
             // 
             // navPanel
             // 
@@ -73,7 +61,6 @@
             this.navPanel.Name = "navPanel";
             this.navPanel.Size = new System.Drawing.Size(800, 40);
             this.navPanel.TabIndex = 0;
-
             // 
             // btnBooklet
             // 
@@ -86,7 +73,6 @@
             this.btnBooklet.TabIndex = 1;
             this.btnBooklet.Text = "Booklet";
             this.btnBooklet.UseVisualStyleBackColor = true;
-
             // 
             // btnScans
             // 
@@ -99,7 +85,6 @@
             this.btnScans.TabIndex = 0;
             this.btnScans.Text = "Scans";
             this.btnScans.UseVisualStyleBackColor = true;
-
             // 
             // contentPanel
             // 
@@ -110,7 +95,6 @@
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.Size = new System.Drawing.Size(800, 560);
             this.contentPanel.TabIndex = 1;
-
             // 
             // scansPanel
             // 
@@ -121,7 +105,6 @@
             this.scansPanel.Name = "scansPanel";
             this.scansPanel.Size = new System.Drawing.Size(800, 560);
             this.scansPanel.TabIndex = 0;
-
             // 
             // txtNoImages
             // 
@@ -137,7 +120,6 @@
             this.txtNoImages.Text = "No images found";
             this.txtNoImages.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtNoImages.Visible = false;
-
             // 
             // pictureBox1
             // 
@@ -148,7 +130,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-
             // 
             // bookletPanel
             // 
@@ -160,11 +141,10 @@
             this.bookletPanel.Size = new System.Drawing.Size(800, 560);
             this.bookletPanel.TabIndex = 1;
             this.bookletPanel.Visible = false;
-
             // 
             // btnLaunchPdf
             // 
-            this.btnLaunchPdf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.btnLaunchPdf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLaunchPdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLaunchPdf.Location = new System.Drawing.Point(20, 120);
@@ -174,7 +154,6 @@
             this.btnLaunchPdf.Text = "Launch in External Viewer";
             this.btnLaunchPdf.UseVisualStyleBackColor = true;
             this.btnLaunchPdf.Visible = false;
-
             // 
             // lblPdfMessage
             // 
@@ -187,7 +166,6 @@
             this.lblPdfMessage.Text = "No PDF detected";
             this.lblPdfMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblPdfMessage.Visible = false;
-
             // 
             // Form1
             // 
@@ -196,6 +174,8 @@
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.navPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.Name = "Form1";
             this.Text = "Album Inserts Viewer";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -206,6 +186,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.bookletPanel.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
 
         #endregion
