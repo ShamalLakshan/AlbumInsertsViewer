@@ -1,6 +1,9 @@
-# AlbumInsertsViewer 
-### A MusicBee Plugin for Viewing Album Inserts and Booklets
+<center>
+<h1>AlbumInsertsViewer</h1>
+<h2>A MusicBee Plugin for Viewing Album Inserts and Booklets</h2>
+<img src="./assets/images/AlbumInsertsViewerLogo.png" width=10%>
 
+---
 I've always wanted a way to view album inserts, scanned booklets, and PDFs directly inside MusicBee. It always felt like such a missed opportunity that the beautiful scans were hidden away and only accessible through the file browser—something most people rarely use. So, I created AlbumInsertsViewer to solve that problem.
 
 This plugin lets you easily view album artwork, booklets, and inserts right within MusicBee, making the music experience even better. Experience your liner notes and artwork the way they were meant to be enjoyed—seamlessly integrated with your music.
@@ -8,6 +11,9 @@ This plugin lets you easily view album artwork, booklets, and inserts right with
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![MusicBee](https://img.shields.io/badge/MusicBee-3.0%2B-orange)](https://getmusicbee.com/to/be/updated)
 [![GitHub stars](https://img.shields.io/github/stars/ShamalLakshan/AlbumInsertsViewer?style=social)](https://github.com/ShamalLakshan/AlbumInsertsViewer/stargazers)
+</center>
+
+---
 
 > **⭐ Enjoying this plugin? Please consider [giving it a star](https://github.com/ShamalLakshan/AlbumInsertsViewer/stargazers)! It helps others discover it and motivates continued development. Your support means a lot!**
 
